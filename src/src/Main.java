@@ -22,11 +22,9 @@ public class Main extends Application {
             primaryStage.setScene(new Scene(root, 600, 400));
             primaryStage.show();
 
-
-
         }catch (Exception e1){
 
-            System.out.println("Error setting primary stage!");
+            e1.printStackTrace();
 
         }
     }

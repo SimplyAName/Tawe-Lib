@@ -3,22 +3,20 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="Account">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Home" />
-                  <MenuItem mnemonicParsing="false" text="Edit Account" />
-                  <MenuItem mnemonicParsing="false" text="Logout" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <Pane fx:id="actionPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-   </children>
-</VBox>
+<BorderPane fx:id="mainPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.DefaultWindowController">
+    <top>
+        <MenuBar fx:id="menuBarMain" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Account">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#homeButtonAction" text="Home" />
+                        <MenuItem mnemonicParsing="false" text="Edit Account" />
+                        <MenuItem mnemonicParsing="false" text="Logout" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>

@@ -1,17 +1,17 @@
 package src;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LibrarianInterfaceController implements Initializable {
+public class LibrarianInterfaceController {
 
+    @FXML
+    protected void testButtonAction(){
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-
+        System.out.println("Beep Boop!");
 
     }
 }
