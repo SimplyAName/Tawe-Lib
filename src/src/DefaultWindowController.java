@@ -1,16 +1,10 @@
 package src;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class DefaultWindowController {
 
@@ -20,6 +14,7 @@ public class DefaultWindowController {
     @FXML
     protected void homeButtonAction(){
 
+        //When button is pressed the new fxml file is loaded and the center of the window is changed to it
         try {
             Parent newScene = FXMLLoader.load(getClass().getResource("LibrarianInterface.fxml"));
             mainPane.setCenter(newScene);
