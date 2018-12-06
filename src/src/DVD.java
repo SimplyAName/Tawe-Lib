@@ -1,3 +1,5 @@
+package src;
+
 /**
  * DVD class, subclass of Resource, creates DVD's
  *@author Jake Archer
@@ -8,9 +10,9 @@ public class DVD extends Resource {
 	private String director,language;
 	private double runtime;
 	private String[] subLanguage;
-	
+
 	/**
-	 * 
+	 *
 	 * @param rID The unique ID for the resource
 	 * @param title The title of the resource
 	 * @param year The year of the resource
@@ -27,7 +29,7 @@ public class DVD extends Resource {
 		this.runtime = runtime;
 		this.subLanguage = subLanguage;
 	}
-	
+
 	/**
 	 * get the director of the DVD
 	 * @return
@@ -35,7 +37,7 @@ public class DVD extends Resource {
 	public String getDirector(){
 		return director;
 	}
-	
+
 	/**
 	 * get the runtime of the DVD
 	 * @return runtime
@@ -43,7 +45,7 @@ public class DVD extends Resource {
 	public double getRuntime(){
 		return runtime;
 	}
-	
+
 	/**
 	 * get the language of the DVD
 	 * @return
@@ -51,7 +53,7 @@ public class DVD extends Resource {
 	public String getLanguage(){
 		return language;
 	}
-	
+
 	/**
 	 * get the languages of the subtitles
 	 * @return subLanguage

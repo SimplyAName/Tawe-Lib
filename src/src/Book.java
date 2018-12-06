@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Book class, subclass of resource, Creates a book
  * @author Jake Archer
@@ -7,9 +9,9 @@
 public class Book extends Resource {
 
 	private String author,publisher,genre,ISBN,language;
-	
+
 	/**
-	 * 
+	 *
 	 * @param rID The unique ID for the resource
 	 * @param title The title of the resource
 	 * @param year The year of the resource
@@ -36,7 +38,7 @@ public class Book extends Resource {
 	private String getAuthor(){
 		return author;
 	}
-	
+
 	/**
 	 * get the publisher
 	 * @return publihser
@@ -52,7 +54,7 @@ public class Book extends Resource {
 	private String getGenre(){
 		return genre;
 	}
-	
+
 	/**
 	 * get the ISBN
 	 * @return ISBN
@@ -60,7 +62,7 @@ public class Book extends Resource {
 	private String getISBN(){
 		return ISBN;
 	}
-	
+
 	/**
 	 * get the language
 	 * @return language

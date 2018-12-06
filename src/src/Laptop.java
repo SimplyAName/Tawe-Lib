@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Laptop class, subclass to Resource, used to create a Laptop
  * @author Jake Archer
@@ -7,9 +9,9 @@
 public class Laptop extends Resource {
 
 	private String manufacturer,model,OS;
-	
+
 	/**
-	 * 
+	 *
 	 * @param rID The unique ID for the resource
 	 * @param title The title of the resource
 	 * @param year The year of the resource
@@ -24,6 +26,7 @@ public class Laptop extends Resource {
 		this.model = model;
 		this.OS = OS;
 	}
+
 	/**
 	 * Gets the manufacturer
 	 * @return manufacturer
@@ -31,7 +34,7 @@ public class Laptop extends Resource {
 	public String getManufacturer(){
 		return manufacturer;
 	}
-	
+
 	/**
 	 * get the model
 	 * @return model
@@ -39,7 +42,7 @@ public class Laptop extends Resource {
 	public String getModel(){
 		return model;
 	}
-	
+
 	/**
 	 * get the Operating System
 	 * @return OS
