@@ -1,6 +1,7 @@
 /**
  * Book class, subclass of resource, Creates a book
- * @author 908169
+ * @author Jake Archer
+ * @author Jakob Heeley
  * @version 1
  */
 public class Book extends Resource {

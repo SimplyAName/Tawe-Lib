@@ -1,6 +1,7 @@
 /**
  * Laptop class, subclass to Resource, used to create a Laptop
  * @author Jake Archer
+ * @author Jakob Heeley
  * @version 1
  */
 public class Laptop extends Resource {

@@ -2,6 +2,7 @@ package src;
 /**
  * This class is the superclass of the resources.
  * @author Jake Archer
+ * @author Jakob Heeley
  * @version 1
  */
 public class Resource {

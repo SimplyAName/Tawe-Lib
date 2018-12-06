@@ -1,7 +1,7 @@
 /**
  * DVD class, subclass of Resource, creates DVD's
- * @author 908169
- *
+ *@author Jake Archer
+ *@author Jakob Heeley
  */
 public class DVD extends Resource {
 
