@@ -1,5 +1,7 @@
 package src;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,7 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddResourceController implements Initializable {
+public class AddResourceController {
 
     @FXML
     private ChoiceBox<String> resourceSelection;
@@ -34,7 +36,8 @@ public class AddResourceController implements Initializable {
      * Changes the resource type when the choice box is changed and sets the pane the the correct one that suits the resource selected.
      */
 
-    protected void resourceSelected(){
+    @FXML
+    protected void resourceSelectedAction() {
 
         Parent newScene;
 
@@ -137,25 +140,6 @@ public class AddResourceController implements Initializable {
             e1.printStackTrace();
 
             return false;
-        }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        resourceSelection.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                resourceType = resourceSelection.getValue();
-                resourceSelected();
-            }
-        });
-
-        try {
-            Parent newScene = FXMLLoader.load(getClass().getResource("AddBookResource.fxml"));
-
-            resourceCreationMainPane.setCenter(newScene);
-        }catch (Exception e2){
-            e2.printStackTrace();
         }
     }
 }
