@@ -1,5 +1,7 @@
 package src;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +30,10 @@ public class AddResourceController implements Initializable {
     private int resourceYear;
     private String resourceImageLoc;
 
+    /*
+     * Changes the resource type when the choice box is changed and sets the pane the the correct one that suits the resource selected.
+     */
+
     protected void resourceSelected(){
 
         Parent newScene;
@@ -43,7 +49,7 @@ public class AddResourceController implements Initializable {
                 newScene = FXMLLoader.load(getClass().getResource("AddDVDResource.fxml"));
             }else{
                 System.out.println("Error. Resource not recognised!");
-                //This pane is incase of an error so it will just show an empty pane.
+                //This pane is in case of an error so it will just show an empty pane.
                 newScene = new Pane();
             }
 
@@ -53,51 +59,97 @@ public class AddResourceController implements Initializable {
         }
     }
 
+    /**
+     * @param resourceName The name of the resource.
+     * @return ture if a duplicate resource is found, false if not.
+     */
+    private boolean checkResource(String resourceName) {
+
+        try {
+            ResultSet checkedResource = Database.query("SELECT type, title FROM resource_tbl WHERE type = " + resourceType + " AND " + resourceName + ";");
+
+            if (checkedResource.next()) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+        return true;
+
+    }
+
+    /**
+     *
+     */
     protected void addResourceAction(){
 
-        if(resourceType.equals("Book")){
-            addBook();
-        }else if(resourceType.equals("Laptop")){
-            addLaptop();
-        }else if(resourceType.equals("DVD")){
-            addDVD();
-        }else{
-            System.out.println("Error. Resource not recognised!");
+        if (checkResource(resourceName)) {
+            if (resourceType.equals("Book")) {
+                addBook();
+            } else if (resourceType.equals("Laptop")) {
+                addLaptop();
+            } else if (resourceType.equals("DVD")) {
+                addDVD();
+            } else {
+                System.out.println("Error. Resource not recognised!");
+            }
         }
     }
 
-    private void addBook(){
+    private boolean addBook() {
 
         try{
             Database.edit("INSERT ;");
+
+            return true;
         }catch(Exception e1){
             e1.printStackTrace();
-        }
 
-    }
-
-    private void addDVD(){
-
-        try{
-            Database.edit("INSERT ;");
-        }catch(Exception e1){
-            e1.printStackTrace();
+            return false;
         }
 
     }
 
-    private void addLaptop(){
+    private boolean addDVD() {
 
         try{
             Database.edit("INSERT ;");
+
+            return true;
         }catch(Exception e1){
             e1.printStackTrace();
+
+            return false;
         }
 
+    }
+
+    private boolean addLaptop() {
+
+        try{
+            Database.edit("INSERT ;");
+
+            return true;
+        }catch(Exception e1){
+            e1.printStackTrace();
+
+            return false;
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        resourceSelection.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                resourceType = resourceSelection.getValue();
+                resourceSelected();
+            }
+        });
+
         try {
             Parent newScene = FXMLLoader.load(getClass().getResource("AddBookResource.fxml"));
 
