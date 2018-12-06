@@ -24,5 +24,10 @@
       <TextField layoutX="10.0" layoutY="310.0" prefWidth="149.0" promptText="DVD Subtitles" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Add New DVD" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
       <TextField layoutX="10.0" layoutY="220.0" prefHeight="25.0" prefWidth="280.0" promptText="DVD title" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="99.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/pirates.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

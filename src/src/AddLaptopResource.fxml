@@ -23,5 +23,10 @@
       <TextField layoutX="10.0" layoutY="275.0" prefWidth="149.0" promptText="Laptop model" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <TextField layoutX="10.0" layoutY="310.0" prefWidth="149.0" promptText="Laptop OS" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Add New Laptop" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/macbook.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
