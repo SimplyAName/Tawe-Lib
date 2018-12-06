@@ -1,27 +1,22 @@
+package src;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.sql.ResultSet;
 
 import javax.imageio.ImageIO;
 import javafx.application.Application;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import src.User;
 
 /**
  * Login window, Stores the logged in user
@@ -29,20 +24,20 @@ import javafx.scene.text.Font;
  *
  */
 public class Login extends Application {
-	private static final int WINDOW_HEIGHT = 700;
-	private static final int WINDOW_WIDTH = 700;
-	private static final int LARGE_FONT_SIZE = 50;
-	private static final int SMALL_FONT_SIZE = 20;
+	private final int WINDOW_HEIGHT = 700;
+	private final int WINDOW_WIDTH = 700;
+	private final int LARGE_FONT_SIZE = 50;
+	private final int SMALL_FONT_SIZE = 20;
 	
-	private static final int PREF_X_SIZE = 70;
-	private static final int PREF_Y_SIZE = 30;
-	private static final Insets BUTTON_PADDING = new Insets(15,15,15,15);
-	private static final Insets AROUND_BUTTON_PADDING = new Insets(25,25,25,25);
+	private final int PREF_X_SIZE = 70;
+	private final int PREF_Y_SIZE = 30;
+	private final Insets BUTTON_PADDING = new Insets(15,15,15,15);
+	private final Insets AROUND_BUTTON_PADDING = new Insets(25,25,25,25);
 	
-	private static String username; 
-	private static Stage primaryStage;
+	private String username;
+	private Stage primaryStage;
 	
-	private static User user;
+	private User user;
 	
 	/**
 	 * Starts the program on the primary stage
@@ -148,9 +143,10 @@ public class Login extends Application {
 	 * returns the currently logged in user
 	 * @return who is logged in
 	 */
+	/*
 	public static User getUser(){
 		return user;
-	}
+	}*/
 	/**
 	 * Lauches the login
 	 * @param args

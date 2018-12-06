@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="resourceCreationMainPane" minHeight="50.0" prefHeight="0.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.AddResourceController">
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <ChoiceBox fx:id="resourceSelection" layoutX="14.0" layoutY="14.0" prefWidth="150.0" value="Book" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Book" />
+                        <String fx:value="DVD" />
+                        <String fx:value="Laptop" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

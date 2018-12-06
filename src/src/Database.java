@@ -1,3 +1,4 @@
+package src;
 import java.sql.*;
 /**
  * Contains static methods to interact with the database

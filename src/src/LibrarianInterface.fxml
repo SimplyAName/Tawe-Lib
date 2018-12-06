@@ -5,6 +5,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.LibrarianInterfaceController">
    <children>
-      <Button layoutX="274.0" layoutY="188.0" mnemonicParsing="false" onAction="#testButtonAction" text="Button" />
+      <Button layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#addResourceAction" text="Add Resource" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
    </children>
 </AnchorPane>
