@@ -22,6 +22,7 @@ public class Database {
 			connect = DriverManager.getConnection(DATABASE, DB_USERNAME, DB_PASSWORD);
 			
 		}catch (Exception e){
+            e.printStackTrace();
 			throw new SQLException("Cannot connect to database");	
 		}
 		return connect;
