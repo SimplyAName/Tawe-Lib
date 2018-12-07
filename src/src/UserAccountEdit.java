@@ -1,3 +1,5 @@
+package src;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -31,7 +33,7 @@ public class UserAccountEdit {
 
 	User editedUserProfile;
 
-	
+
 	/**
 	 * Set the properties of the User. Changes to the user are stored here
 	 */
@@ -44,12 +46,12 @@ public class UserAccountEdit {
 		addressTextField.setText(editedUserProfile.getAddressLine());
 		postcodeTextField.setText(editedUserProfile.getPostcode());
 		phoneNumberTextField.setText(editedUserProfile.getPhoneNumber());
-        fineBalanceTextField.setText(Double.toString(editedUserProfile.getFineBalance()));
+		fineBalanceTextField.setText(Double.toString(editedUserProfile.getFineBalance()));
 
 	}
 
 	private void handleConfirmButtonAction() {
-	  //countryBeingEdited.setName(nameTextField.getText());
+		//countryBeingEdited.setName(nameTextField.getText());
 		editedUserProfile.setUsername(userNameTextField.getText());
 		editedUserProfile.setFirstName(firstNameTextField.getText());
 		editedUserProfile.setLastName(lastNameTextField.getText());
