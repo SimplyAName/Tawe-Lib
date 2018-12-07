@@ -1,5 +1,4 @@
-
-
+package src;
 
 /* README
  * 
@@ -45,7 +44,7 @@ public class UserInterfaceController {
 	 * This method can be called to setup values on the window before it gets displayed.
 	 * */
 	public void setup() {
-		lblName.setText(user.getName());
+		lblName.setText(user.getFirstName() + " " + user.getLastName());
 		lblBalance.setText(String.valueOf(user.getFineBalance()));
 	}
 	

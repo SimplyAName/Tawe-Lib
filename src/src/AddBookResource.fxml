@@ -8,15 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="532.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/10.0.1"
+            minWidth="-Infinity" prefHeight="479.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.AddBookResourceController">
    <children>
-      <ImageView fitHeight="235.0" layoutX="114.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+       <ImageView fx:id="bookImageView" fitHeight="150.0" fitWidth="350.0" layoutX="108.0" layoutY="14.0"
+                  onMouseClicked="#uploadImageAction" pickOnBounds="true" preserveRatio="true"
+                  AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="14.0">
          <image>
-            <Image url="@../../../../Downloads/BookCoverExample.jpg" />
+             <Image url="@../../resourceImages/defaultImage.png"/>
          </image>
          <viewport>
-            <Rectangle2D minX="200.0" minY="200.0" />
+             <Rectangle2D/>
          </viewport>
       </ImageView>
        <TextField fx:id="resourceTitle" layoutX="10.0" layoutY="257.0" promptText="Book title"

@@ -7,10 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<AnchorPane prefHeight="494.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.AddLaptopResourceController">
    <children>
-      <ImageView fitHeight="235.0" layoutX="114.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+       <ImageView fitHeight="235.0" layoutX="100.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true"
+                  AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.125" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../../../../Downloads/BookCoverExample.jpg" />
          </image>
@@ -18,19 +19,19 @@
             <Rectangle2D minX="200.0" minY="200.0" />
          </viewport>
       </ImageView>
-      <TextField fx:id="resourceTitle" layoutX="10.0" layoutY="170.0" promptText="Laptop title"
-                 AnchorPane.bottomAnchor="222.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="resourceYear" layoutX="10.0" layoutY="204.0" promptText="Laptop year"
-                 AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="laptopManufacturer" layoutX="10.0" layoutY="240.0" prefWidth="149.0"
-                 promptText="Laptop manufacturer" AnchorPane.bottomAnchor="152.0" AnchorPane.leftAnchor="10.0"
-                 AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="laptopModal" layoutX="10.0" layoutY="275.0" prefWidth="149.0" promptText="Laptop model"
-                 AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="laptopOS" layoutX="10.0" layoutY="310.0" prefWidth="149.0" promptText="Laptop OS"
-                 AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-              onAction="#addLaptopAction" text="Add New Laptop" AnchorPane.bottomAnchor="10.0"
-              AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0"/>
+       <TextField fx:id="resourceTitle" layoutX="10.0" layoutY="286.0" promptText="Laptop title"
+                  AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="resourceYear" layoutX="10.0" layoutY="320.0" promptText="Laptop year"
+                  AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="laptopManufacturer" layoutX="10.0" layoutY="356.0" prefWidth="149.0"
+                  promptText="Laptop manufacturer" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="10.0"
+                  AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="laptopModal" layoutX="10.0" layoutY="391.0" prefWidth="149.0" promptText="Laptop model"
+                  AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="laptopOS" layoutX="10.0" layoutY="426.0" prefWidth="149.0" promptText="Laptop OS"
+                  AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+               onAction="#addLaptopAction" text="Add New Laptop" AnchorPane.bottomAnchor="10.0"
+               AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0"/>
    </children>
 </AnchorPane>

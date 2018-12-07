@@ -9,21 +9,22 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.AddDVDResourceController">
    <children>
       <ImageView fitHeight="180.0" fitWidth="242.0" layoutX="129.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="resourceTitle" layoutX="10.0" layoutY="300.0" prefHeight="26.0" prefWidth="480.0"
-                 promptText="DVD title" AnchorPane.bottomAnchor="275.0"/>
-      <TextField fx:id="dvdDirector" layoutX="10.0" layoutY="334.0" promptText="DVD director"
-                 AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="dvdRuntime" layoutX="10.0" layoutY="371.0" prefWidth="149.0" promptText="DVD runtime"
-                 AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="resourceYear" layoutX="10.0" layoutY="405.0" promptText="DVD year"
-                 AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="dvdLanguage" layoutX="10.0" layoutY="440.0" prefWidth="149.0" promptText="DVD Language"
-                 AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="dvdSubLanguages" layoutX="10.0" layoutY="475.0" prefWidth="149.0"
-                 promptText="DVD Subtitles (Seperated with a ',')" AnchorPane.bottomAnchor="100.0"
-                 AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <Button layoutX="64.0" layoutY="547.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-              onAction="#addDvdAction" text="Add New DVD" AnchorPane.bottomAnchor="27.399999999999977"
-              AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0"/>
+       <TextField fx:id="resourceTitle" layoutX="10.0" layoutY="300.0" prefHeight="26.0" prefWidth="480.0"
+                  promptText="DVD title" AnchorPane.bottomAnchor="275.0" AnchorPane.leftAnchor="10.0"
+                  AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="dvdDirector" layoutX="10.0" layoutY="334.0" promptText="DVD director"
+                  AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="dvdRuntime" layoutX="10.0" layoutY="371.0" prefWidth="149.0" promptText="DVD runtime"
+                  AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="resourceYear" layoutX="10.0" layoutY="405.0" promptText="DVD year"
+                  AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="dvdLanguage" layoutX="10.0" layoutY="440.0" prefWidth="149.0" promptText="DVD Language"
+                  AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="dvdSubLanguages" layoutX="10.0" layoutY="475.0" prefWidth="149.0"
+                  promptText="DVD Subtitles (Seperated with a ',')" AnchorPane.bottomAnchor="100.0"
+                  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <Button layoutX="64.0" layoutY="547.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+               onAction="#addDvdAction" text="Add New DVD" AnchorPane.bottomAnchor="27.399999999999977"
+               AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0"/>
    </children>
 </AnchorPane>

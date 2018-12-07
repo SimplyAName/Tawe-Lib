@@ -3,18 +3,31 @@ package src;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.Random;
 
 public class AddBookResourceController {
 
+    @FXML
+    private Stage addResourceStage;
 
     @FXML
     private TextField resourceTitle, resourceYear, bookAuthor, bookPublisher, bookGenre, bookISBN, bookLanguage;
 
+    @FXML
+    private ImageView bookImageView;
+
     private String resourceType = "book";
-    private String resourceImageLoc;
+    private BufferedImage uploadedImage;
 
     /**
      * @param resourceName The name of the resource to be checked
@@ -33,6 +46,26 @@ public class AddBookResourceController {
         return true;
     }
 
+    @FXML
+    private void uploadImageAction() {
+
+        String path = null;
+
+        try {
+
+            FileChooser uploadResourceImage = new FileChooser();
+            uploadResourceImage.setTitle("Upload book cover/image");
+            uploadResourceImage.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.jpg"));
+            File selectedFile = uploadResourceImage.showOpenDialog(addResourceStage);
+            if (selectedFile != null) {
+                uploadedImage = ImageIO.read(selectedFile);
+                bookImageView.setImage(new Image(selectedFile.toURI().toString()));
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
+
     /*
         This function is the action that add the book resource to the database.
         First it checks if it already exists in the database with the same name and resource type
@@ -47,9 +80,18 @@ public class AddBookResourceController {
         int resourceId = randomId.nextInt(999999);
 
         if (!checkResource(this.resourceTitle.getText(), this.resourceType)) {
+
+            String imageLocation = "resourceImages/" + resourceTitle.getText() + "_" + resourceId + ".png";
+
+            try {
+                ImageIO.write(uploadedImage, "png", new File(imageLocation));
+            } catch (IOException e) {
+                System.out.println("Write error for uploading image: " + e.getMessage());
+            }
+
             try {
 
-                Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + "testImageLocation" + "');");
+                Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
                 Database.edit("INSERT INTO book_tbl VALUES (" + resourceId + ",'" + bookAuthor.getText() + "','" + bookPublisher.getText() + "','" + bookGenre.getText() + "'," + Integer.parseInt(bookISBN.getText()) + ",'" + bookLanguage.getText() + "');");
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

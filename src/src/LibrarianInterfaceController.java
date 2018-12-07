@@ -1,5 +1,4 @@
-
-
+package src;
 
 /* README
  * 
@@ -17,8 +16,12 @@
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * This is the 'Librarian Dashboard' of the system.
@@ -27,42 +30,37 @@ import javafx.scene.image.ImageView;
  *
  */
 public class LibrarianInterfaceController {
-	
-	@FXML ImageView imgProfPic;
-	@FXML Label lblName;
-	@FXML Label lblBalance;
+
+	@FXML
+	ImageView imgProfPic;
+	@FXML
+	Label lblName;
+	@FXML
+	Label lblBalance;
 
 	private Librarian librarian;
 	
-	public LibrarianInterfaceController(Librarian librarian) {
+	/*public LibrarianInterfaceController(Librarian librarian) {
 		this.librarian = librarian;
-	}
+	}*/
 
 	/**
 	 * This method can be called to setup values on the window before it gets displayed.
-	 * */
-	public void setup() {
-		lblName.setText(librarian.getName());
-		lblBalance.setText(String.valueOf(librarian.getFineBalance()));
-	}
-	
-	/**
-	 * This will create an User and add it to the database.###???
 	 */
-	public void createNewUser(String username, String name, String phoneNum, String address, String profileImg) {
-		
+	/*public void setup() {
+		lblName.setText(librarian.getFirstName() + " " + librarian.getLastName());
+		lblBalance.setText(String.valueOf(librarian.getFineBalance()));
+	}*/
+	@FXML
+	private void addResourceAction() {
+		try {
+			Stage addResourceStage = new Stage();
+			addResourceStage.setTitle("Add resource");
+			Parent addResourceScene = FXMLLoader.load(getClass().getResource("AddResource.fxml"));
+			addResourceStage.setScene(new Scene(addResourceScene));
+			addResourceStage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
-	public void showRequestedResource(int resourceID, String resourceTitle) {
-		
-	}
-	
-	public void showReservedResource(int resourceID, String resourceTitle) {
-		
-	}
-	
-	public void showUnavailableResource(int resourceID, String resourceTitle) {
-		
-	}
-
 }
