@@ -15,56 +15,13 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.Random;
 
-public class AddBookResourceController {
-
-    @FXML
-    private Stage addResourceStage;
+public class AddBookResourceController extends AddResourceBase {
 
     @FXML
     private TextField resourceTitle, resourceYear, bookAuthor, bookPublisher, bookGenre, bookISBN, bookLanguage;
 
     @FXML
     private ImageView bookImageView;
-
-    private String resourceType = "book";
-    private BufferedImage uploadedImage;
-
-    /**
-     * @param resourceName The name of the resource to be checked
-     * @param resourceType The type of resource to be checked
-     * @return Returns true if a duplicate resource is found, false if not.
-     */
-    private boolean checkResource(String resourceName, String resourceType) {
-
-        try {
-            ResultSet checkedResource = Database.query("SELECT type, title FROM resource_tbl WHERE type = '" + resourceType + "' AND title = '" + resourceName + "';");
-            return checkedResource.next();
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-
-        return true;
-    }
-
-    @FXML
-    private void uploadImageAction() {
-
-        String path = null;
-
-        try {
-
-            FileChooser uploadResourceImage = new FileChooser();
-            uploadResourceImage.setTitle("Upload book cover/image");
-            uploadResourceImage.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.jpg"));
-            File selectedFile = uploadResourceImage.showOpenDialog(addResourceStage);
-            if (selectedFile != null) {
-                uploadedImage = ImageIO.read(selectedFile);
-                bookImageView.setImage(new Image(selectedFile.toURI().toString()));
-            }
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-    }
 
     /*
         This function is the action that add the book resource to the database.
@@ -75,59 +32,57 @@ public class AddBookResourceController {
     @FXML
     private void addBookAction() {
 
+        String resourceType = "book";
+
         Random randomId = new Random();
 
         int resourceId = randomId.nextInt(999999);
 
-        if (!checkResource(this.resourceTitle.getText(), this.resourceType)) {
+        if (!checkResource(this.resourceTitle.getText(), resourceType)) {
 
             String imageLocation = "resourceImages/" + resourceTitle.getText() + "_" + resourceId + ".png";
 
-            try {
-                ImageIO.write(uploadedImage, "png", new File(imageLocation));
-            } catch (IOException e) {
-                System.out.println("Write error for uploading image: " + e.getMessage());
-            }
+            if (uploadImage(uploadedImage, imageLocation)) {
 
-            try {
+                try {
 
-                Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
-                Database.edit("INSERT INTO book_tbl VALUES (" + resourceId + ",'" + bookAuthor.getText() + "','" + bookPublisher.getText() + "','" + bookGenre.getText() + "'," + Integer.parseInt(bookISBN.getText()) + ",'" + bookLanguage.getText() + "');");
+                    Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
+                    Database.edit("INSERT INTO book_tbl VALUES (" + resourceId + ",'" + bookAuthor.getText() + "','" + bookPublisher.getText() + "','" + bookGenre.getText() + "'," + Integer.parseInt(bookISBN.getText()) + ",'" + bookLanguage.getText() + "');");
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle(resourceTitle.getText() + " added successfully!");
-                alert.setHeaderText(resourceTitle.getText() + " was added successfully to the system and is now avalible to everyone.");
-                alert.setContentText(resourceTitle.getText() + " is now available in the system. If there are any error please edit it or delete it using the respective methods.");
+                    String alertTitle = resourceTitle.getText() + " added successfully!";
+                    String alertHeader = resourceTitle.getText() + " was added successfully to the system and is now available to everyone.";
+                    String alertMessage = resourceTitle.getText() + " is now available in the system. You can edit this book and add more copies by going back to home and clicking edit resource.";
 
-                alert.showAndWait();
+                    resourceAddedSuccessfully(alertTitle, alertHeader, alertMessage);
 
-                resourceTitle.clear();
-                resourceYear.clear();
-                bookAuthor.clear();
-                bookPublisher.clear();
-                bookGenre.clear();
-                bookISBN.clear();
-                bookLanguage.clear();
+                    resourceTitle.clear();
+                    resourceYear.clear();
+                    bookAuthor.clear();
+                    bookPublisher.clear();
+                    bookGenre.clear();
+                    bookISBN.clear();
+                    bookLanguage.clear();
 
-            } catch (Exception e1) {
-                //Error alert if it already exists.
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error adding resource");
-                alert.setHeaderText("Could not add resource to the system");
-                alert.setContentText("An error occurred adding the data to the database. Please try again. If this continues to occur please contact to creators of this software.");
+                } catch (Exception e1) {
+                    //Error alert if it already exists.
 
-                alert.showAndWait();
+                    String alertTitle = "Error adding resource";
+                    String alertHeader = "Could not add resource to the system";
+                    String alertMessage = "An error occurred adding this book to the database. Please try again. If this continues to occur please contact to creators of this software.";
 
-                e1.printStackTrace();
+                    resourceAddedError(alertTitle, alertHeader, alertMessage);
+
+                    e1.printStackTrace();
+                }
+
             }
         } else {
             //Error alert if it already exists.
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error adding resource");
-            alert.setHeaderText("Could not add resource to the system");
-            alert.setContentText("A resource a this type already exsists with this name. Please consider increasing the ammount of copies instead or is this is a newer edition of the same item add year or version of that item to the end of it's name.");
+            String alertTitle = "Error adding resource";
+            String alertHeader = "Could not add resource to the system";
+            String alertMessage = "A book with this name already exists. Please consider increasing the ammount of copies instead or is this is a newer edition of the same item add year or version of that item to the end of it's name.";
 
-            alert.showAndWait();
+            resourceAddedError(alertTitle, alertHeader, alertMessage);
         }
 
     }

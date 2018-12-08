@@ -21,7 +21,7 @@ public class AccountEdit extends Application {
             //Parent root = FXMLLoader.load(getClass().getResource("AccountEdit.fxml"));
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountEdit.fxml"));
-            loader.setController(new AccountEditController());//TODO: This needs a variable that exists when passing user, this could be a global or just passing the class
+            loader.setController(new AccountEditController(new User()));//TODO: This needs a variable that exists when passing user, this could be a global or just passing the object
             Parent root = loader.load();
             
             primaryStage.setTitle("Tawe Lib");
