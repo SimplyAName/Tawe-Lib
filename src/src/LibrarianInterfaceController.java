@@ -51,6 +51,19 @@ public class LibrarianInterfaceController {
 		lblName.setText(librarian.getFirstName() + " " + librarian.getLastName());
 		lblBalance.setText(String.valueOf(librarian.getFineBalance()));
 	}*/
+    @FXML
+    private void overdueCopiesAction() {
+        try {
+            Stage addResourceStage = new Stage();
+            addResourceStage.setTitle("Overdue copies");
+            Parent overdueCopiesScene = FXMLLoader.load(getClass().getResource("OverdueCopies.fxml"));
+            addResourceStage.setScene(new Scene(overdueCopiesScene));
+            addResourceStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 	@FXML
 	private void addResourceAction() {
 		try {
