@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -34,7 +35,7 @@ public class AddResourceController {
     @FXML
     protected void resourceSelectedAction() {
 
-        Parent newScene;
+        AnchorPane newScene;
 
         String resourceType = resourceSelection.getValue();
 
@@ -48,10 +49,12 @@ public class AddResourceController {
             }else{
                 System.out.println("Error. Resource not recognised!");
                 //This pane is in case of an error so it will just show an empty pane.
-                newScene = new Pane();
+                newScene = new AnchorPane();
             }
 
             resourceCreationMainPane.setCenter(newScene);
+
+            resourceCreationMainPane.getCenter().autosize();
         }catch (Exception e1){
             e1.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package src;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,10 +11,13 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 
-public class AddResourceBase {
+public class AddResourceBase implements Initializable {
 
     @FXML
     protected ImageView uploadImageView;
@@ -92,4 +96,15 @@ public class AddResourceBase {
         }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            File defaultImage = new File("resourceImages/defaultImage.png");
+            uploadedImage = ImageIO.read(defaultImage);
+            uploadImageView.setImage(new Image(defaultImage.toURI().toString()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
