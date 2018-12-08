@@ -10,6 +10,7 @@
             xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="src.AddDVDResourceController">
    <children>
+
        <ImageView fx:id="uploadImageView" fitHeight="200.0" fitWidth="350.0" layoutX="43.0"
                   onMouseClicked="#uploadImageAction" pickOnBounds="true" preserveRatio="true"
                   AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="14.0">
@@ -17,6 +18,7 @@
                <Image url="@../../resourceImages/defaultImage.png"/>
            </image>
        </ImageView>
+
        <TextField fx:id="resourceTitle" layoutX="10.0" layoutY="236.0" prefHeight="26.0" prefWidth="480.0"
                   promptText="DVD title" AnchorPane.bottomAnchor="238.0" AnchorPane.leftAnchor="10.0"
                   AnchorPane.rightAnchor="10.0"/>
@@ -31,8 +33,10 @@
        <TextField fx:id="dvdSubLanguages" layoutX="10.0" layoutY="412.0" prefWidth="149.0"
                   promptText="DVD Subtitles (Seperated with a ',')" AnchorPane.bottomAnchor="63.0"
                   AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+
        <Button layoutX="64.0" layoutY="547.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
                onAction="#addDvdAction" text="Add New DVD" AnchorPane.bottomAnchor="27.399999999999977"
                AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0"/>
+
    </children>
 </AnchorPane>

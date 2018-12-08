@@ -54,7 +54,7 @@ public class AddResourceController {
 
             resourceCreationMainPane.setCenter(newScene);
 
-            resourceCreationMainPane.getCenter().autosize();
+            resourceCreationMainPane.setMinSize(350, 500);
         }catch (Exception e1){
             e1.printStackTrace();
         }
