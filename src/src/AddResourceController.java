@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -53,8 +55,6 @@ public class AddResourceController {
             }
 
             resourceCreationMainPane.setCenter(newScene);
-
-            resourceCreationMainPane.setMinSize(350, 500);
         }catch (Exception e1){
             e1.printStackTrace();
         }

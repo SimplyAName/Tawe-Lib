@@ -35,7 +35,7 @@ public class Book extends Resource {
 	 * get the author
 	 * @return author
 	 */
-	private String getAuthor(){
+	public String getAuthor() {
 		return author;
 	}
 
@@ -43,7 +43,7 @@ public class Book extends Resource {
 	 * get the publisher
 	 * @return publihser
 	 */
-	private String getPublisher(){
+	public String getPublisher() {
 		return publisher;
 	}
 
@@ -51,7 +51,7 @@ public class Book extends Resource {
 	 * get the genre
 	 * @return genre
 	 */
-	private String getGenre(){
+	public String getGenre() {
 		return genre;
 	}
 
@@ -59,7 +59,7 @@ public class Book extends Resource {
 	 * get the ISBN
 	 * @return ISBN
 	 */
-	private String getISBN(){
+	public String getISBN() {
 		return ISBN;
 	}
 
@@ -67,7 +67,7 @@ public class Book extends Resource {
 	 * get the language
 	 * @return language
 	 */
-	private String getLanguage(){
+	public String getLanguage() {
 		return language;
 	}
 
