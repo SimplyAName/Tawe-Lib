@@ -18,11 +18,9 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
-
 /**
- * Controller for the account edit window
+ * Controller for the account edit window.
  * @author Chris
- *
  */
 public class AccountEditController {
     private static String selectedPicLocation;
@@ -79,16 +77,16 @@ public class AccountEditController {
     private User user;
 
     /**
-     * Takes a users profile to edit
-     * @param userToEdit This users account that will be edited
+     * Takes a users profile to edit.
+     * @param userToEdit This users account that will be edited.
      */
     public AccountEditController(User userToEdit){
         this.user = userToEdit;
     }
 
     /**
-     * Saves the changes to the database and then updates the user profile
-     * @param a
+     * Saves the changes to the database and then updates the user profile.
+     * @param a What has been clicked.
      */
     @FXML
     private void handlesavechangesButtonAction(ActionEvent a){
@@ -98,9 +96,11 @@ public class AccountEditController {
             if (set.next()) {
                 if (this.user.getUsername().equals(newUsername)) {
                     //if the username exists in the database and is this user
-                    Database.edit("UPDATE user_tbl SET firstnames = '" + firstnamesField.getText() + "', lastname ='" + lastnameField.getText()
-                            + "', addrline1 = '" + addressField.getText() + "', postcode = '" + postcodeField.getText() + "', phone = '" + phoneField.getText()
-                            + "', imagelocation = '" + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
+                    Database.edit("UPDATE user_tbl SET firstnames = '" + firstnamesField.getText() 
+                    + "', lastname ='" + lastnameField.getText()+ "', addrline1 = '" 
+                    + addressField.getText() + "', postcode = '" + postcodeField.getText()  
+                    + "', phone = '" + phoneField.getText() + "', imagelocation = '" 
+                    + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
                 } else {
                     throw new WriteAbortedException("Can't use that username", null);
 
@@ -125,7 +125,6 @@ public class AccountEditController {
             this.user.setPhoneNumber(phoneField.getText());
             this.user.setProfileImage(new Image(selectedPicLocation));
 
-
             infoLabel.setText("Saved");
             infoLabel.setTextFill(Color.GREEN);
 
@@ -136,15 +135,14 @@ public class AccountEditController {
             infoLabel.setText("ERROR - Please Check your changes are in the correct format");
             infoLabel.setTextFill(Color.RED);
         } catch (Exception e) {
-
             infoLabel.setText("ERROR - Could not connect to database");
             infoLabel.setTextFill(Color.BLACK);
         }
     }
 
     /**
-     * Updates the selected image
-     * @param a
+     * Updates the selected image.
+     * @param a what has been clicked.
      */
     @FXML
     private void updateSelectedImage(ActionEvent a){
@@ -167,8 +165,8 @@ public class AccountEditController {
     }
 
     /**
-     * updates the selected Button(images) border
-     * @param selectedButton the button that has been selected
+     * updates the selected Button(images) border.
+     * @param selectedButton the button that has been selected/clicked.
      */
     private void updateImageBorders(Button selectedButton){
         for (Button elem : defaultImages) {
@@ -187,7 +185,8 @@ public class AccountEditController {
     }
 
     /**
-     * Initializes the window
+     * Initializes the window.
+     * Sets the images to the correct buttons.
      */
     @FXML
     private void initialize() {
@@ -202,12 +201,10 @@ public class AccountEditController {
             addressField.setText(this.user.getAddressLine());
             postcodeField.setText(this.user.getPostcode());
             phoneField.setText(this.user.getPhoneNumber());
-            //selectedPicLocation = this.user.getProfileImage().impl_getUrl();
-
+            
         } catch (Exception e) {
             usernameField.setText("No information Avaliable");
         }
-
 
         default1Button.setPrefSize(75, 75);
         default1Button.setTextFill(Color.rgb(0, 0, 0, 0));
@@ -246,14 +243,16 @@ public class AccountEditController {
         defaultImages[5] = default6Button;
 
         try {
-            custom1Button.setBackground(new Background(new BackgroundImage(new Image(customImage1Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
+            custom1Button.setBackground(new Background(new BackgroundImage(new Image(customImage1Location),
+            		null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
 
 
         } catch (Exception e) {
             custom1Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
         try {
-            custom2Button.setBackground(new Background(new BackgroundImage(new Image(customImage2Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
+            custom2Button.setBackground(new Background(new BackgroundImage(new Image(customImage2Location),
+            		null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
         } catch (Exception e) {
             custom2Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
@@ -266,7 +265,7 @@ public class AccountEditController {
     }
 
     /**
-     * allows a user to edit the image, so long as it is not a preset image
+     * allows a user to edit the image, so long as it is not a preset image.
      * @param a
      */
     @FXML
@@ -288,7 +287,7 @@ public class AccountEditController {
     }
 
     /**
-     * Formats the edit Button
+     * Formats the edit Button, changing it's color.
      */
     private void formatEditButton(){
         if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
