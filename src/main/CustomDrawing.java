@@ -56,44 +56,11 @@ public class CustomDrawing {
 	private double drawHeight;
 
 	/**
-	 * updates the stage to be the custom drawing window
-	 */
-
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			BorderPane root = new BorderPane();
-			root = setRootPane(root);
-			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
-
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-
-	public void launchInNewWindow() {
-		try {
-			this.stage = new Stage();
-			BorderPane root = new BorderPane();
-			root = setRootPane(root);
-			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
-
-			this.stage.setScene(scene);
-			this.stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * For launching the application in a new window
 	 * @param imageToLoad image location to load from, can be null 
 	 * @param imageToSaveTo image location to save to, CANNOT be null
 	 */
-	public void launchInNewWindow(String imageToLoad, String imageToSaveTo) {
+    public CustomDrawing(String imageToLoad, String imageToSaveTo) {
 		try { 
 			this.stage = new Stage();
 			BorderPane root = new BorderPane();
@@ -351,10 +318,5 @@ public class CustomDrawing {
 		
 		root.setTop(vbox);
 		return root;
-	}
-	
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 }
