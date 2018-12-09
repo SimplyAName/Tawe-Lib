@@ -1,10 +1,13 @@
 package main;
 
 import java.io.WriteAbortedException;
+import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,17 +27,17 @@ import javafx.scene.paint.Color;
  * @author Chris
  *
  */
-public class AccountEditController {
-    private static String selectedPicLocation;
-    private static String customImage1Location;
-    private static String customImage2Location;
+public class AccountEditController implements Initializable {
+    private String selectedPicLocation;
+    private String customImage1Location;
+    private String customImage2Location;
 
-    private static String default1Location = "users/default1.png";
-    private static String default2Location = "users/default2.png";
-    private static String default3Location = "users/default3.png";
-    private static String default4Location = "users/default4.png";
-    private static String default5Location = "users/default5.png";
-    private static String default6Location = "users/default6.png";
+    private String default1Location = "main/users/default1.png";
+    private String default2Location = "main/users/default2.png";
+    private String default3Location = "main/users/default3.png";
+    private String default4Location = "main/users/default4.png";
+    private String default5Location = "main/users/default5.png";
+    private String default6Location = "main/users/default6.png";
     private String[] defaultImageLocations = {default1Location, default2Location, default3Location, default4Location, default5Location, default6Location};
 
 
@@ -103,7 +106,6 @@ public class AccountEditController {
                             + "', imagelocation = '" + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
                 } else {
                     throw new WriteAbortedException("Can't use that username", null);
-
                 }
             } else {
                 //if the username has not been taken
@@ -114,7 +116,7 @@ public class AccountEditController {
                             + "', imagelocation = '" + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
 
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
             }
             this.user.setUsername(newUsername);
@@ -135,6 +137,7 @@ public class AccountEditController {
         } catch (IllegalArgumentException e) {
             infoLabel.setText("ERROR - Please Check your changes are in the correct format");
             infoLabel.setTextFill(Color.RED);
+            e.printStackTrace();
         } catch (Exception e) {
 
             infoLabel.setText("ERROR - Could not connect to database");
@@ -189,12 +192,54 @@ public class AccountEditController {
     /**
      * Initializes the window
      */
-    @FXML
+    /*@FXML
     private void initialize() {
 
+
+    }*/
+
+    /**
+     * allows a user to edit the image, so long as it is not a preset image
+     * @param a
+     */
+    @FXML
+    private void handleeditButtonAction(ActionEvent a){
+        boolean isDefault = false;
+        try {
+            for (String elem : defaultImageLocations) {
+                if (elem.equals(selectedPicLocation)) {
+                    isDefault = true;
+                }
+            }
+            if (isDefault != true) {
+                new CustomDrawing().launchInNewWindow(selectedPicLocation, selectedPicLocation);
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Formats the edit Button
+     */
+    private void formatEditButton(){
+        if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
+            editButton.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
+        } else {
+            editButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
         selectedPicLocation = default1Location;
-        customImage1Location = "users/" + this.user.getUsername() + "-1.png";
-        customImage2Location = "users/" + this.user.getUsername() + "-2.png";
+        customImage1Location = "main/users/" + this.user.getUsername() + "-1.png";
+        customImage2Location = "main/users/" + this.user.getUsername() + "-2.png";
+
         try {
             usernameField.setText(this.user.getUsername());
             firstnamesField.setText(this.user.getFirstName());
@@ -246,9 +291,10 @@ public class AccountEditController {
         defaultImages[5] = default6Button;
 
         try {
+
+            Image testImage = new Image(customImage1Location);
+
             custom1Button.setBackground(new Background(new BackgroundImage(new Image(customImage1Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
-
-
         } catch (Exception e) {
             custom1Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
@@ -263,38 +309,6 @@ public class AccountEditController {
             }
         }
         formatEditButton();
-    }
 
-    /**
-     * allows a user to edit the image, so long as it is not a preset image
-     * @param a
-     */
-    @FXML
-    private void handleeditButtonAction(ActionEvent a){
-        boolean isDefault = false;
-        try {
-            for (String elem : defaultImageLocations) {
-                if (elem.equals(selectedPicLocation)) {
-                    isDefault = true;
-                }
-            }
-            if (isDefault != true) {
-                new CustomDrawing().launchInNewWindow(selectedPicLocation, selectedPicLocation);
-            }
-
-        } catch (Exception e) {
-
-        }
-    }
-
-    /**
-     * Formats the edit Button
-     */
-    private void formatEditButton(){
-        if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
-            editButton.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
-        } else {
-            editButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
-        }
     }
 }

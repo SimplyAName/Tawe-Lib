@@ -1,5 +1,3 @@
-package src;
-//package application;
 package main;
 
 import java.awt.image.BufferedImage;
@@ -31,7 +29,7 @@ import javafx.scene.text.Font;
  * @author Chris
  *
  */
-public class CustomDrawing extends Application {
+public class CustomDrawing {
 	private static final int WINDOW_HEIGHT = 700;
 	private static final int WINDOW_WIDTH = 700;
 	private static final int LARGE_FONT_SIZE = 25;
@@ -56,40 +54,40 @@ public class CustomDrawing extends Application {
 	private double drawStartY;
 	private double drawWidth;
 	private double drawHeight;
-	
+
 	/**
 	 * updates the stage to be the custom drawing window
 	 */
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
 			root = setRootPane(root);
 			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
-			
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public void launchInNewWindow() {
-		try { 
+		try {
 			this.stage = new Stage();
 			BorderPane root = new BorderPane();
 			root = setRootPane(root);
 			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
-			
+
 			this.stage.setScene(scene);
 			this.stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * For launching the application in a new window
 	 * @param imageToLoad image location to load from, can be null 
@@ -221,7 +219,7 @@ public class CustomDrawing extends Application {
 		//Works by snapshoting, and the buffering image to update file, or create if it does not currently exist
 		saveCanvasButton.setOnAction(a -> {
 			try{
-				File file = new File("main/" + saveImageLocation);
+				File file = new File("src/" + saveImageLocation);
 				if(!file.exists()){
 					file.createNewFile();
 				}
@@ -233,8 +231,8 @@ public class CustomDrawing extends Application {
 				loadSavedPopup();
 				
 			}catch (Exception e){
-				System.out.println("could not save file");
-				System.out.println(e);
+				System.out.println("Error: Could not save file");
+				e.printStackTrace();
 			}
 		});
 		//Create close button
