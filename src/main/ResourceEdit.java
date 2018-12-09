@@ -35,15 +35,15 @@ public class ResourceEdit {
 	 */
 	public void editDVD(int rID, String title, int year, String rImg, String director, int runtime, String language, String[] subLanguages) throws IllegalArgumentException, SQLException {
 		
-		subquery = ("select subid from dvd_tbl where resourceID = " + rID);
+		subquery = ("SELECT subid FROM dvd_tbl WHERE resourceID = " + rID);
 		sID = Database.query(subquery);
-		query = ("update resource_tbl set title = " + title +       " where resourceID = " + rID + "; " +
-				 "update resource_tbl set year = " + year +       " where resourceID = " + rID + "; " +
-				 "update resource_tbl set imagelocation = " + rImg +       " where resourceID = " + rID + "; " +
-				 "update dvd_tbl set director = " + director +       " where resourceID = " + rID + "; " +
-				 "update dvd_tbl set runtime = " + runtime +       " where resourceID = " + rID + "; " +
-				 "update dvd_tbl set language = " + language +       " where resourceID = " + rID + "; " +
-				 "update sublanguage_tbl set subid = " + subLanguages +       " where subid = " + sID + "; "
+		query = ("UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE resource_tbl SET year = " + year +       " WHERE resourceID = " + rID + "; " +
+				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE dvd_tbl SET director = '" + director +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE dvd_tbl SET runtime = " + runtime +       " WHERE resourceID = " + rID + "; " +
+				 "UPDATE dvd_tbl SET language = '" + language +       "' where resourceID = " + rID + "; " +
+				 "UPDATE sublanguage_tbl SET subid = '" + subLanguages +       "' WHERE subid = " + sID + "; "
 				);
 		Database.edit(query);
 		
@@ -116,4 +116,4 @@ public class ResourceEdit {
 		
 	}
 }
->>>>>>> branch 'master' of https://github.com/SimplyAName/Tawe-Lib.git
+
