@@ -3,6 +3,11 @@ import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
+import main.DVD;
+import main.Database;
+import main.Laptop;
+import main.Resource;
+
 public class LibrarySearch {
 	
 	public LibrarySearch(){

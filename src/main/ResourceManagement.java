@@ -1,12 +1,9 @@
 package main;
 
-
-import javax.swing.JOptionPane;
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
-import java.sql.*;
-
+import javax.swing.JOptionPane;
 import main.Database;
+
 
 
 /*
@@ -18,7 +15,7 @@ public class ResourceManagement {
 //	private int fineCost;
 //
 //	public boolean generateBookFine(int daysOverdue, String userID) {
-//		ResultSet checkedResource = Database.query("SELECT from out_tb1, WHERE username = '" + userID + "' AND dueDate = '" + daysOverdue + "' + "';");
+//		ResultSet checkedResource = sample.Database.query("SELECT from out_tb1, WHERE username = '" + userID + "' AND dueDate = '" + daysOverdue + "' + "';");
 //				return  checkedResource.next();
 //		}
 //
@@ -41,7 +38,7 @@ public class ResourceManagement {
 //	}
 
     //Allows user to borrow a resource. If there are any outstanding fines however, the system will disallow borrowing until
-//fine is 0 (no outstanding fines)
+    // fine is 0 (no outstanding fines)
     public boolean borrowCopy(String username, int copyid) {
         try {
             ResultSet rejectBorrow = Database.query("SELECT * FROM user_tbl WHERE username = '" + username + "' " +
@@ -50,86 +47,101 @@ public class ResourceManagement {
 
                 Database.edit("INSERT INTO out_tbl VALUES(NULL, " + copyid + ", NOW(), NULL, '" + username + "');");
 
+                JOptionPane.showMessageDialog(null, "Borrowing successful");
+
             } else {
-                JOptionPane.showMessageDialog(null, "You have outstanding fines. Please visit a librarian");
+                JOptionPane.showMessageDialog(null, "Borrowing unsuccessful. " +
+                        "You have outstanding fines. Please visit a librarian");
             }
         } catch (Exception e) {
-        }
-        return false;
+        } return false;
 
     }
 
-    //Checks to see if a resource is available, otherwise returns false
+    //Checks to see if a resource is available or unavailable and gives a message
     public boolean resourceAvailable(int copyid) {
         try {
-            ResultSet checkAvailable = Database.query("SELECT copyid FROM copy_tbl AS temp WHERE resourceid = " + copyid + " + AND " +
-                    "active = TRUE AND NOT EXISTS (SELECT * FROM out_tbl WHERE out_tbl.copyid = temp.copyid) AND " +
-                    "NOT EXISTS (SELECT * FROM reservation_tbl WHERE reservation_tbl.copyid = temp.copyid);");
+            ResultSet checkAvailable = Database.query("SELECT copyid FROM copy_tbl WHERE copyid = " + copyid + " " +
+                    "AND active = TRUE AND NOT EXISTS (SELECT * FROM out_tbl WHERE  copyid = " + copyid + ") AND " +
+                    "NOT EXISTS (SELECT * FROM reservation_tbl WHERE copyid = " + copyid + ");");
 
-            return checkAvailable.next();
-        } catch (Exception e) {
-        }
-        return false;
+            if(checkAvailable.next()) {
+                JOptionPane.showMessageDialog(null,"Resource is available");
+            } else {
+                JOptionPane.showMessageDialog(null, "Resource is unavailable");
+            }
+
+        } catch(Exception e) {
+        } return false;
     }
 
-    //Allows returning of a resource if the return date does not exceed the due date. Otherwise it puts the user into the
+    //Allows returning of a resource. If the resource is overdue it will notify the user to go to a librarian to pay a fine.
     public boolean returnCopy(String username, int copyid) {
         try {
             ResultSet returnResource = Database.query("SELECT * FROM out_tbl WHERE duedate < NOW() AND  +" +
-                    "username = " + username + " AND copyid = " + copyid + " ;");
+                    "username = '" + username + "' AND copyid = " + copyid + " ;");
 
-            Database.edit("INSERT INTO historic_tbl VALUES (NULL, " + copyid + ", datefrom, NOW(), " + username + ");");
+            Database.edit( "INSERT INTO historic_tbl VALUES (NULL, " + copyid + ", datefrom, NOW(), '" + username + "');");
 
-            if (returnResource.next()) {
+            if(returnResource.next()) {
                 try {
-                    ResultSet overdueResource = Database.query("DELETE FROM out_tbl WHERE username = " + username + " AND copyid = " + copyid + " " +
-                            "SELECT * FROM request_tbl, copy_tbl WHERE copy_tbl.resourceid = request_tbl.resourceid ORDER BY request_tbl.date " +
-                            "INSERT INTO reservation_tbl VALUES (NULL, " + copyid + ", NOW(), " + username + ");");
+
+                    ResultSet overdueResource = Database.query("SELECT * FROM request_tbl, copy_tbl WHERE copy_tbl.resourceid = request_tbl.resourceid " +
+                            "ORDER BY request_tbl.date;");
+
+                    Database.edit("INSERT INTO reservation_tbl VALUES (NULL, " + copyid + ", NOW(), '" + username + "');");
 
                     JOptionPane.showMessageDialog(null, "Resource is overdue, please go to a librarian");
                 } catch (Exception e) {
+                    return false;
                 }
-                return false;
-
             } else {
-                return true;
+                JOptionPane.showMessageDialog(null,"Return successful");
             }
+
+            Database.edit("DELETE FROM out_tbl WHERE username = '" + username + "' AND copyid = " + copyid + " ;");
         } catch (Exception e) {
-        }
-        return true;
+            return false;
+        } return true;
     }
 
-    //Allows requesting of a resource if a resource is not available
-    public boolean requestCopy(String username, int copyid) {
+    //Allows requesting of a copy of a resource if a copy is not available
+    public boolean requestCopy(String username, int copyid, int resourceid) {
         try {
-            ResultSet requestResource = Database.query("INSERT INTO request_tbl VALUES (NULL, resourceid, NOW(), username)" +
-                    "SELECT * FROM out_tbl, copy_tbl WHERE out_tbl.copyid = copy_tbl.copyid AND " +
-                    "copy_tbl.resourceid = ENTER_HERE AND duedate = NULL ORDER BY date;");
+            Database.edit("INSERT INTO request_tbl VALUES (NULL, " + resourceid + ", NOW(),'" + username + "');");
+
+            ResultSet requestResource = Database.query("SELECT * FROM out_tbl, copy_tbl WHERE " +
+                    "out_tbl.copyid = copy_tbl.copyid AND " +
+                    "copy_tbl.resourceid = " + resourceid + " AND duedate = NULL ORDER BY datefrom;");
+
+            JOptionPane.showMessageDialog(null,"Request successful");
 
             return requestResource.next();
-        } catch (Exception e) {
-        }
-        return false;
+        } catch(Exception e) {
+        } return false;
     }
 
 
     //The user will be able to pick up his/her reserved copy of a resource once the requested resource has been returned
-    public boolean pickupCopy(int copyid) {
+    public boolean pickupCopy (int copyid) {
         try {
             ResultSet pickupResource = Database.query("SELECT * FROM request_tbl, copy_tbl WHERE " +
-                    "request_tbl.copyid = copy_tbl.requestid AND resource copyid = " + copyid + ";");
+                    "request_tbl.resourceid = copy_tbl.resourceid AND copyid = " + copyid + ";");
 
-            return pickupResource.next();
+
+            if (pickupResource.next()) {
+                JOptionPane.showMessageDialog(null,"You have successfully borrowed this resource");
+            } else {
+                JOptionPane.showMessageDialog(null,"This resource has either not been requested or is currently unavailable");
+
+            }
         } catch (Exception e) {
-        }
-        return false;
+        } return false;
     }
-
 
 }
 
-//USE USERNAME AND COPYID
 
 
-//ResultSet checkExistingFines = Database.query("SELECT FROM fine_tb1 WHERE username = '"+ userID + "' AND amount = '"+ fineToPay + "' ';" );
+//ResultSet checkExistingFines = sample.Database.query("SELECT FROM fine_tb1 WHERE username = '"+ userID + "' AND amount = '"+ fineToPay + "' ';" );
 
