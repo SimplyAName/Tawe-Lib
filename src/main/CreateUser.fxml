@@ -1,35 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="CreateUserPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="467.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/10.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="CreateUserPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="enterUsername" layoutX="296.0" layoutY="97.0" prefHeight="37.0" prefWidth="189.0"
-                 promptText="Username"/>
+      <TextField fx:id="enterUsername" layoutX="296.0" layoutY="97.0" prefHeight="37.0" prefWidth="189.0" promptText="Username" />
       <Text layoutX="334.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Username" wrappingWidth="112.98828125" />
       <Text layoutX="334.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone " wrappingWidth="112.98828125" />
       <Text layoutX="334.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="112.98828125" />
       <Text layoutX="50.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name" wrappingWidth="112.98828125" />
-      <TextField fx:id="firstName" layoutX="27.0" layoutY="97.0" prefHeight="37.0" prefWidth="189.0"
-                 promptText="First name"/>
-      <TextField fx:id="lastName" layoutX="27.0" layoutY="179.0" prefHeight="37.0" prefWidth="189.0"
-                 promptText="Last name"/>
+      <TextField fx:id="firstName" layoutX="27.0" layoutY="97.0" prefHeight="37.0" prefWidth="189.0" promptText="First name" />
+      <TextField fx:id="lastName" layoutX="27.0" layoutY="179.0" prefHeight="37.0" prefWidth="189.0" promptText="Last name" />
       <Text layoutX="50.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" wrappingWidth="112.98828125" />
       <Text layoutX="50.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="112.98828125" />
       <TextField fx:id="eAddress" layoutX="27.0" layoutY="261.0" prefHeight="37.0" prefWidth="189.0" promptText="Adress" />
-      <Button onAction="#addUser" layoutX="206.0" layoutY="401.0" mnemonicParsing="false" prefHeight="46.0"
-              prefWidth="101.0" text="Create"/>
+      <Button layoutX="112.0" layoutY="451.0" mnemonicParsing="false" onAction="#addUser" prefHeight="46.0" prefWidth="101.0" text="Create" />
       <Text layoutX="204.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create User" wrappingWidth="112.98828125" />
-      <TextField fx:id="phoneNumber" layoutX="296.0" layoutY="179.0" prefHeight="37.0" prefWidth="189.0"
-                 promptText="Phone"/>
+      <TextField fx:id="phoneNumber" layoutX="296.0" layoutY="179.0" prefHeight="37.0" prefWidth="189.0" promptText="Phone" />
       <Text layoutX="50.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Post Code" wrappingWidth="112.98828125" />
-      <TextField fx:id="ePostCode" layoutX="27.0" layoutY="342.0" prefHeight="37.0" prefWidth="189.0"
-                 promptText="Post Code"/>
+      <TextField fx:id="ePostCode" layoutX="27.0" layoutY="342.0" prefHeight="37.0" prefWidth="189.0" promptText="Post Code" />
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="277.0" layoutY="287.0" prefHeight="218.0" prefWidth="257.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="default1button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" GridPane.halignment="CENTER" />
+            <Button fx:id="default2button" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="default3button" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="default4button" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="default5button" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="default6button" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="customButton1" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" text="Custom1" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Button fx:id="customButton2" mnemonicParsing="false" onAction="#updateSelectedImage" prefHeight="75.0" prefWidth="75.0" text="Custom1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleeditButtonAction" prefHeight="75.0" prefWidth="75.0" text="Edit" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
