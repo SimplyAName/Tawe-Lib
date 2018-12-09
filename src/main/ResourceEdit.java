@@ -65,14 +65,14 @@ public class ResourceEdit {
 	 */
 	public void editBook(int rID, String title, int year, String rImg, String author, String publisher, String genre, String ISBN, String language) throws IllegalArgumentException, SQLException{
 		
-		query = ("update resource_tbl set title = " + title +       " where resourceID = " + rID + "; " +
-				 "update resource_tbl set year = " + year +       " where resourceID = " + rID + "; " +
-				 "update resource_tbl set imagelocation = " + rImg +       " where resourceID = " + rID + "; " +
-				 "update book_tbl set author = " + author +       " where resourceID = " + rID + "; " +
-				 "update book_tbl set publisher = " + publisher +       " where resourceID = " + rID + "; " +
-				 "update book_tbl set genre = " + genre +       " where resourceID = " + rID + "; " +
-				 "update book_tbl set isbn = " + ISBN +       " where resourceID = " + rID + "; " +
-				 "update book_tbl set language = " + language +       " where resourceID = " + rID + "; " 
+		query = ("UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE resource_tbl SET year = " + year +       " WHERE resourceID = " + rID + "; " +
+				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE book_tbl SET author = '" + author +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE book_tbl SET publisher = '" + publisher +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE book_tbl SET genre = '" + genre +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE book_tbl SET isbn = " + ISBN +       " WHERE resourceID = " + rID + "; " +
+				 "UPDATE book_tbl SET language = '" + language +       "' WHERE resourceID = " + rID + "; " 
 				 );
 		Database.edit(query);
 		
@@ -92,12 +92,12 @@ public class ResourceEdit {
 	 */
 	public void editLaptop(int rID, String title, int year, String rImg, String manufacturer, String model, String OS) throws IllegalArgumentException, SQLException{
 		
-		query = ("update resource_tbl set title = " + title +       " where resourceID = " + rID + "; " +
-				 "update resource_tbl set year = " + year +       " where resourceID = " + rID + "; " +
-				 "update resource_tbl set imagelocation = " + rImg +       " where resourceID = " + rID + "; " +
-				 "update laptop_tbl set manufacturer = " + manufacturer +       " where resourceID = " + rID + "; " +
-				 "update laptop_tbl set model = " + model +       " where resourceID = " + rID + "; " +
-				 "update laptop_tbl set opsystem = " + OS +       " where resourceID = " + rID + "; "
+		query = ("UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE resource_tbl SET year = " + year +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE laptop_tbl SET manufacturer = '" + manufacturer +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE laptop_tbl SET model = '" + model +       "' WHERE resourceID = " + rID + "; " +
+				 "UPDATE laptop_tbl SET opsystem = '" + OS +       "' WHERE resourceID = " + rID + "; "
 				 );
 		Database.edit(query);
 		
