@@ -1,10 +1,13 @@
 package main;
 
 import java.io.WriteAbortedException;
+import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,21 +21,24 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+
 /**
  * Controller for the account edit window.
  * @author Chris
+ *
  */
-public class AccountEditController {
-    private static String selectedPicLocation;
-    private static String customImage1Location;
-    private static String customImage2Location;
+public class AccountEditController implements Initializable {
+    private String selectedPicLocation;
+    private String customImage1Location;
+    private String customImage2Location;
 
-    private static String default1Location = "users/default1.png";
-    private static String default2Location = "users/default2.png";
-    private static String default3Location = "users/default3.png";
-    private static String default4Location = "users/default4.png";
-    private static String default5Location = "users/default5.png";
-    private static String default6Location = "users/default6.png";
+    //This is a list of the default images avalible to the user
+    private String default1Location = "main/users/default1.png";
+    private String default2Location = "main/users/default2.png";
+    private String default3Location = "main/users/default3.png";
+    private String default4Location = "main/users/default4.png";
+    private String default5Location = "main/users/default5.png";
+    private String default6Location = "main/users/default6.png";
     private String[] defaultImageLocations = {default1Location, default2Location, default3Location, default4Location, default5Location, default6Location};
 
 
@@ -77,33 +83,30 @@ public class AccountEditController {
     private User user;
 
     /**
-     * Takes a users profile to edit.
-     * @param userToEdit This users account that will be edited.
+     * Takes a users profile to edit
+     * @param userToEdit This users account that will be edited
      */
-    public AccountEditController(User userToEdit){
+    public AccountEditController(User userToEdit) {
         this.user = userToEdit;
     }
 
     /**
      * Saves the changes to the database and then updates the user profile.
-     * @param a What has been clicked.
      */
     @FXML
-    private void handlesavechangesButtonAction(ActionEvent a){
+    private void handlesavechangesButtonAction() {
         String newUsername = usernameField.getText();
+
         try {
             ResultSet set = Database.query("SELECT username FROM user_tbl WHERE username = '" + newUsername + "';");
             if (set.next()) {
                 if (this.user.getUsername().equals(newUsername)) {
                     //if the username exists in the database and is this user
-                    Database.edit("UPDATE user_tbl SET firstnames = '" + firstnamesField.getText() 
-                    + "', lastname ='" + lastnameField.getText()+ "', addrline1 = '" 
-                    + addressField.getText() + "', postcode = '" + postcodeField.getText()  
-                    + "', phone = '" + phoneField.getText() + "', imagelocation = '" 
-                    + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
+                    Database.edit("UPDATE user_tbl SET firstnames = '" + firstnamesField.getText() + "', lastname ='" + lastnameField.getText()
+                            + "', addrline1 = '" + addressField.getText() + "', postcode = '" + postcodeField.getText() + "', phone = '" + phoneField.getText()
+                            + "', imagelocation = '" + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
                 } else {
                     throw new WriteAbortedException("Can't use that username", null);
-
                 }
             } else {
                 //if the username has not been taken
@@ -114,7 +117,7 @@ public class AccountEditController {
                             + "', imagelocation = '" + selectedPicLocation + "' WHERE username = '" + newUsername + "';");
 
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 }
             }
             this.user.setUsername(newUsername);
@@ -125,6 +128,7 @@ public class AccountEditController {
             this.user.setPhoneNumber(phoneField.getText());
             this.user.setProfileImage(new Image(selectedPicLocation));
 
+
             infoLabel.setText("Saved");
             infoLabel.setTextFill(Color.GREEN);
 
@@ -134,7 +138,9 @@ public class AccountEditController {
         } catch (IllegalArgumentException e) {
             infoLabel.setText("ERROR - Please Check your changes are in the correct format");
             infoLabel.setTextFill(Color.RED);
+            e.printStackTrace();
         } catch (Exception e) {
+
             infoLabel.setText("ERROR - Could not connect to database");
             infoLabel.setTextFill(Color.BLACK);
         }
@@ -142,10 +148,10 @@ public class AccountEditController {
 
     /**
      * Updates the selected image.
-     * @param a what has been clicked.
+     * @param a
      */
     @FXML
-    private void updateSelectedImage(ActionEvent a){
+    private void updateSelectedImage(ActionEvent a) {
 
         for (int i = 0; i < defaultImages.length; i++) {
             if (a.getSource().equals((Object) defaultImages[i])) {
@@ -165,10 +171,10 @@ public class AccountEditController {
     }
 
     /**
-     * updates the selected Button(images) border.
-     * @param selectedButton the button that has been selected/clicked.
+     * updates the selected Button(images) border
+     * @param selectedButton the button that has been selected
      */
-    private void updateImageBorders(Button selectedButton){
+    private void updateImageBorders(Button selectedButton) {
         for (Button elem : defaultImages) {
             if (!elem.equals(selectedButton)) {
                 elem.setBorder(null);
@@ -186,14 +192,53 @@ public class AccountEditController {
 
     /**
      * Initializes the window.
-     * Sets the images to the correct buttons.
+     */
+    /*@FXML
+    private void initialize() {
+    }*/
+
+    /**
+     * allows a user to edit the image, so long as it is not a preset image
+     * @param a
      */
     @FXML
-    private void initialize() {
+    private void handleeditButtonAction(ActionEvent a){
+        boolean isDefault = false;
+        try {
+            for (String elem : defaultImageLocations) {
+                if (elem.equals(selectedPicLocation)) {
+                    isDefault = true;
+                }
+            }
+            if (isDefault != true) {
+                new CustomDrawing(selectedPicLocation, selectedPicLocation);
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Formats the edit Button
+     */
+    private void formatEditButton(){
+        if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
+            editButton.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
+        } else {
+            editButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
         selectedPicLocation = default1Location;
-        customImage1Location = "users/" + this.user.getUsername() + "-1.png";
-        customImage2Location = "users/" + this.user.getUsername() + "-2.png";
+        customImage1Location = "main/users/" + this.user.getUsername() + "-1.png";
+        customImage2Location = "main/users/" + this.user.getUsername() + "-2.png";
+
         try {
             usernameField.setText(this.user.getUsername());
             firstnamesField.setText(this.user.getFirstName());
@@ -201,10 +246,12 @@ public class AccountEditController {
             addressField.setText(this.user.getAddressLine());
             postcodeField.setText(this.user.getPostcode());
             phoneField.setText(this.user.getPhoneNumber());
-            
+            //selectedPicLocation = this.user.getProfileImage().impl_getUrl();
+
         } catch (Exception e) {
             usernameField.setText("No information Avaliable");
         }
+
 
         default1Button.setPrefSize(75, 75);
         default1Button.setTextFill(Color.rgb(0, 0, 0, 0));
@@ -243,57 +290,26 @@ public class AccountEditController {
         defaultImages[5] = default6Button;
 
         try {
-            custom1Button.setBackground(new Background(new BackgroundImage(new Image(customImage1Location),
-            		null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
 
+            Image testImage = new Image(customImage1Location);
 
+            custom1Button.setBackground(new Background(new BackgroundImage(new Image(customImage1Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
         } catch (Exception e) {
             custom1Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
+
         try {
-            custom2Button.setBackground(new Background(new BackgroundImage(new Image(customImage2Location),
-            		null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
+            custom2Button.setBackground(new Background(new BackgroundImage(new Image(customImage2Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
         } catch (Exception e) {
             custom2Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
+
         for (int i = 0; i < defaultImageLocations.length; i++) {
             if (defaultImageLocations[i].equals(selectedPicLocation)) {
                 updateImageBorders(defaultImages[i]);
             }
         }
         formatEditButton();
-    }
 
-    /**
-     * allows a user to edit the image, so long as it is not a preset image.
-     * @param a
-     */
-    @FXML
-    private void handleeditButtonAction(ActionEvent a){
-        boolean isDefault = false;
-        try {
-            for (String elem : defaultImageLocations) {
-                if (elem.equals(selectedPicLocation)) {
-                    isDefault = true;
-                }
-            }
-            if (isDefault != true) {
-                new CustomDrawing().launchInNewWindow(selectedPicLocation, selectedPicLocation);
-            }
-
-        } catch (Exception e) {
-
-        }
-    }
-
-    /**
-     * Formats the edit Button, changing it's color.
-     */
-    private void formatEditButton(){
-        if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
-            editButton.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
-        } else {
-            editButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
-        }
     }
 }
