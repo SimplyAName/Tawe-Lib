@@ -16,8 +16,6 @@ public class CreateUser extends Application {
     public void start(Stage primaryStage) {
     	this.stage = primaryStage;
         try {
-        	//new AccountEditController(Login.getUser());
-            //Parent root = FXMLLoader.load(getClass().getResource("AccountEdit.fxml"));
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateUser.fxml"));
             loader.setController(new CreateUserController());

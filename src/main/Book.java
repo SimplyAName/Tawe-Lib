@@ -1,7 +1,7 @@
 package main;
 
 /**
- * Book class, subclass of resource, Creates a book
+ * Book class, subclass of resource, Creates a book.
  * @author Jake Archer
  * @author Jakob Heeley
  * @version 1
@@ -15,7 +15,6 @@ public class Book extends Resource {
 	private String language;
 
 	/**
-	 *
 	 * @param rID The unique ID for the resource
 	 * @param title The title of the resource
 	 * @param year The year of the resource
@@ -36,7 +35,7 @@ public class Book extends Resource {
 	}
 
 	/**
-	 * get the author
+     * Gets the author of the book.
 	 * @return author
 	 */
 	public String getAuthor() {
@@ -44,7 +43,7 @@ public class Book extends Resource {
 	}
 
 	/**
-	 * get the publisher
+     * Gets the publisher of the book.
 	 * @return publihser
 	 */
 	public String getPublisher() {
@@ -52,7 +51,7 @@ public class Book extends Resource {
 	}
 
 	/**
-	 * get the genre
+     * Gets the genre of the book.
 	 * @return genre
 	 */
 	public String getGenre() {
@@ -60,7 +59,7 @@ public class Book extends Resource {
 	}
 
 	/**
-	 * get the ISBN
+     * Gets the ISBN number of the book.
 	 * @return ISBN
 	 */
 	public String getISBN() {
@@ -68,7 +67,7 @@ public class Book extends Resource {
 	}
 
 	/**
-	 * get the language
+     * Gets the language of the book.
 	 * @return language
 	 */
 	public String getLanguage() {
