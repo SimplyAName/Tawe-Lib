@@ -8,7 +8,11 @@ package main;
  */
 public class Book extends Resource {
 
-	private String author,publisher,genre,ISBN,language;
+	private String author;
+	private String publisher;
+	private String genre;
+	private String ISBN;
+	private String language;
 
 	/**
 	 *

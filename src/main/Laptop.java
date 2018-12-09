@@ -8,7 +8,9 @@ package main;
  */
 public class Laptop extends Resource {
 
-	private String manufacturer,model,OS;
+	private String manufacturer;
+	private String model;
+	private String OS;
 
 	/**
 	 *

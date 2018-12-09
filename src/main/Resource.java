@@ -6,8 +6,10 @@ package main;
  * @version 1
  */
 public class Resource {
-	private int rID,year;
-	private String title,rImg;
+	private int rID;
+	private int year;
+	private String title;
+	private String rImg;
 	
 	/**
 	 * Constructor for the class
