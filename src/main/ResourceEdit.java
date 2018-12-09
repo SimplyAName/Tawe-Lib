@@ -1,5 +1,6 @@
 package main;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
@@ -9,9 +10,9 @@ import java.sql.SQLException;
  */
 public class ResourceEdit {
 
-	private String query;
-	private String subquery;
-	private ResultSet sID; 
+	private static String query;
+	private static String subquery;
+	private static ResultSet sID; 
 	
 	public ResourceEdit() {
 		
@@ -32,10 +33,11 @@ public class ResourceEdit {
 	 * @throws IllegalArgumentException
 	 * @throws SQLException if a connect cannot be established
 	 */
-	public void editDVD(int rID, String title, int year, String rImg, String director, int runtime, String language, String[] subLanguages) throws IllegalArgumentException, SQLException {
+	public static void editDVD(String rID, String title, String year, String rImg, String director, String runtime, String language, String subLanguages) throws IllegalArgumentException, SQLException {
 		
-		subquery = ("SELECT subid FROM dvd_tbl WHERE resourceID = " + rID);
+		subquery = ("select subid from dvd_tbl where resourceID = " + rID);
 		sID = Database.query(subquery);
+
 		query =  "UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
 				 "UPDATE resource_tbl SET year = " + year +       " WHERE resourceID = " + rID + "; " +
 				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
@@ -43,7 +45,7 @@ public class ResourceEdit {
 				 "UPDATE dvd_tbl SET runtime = " + runtime +       " WHERE resourceID = " + rID + "; " +
 				 "UPDATE dvd_tbl SET language = '" + language +       "' where resourceID = " + rID + "; " +
 				 "UPDATE sublanguage_tbl SET subid = '" + subLanguages +       "' WHERE subid = " + sID + "; ";
-				 
+
 		Database.edit(query);
 		
 	}
@@ -62,16 +64,16 @@ public class ResourceEdit {
 	 * @throws IllegalArgumentException
 	 * @throws SQLException If there is no connection
 	 */
-	public void editBook(int rID, String title, int year, String rImg, String author, String publisher, String genre, String ISBN, String language) throws IllegalArgumentException, SQLException{
+	public static void editBook(String rID, String title, String year, String rImg, String author, String publisher, String genre, String ISBN, String language) throws IllegalArgumentException, SQLException{
 		
-		query = ("UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE resource_tbl SET year = " + year +       " WHERE resourceID = " + rID + "; " +
-				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE book_tbl SET author = '" + author +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE book_tbl SET publisher = '" + publisher +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE book_tbl SET genre = '" + genre +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE book_tbl SET isbn = " + ISBN +       " WHERE resourceID = " + rID + "; " +
-				 "UPDATE book_tbl SET language = '" + language +       "' WHERE resourceID = " + rID + "; "
+		query = ("update resource_tbl set title = " + title +       " where resourceID = " + rID + "; " +
+				 "update resource_tbl set year = " + year +       " where resourceID = " + rID + "; " +
+				 "update resource_tbl set imagelocation = " + rImg +       " where resourceID = " + rID + "; " +
+				 "update book_tbl set author = " + author +       " where resourceID = " + rID + "; " +
+				 "update book_tbl set publisher = " + publisher +       " where resourceID = " + rID + "; " +
+				 "update book_tbl set genre = " + genre +       " where resourceID = " + rID + "; " +
+				 "update book_tbl set isbn = " + ISBN +       " where resourceID = " + rID + "; " +
+				 "update book_tbl set language = " + language +       " where resourceID = " + rID + "; " 
 				 );
 		Database.edit(query);
 		
@@ -89,14 +91,14 @@ public class ResourceEdit {
 	 * @throws IllegalArgumentException
 	 * @throws SQLException If there is no connection
 	 */
-	public void editLaptop(int rID, String title, int year, String rImg, String manufacturer, String model, String OS) throws IllegalArgumentException, SQLException{
+	public static void editLaptop(String rID, String title, String year, String rImg, String manufacturer, String model, String OS) throws IllegalArgumentException, SQLException{
 		
-		query = ("UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE resource_tbl SET year = " + year +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE laptop_tbl SET manufacturer = '" + manufacturer +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE laptop_tbl SET model = '" + model +       "' WHERE resourceID = " + rID + "; " +
-				 "UPDATE laptop_tbl SET opsystem = '" + OS +       "' WHERE resourceID = " + rID + "; "
+		query = ("update resource_tbl set title = " + title +       " where resourceID = " + rID + "; " +
+				 "update resource_tbl set year = " + year +       " where resourceID = " + rID + "; " +
+				 "update resource_tbl set imagelocation = " + rImg +       " where resourceID = " + rID + "; " +
+				 "update laptop_tbl set manufacturer = " + manufacturer +       " where resourceID = " + rID + "; " +
+				 "update laptop_tbl set model = " + model +       " where resourceID = " + rID + "; " +
+				 "update laptop_tbl set opsystem = " + OS +       " where resourceID = " + rID + "; "
 				 );
 		Database.edit(query);
 		
