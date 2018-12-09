@@ -1,12 +1,8 @@
 package src;
 
 import java.sql.ResultSet;
-
 import javax.swing.JOptionPane;
-
 import main.Database;
-
-//import main.sample.Database;
 
 
 
@@ -42,7 +38,7 @@ public class ResourceManagement {
 //	}
 
     //Allows user to borrow a resource. If there are any outstanding fines however, the system will disallow borrowing until
-//fine is 0 (no outstanding fines)
+    // fine is 0 (no outstanding fines)
     public boolean borrowCopy(String username, int copyid) {
         try {
             ResultSet rejectBorrow = Database.query("SELECT * FROM user_tbl WHERE username = '" + username + "' " +
@@ -136,18 +132,15 @@ public class ResourceManagement {
             if (pickupResource.next()) {
                 JOptionPane.showMessageDialog(null,"You have successfully borrowed this resource");
             } else {
-                JOptionPane.showMessageDialog(null,"This resource has either not been requested or does not exist");
+                JOptionPane.showMessageDialog(null,"This resource has either not been requested or is currently unavailable");
 
             }
         } catch (Exception e) {
         } return false;
     }
 
-
-
 }
 
-//USE USERNAME AND COPYID
 
 
 //ResultSet checkExistingFines = sample.Database.query("SELECT FROM fine_tb1 WHERE username = '"+ userID + "' AND amount = '"+ fineToPay + "' ';" );

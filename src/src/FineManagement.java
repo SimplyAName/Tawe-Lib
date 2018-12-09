@@ -3,6 +3,8 @@ package src;
 import java.sql.ResultSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import main.Database;
+import main.FineSystem;
 
 public class FineManagement extends FineSystem {
 
