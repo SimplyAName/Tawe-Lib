@@ -82,7 +82,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="usernameField" prefHeight="25.0" text="Username" />
+                        <TextField fx:id="usernameField" prefHeight="25.0" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -95,7 +95,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="firstnamesField" text="First names" />
+                        <TextField fx:id="firstnamesField" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -105,7 +105,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="lastnameField" text="Last name" />
+                        <TextField fx:id="lastnameField" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -115,7 +115,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="addressField" text="address " />
+                        <TextField fx:id="addressField" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -125,7 +125,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="postcodeField" text="Post Code" />
+                        <TextField fx:id="postcodeField" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -135,7 +135,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="phoneField" text="Phone number" />
+                        <TextField fx:id="phoneField" />
                      </children>
                   </HBox>
                </children>

@@ -25,6 +25,7 @@ import javafx.stage.Window;
  * Controller for the account edit window
  * @author Jake 
  * @author Chris
+ * @author Michael
  *
  */
 public class CreateUserController {
@@ -96,7 +97,7 @@ public class CreateUserController {
                 //if the username has not been taken
                 try {
                 	
-                    Database.edit("INSERT INTO user_tbl (username, firstname, addrline1, postcode, phone, imagelocation, balance) VALUES ('" + usernameField.getText() + "', '" +
+                    Database.edit("INSERT INTO user_tbl (username, firstnames, lastname, addrline1, postcode, phone, imagelocation, balance) VALUES ('" + usernameField.getText() + "', '" +
                     firstnamesField.getText() + "', '" + lastnameField.getText() + "', '" + addressField.getText() + "', '" + postcodeField.getText() + "', '" + phoneField.getText() + "', '" + 
                     selectedPicLocation + "', " + 0 + " );");
                     
