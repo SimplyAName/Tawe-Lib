@@ -1,12 +1,7 @@
-package main;
+package src;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
-import main.DVD;
-import main.Database;
-import main.Laptop;
-import main.Resource;
 
 public class LibrarySearch {
 	
@@ -92,7 +87,7 @@ public class LibrarySearch {
 				return dvd;
 			}
 		}catch(Exception e){
-            e.printStackTrace();
+
 		}
 		return null;
 	}

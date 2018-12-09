@@ -195,8 +195,6 @@ public class AccountEditController implements Initializable {
      */
     /*@FXML
     private void initialize() {
-
-
     }*/
 
     /**
@@ -213,7 +211,7 @@ public class AccountEditController implements Initializable {
                 }
             }
             if (isDefault != true) {
-                new CustomDrawing().launchInNewWindow(selectedPicLocation, selectedPicLocation);
+                new CustomDrawing(selectedPicLocation, selectedPicLocation);
 
 
             }

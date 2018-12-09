@@ -1,4 +1,4 @@
-package main;
+package src;
 
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;

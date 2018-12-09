@@ -31,7 +31,7 @@ import javafx.scene.text.Font;
  * @author Chris
  *
  */
-public class CustomDrawing {
+public class CustomDrawing extends Application {
 	private static final int WINDOW_HEIGHT = 700;
 	private static final int WINDOW_WIDTH = 700;
 	private static final int LARGE_FONT_SIZE = 25;
@@ -56,13 +56,46 @@ public class CustomDrawing {
 	private double drawStartY;
 	private double drawWidth;
 	private double drawHeight;
-
+	
+	/**
+	 * updates the stage to be the custom drawing window
+	 */
+	
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			BorderPane root = new BorderPane();
+			root = setRootPane(root);
+			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
+			
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void launchInNewWindow() {
+		try { 
+			this.stage = new Stage();
+			BorderPane root = new BorderPane();
+			root = setRootPane(root);
+			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
+			
+			this.stage.setScene(scene);
+			this.stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * For launching the application in a new window
 	 * @param imageToLoad image location to load from, can be null 
 	 * @param imageToSaveTo image location to save to, CANNOT be null
 	 */
-    public CustomDrawing(String imageToLoad, String imageToSaveTo) {
+	public void launchInNewWindow(String imageToLoad, String imageToSaveTo) {
 		try { 
 			this.stage = new Stage();
 			BorderPane root = new BorderPane();
@@ -188,7 +221,7 @@ public class CustomDrawing {
 		//Works by snapshoting, and the buffering image to update file, or create if it does not currently exist
 		saveCanvasButton.setOnAction(a -> {
 			try{
-				File file = new File("src/" + saveImageLocation);
+				File file = new File("main/" + saveImageLocation);
 				if(!file.exists()){
 					file.createNewFile();
 				}
@@ -200,8 +233,8 @@ public class CustomDrawing {
 				loadSavedPopup();
 				
 			}catch (Exception e){
-				System.out.println("Error: Could not save file");
-				e.printStackTrace();
+				System.out.println("could not save file");
+				System.out.println(e);
 			}
 		});
 		//Create close button
@@ -320,5 +353,10 @@ public class CustomDrawing {
 		
 		root.setTop(vbox);
 		return root;
+	}
+	
+
+	public static void main(String[] args) {
+		launch(args);
 	}
 }

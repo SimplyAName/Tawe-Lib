@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -83,6 +82,7 @@ public class CreateUserController {
 
     /**
      * Saves the changes to the database and then updates the user profile
+     * @param a
      */
     @FXML
     private void createUserAction(){
@@ -90,39 +90,26 @@ public class CreateUserController {
         try {
             ResultSet set = Database.query("SELECT username FROM user_tbl WHERE username = '" + usernameField.getText() + "';");
             if (set.next()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Could not creat user");
-                alert.setHeaderText("Could not add user as user with the same username already exists");
-                alert.setContentText("Change the username and try again.");
-
-                alert.showAndWait();
+            	System.out.println("Username already exists!!!");   
             } else{
                 //if the username has not been taken
                 try {
                 	
                     Database.edit("INSERT INTO user_tbl (username, firstnames,"
                     + " lastname, addrline1, postcode, phone, imagelocation,"
-                    + " balance) VALUES ('" + usernameField.getText() + "', '"
+                    + " balance) VALUES ('" + usernameField.getText() + "', '" 
                     +firstnamesField.getText() + "', '" + lastnameField.getText()
-                    + "', '" + addressField.getText() + "', '"
-                    + postcodeField.getText() + "', '" + phoneField.getText()
-                    + "', '" +
+                    + "', '" + addressField.getText() + "', '" 
+                    + postcodeField.getText() + "', '" + phoneField.getText() 
+                    + "', '" + 
                     selectedPicLocation + "', " + BALANCE + " );");
-
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("User successfully created");
-                    alert.setHeaderText(usernameField.getText() + " has been created successfully");
-                    alert.setContentText("They can now login and take out books from the library.");
-
-
-                    alert.showAndWait();
-
-                    cancelAction();
+                    
+                    System.out.println("User added!");
 
                 } catch (Exception e) {
                 	e.printStackTrace();
                 }
-            }
+            }    
         } catch (IllegalArgumentException e) {
             infoLabel.setText("ERROR - Please Check your changes are in the correct format");
             infoLabel.setTextFill(Color.RED);
@@ -133,7 +120,7 @@ public class CreateUserController {
     }
 
     /**
-     * Updates the selected image.
+     * Updates the selected image
      * @param a
      */
     @FXML
@@ -145,10 +132,12 @@ public class CreateUserController {
                 updateImageBorders(defaultImages[i]);
             }
         }
+
+
     }
 
     /**
-     * updates the selected Button(images) border.
+     * updates the selected Button(images) border
      * @param selectedButton the button that has been selected
      */
     private void updateImageBorders(Button selectedButton){
@@ -163,7 +152,7 @@ public class CreateUserController {
     }
 
     /**
-     * Initializes the window.
+     * Initializes the window
      */
     @FXML
     private void initialize() {
@@ -209,6 +198,7 @@ public class CreateUserController {
         default6Button.setBackground(new Background(new BackgroundImage(new Image("main/users/default6.png"), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
         ////////////////////////////////////////////////////
 
+
         defaultImages[0] = default1Button;
         defaultImages[1] = default2Button;
         defaultImages[2] = default3Button;
@@ -216,15 +206,17 @@ public class CreateUserController {
         defaultImages[4] = default5Button;
         defaultImages[5] = default6Button;
 
+
         for (int i = 0; i < defaultImageLocations.length; i++) {
             if (defaultImageLocations[i].equals(selectedPicLocation)) {
                 updateImageBorders(defaultImages[i]);
             }
         }
+       
     }
 
     /**
-     * Allows a user to edit the image, so long as it is not a preset image
+     * allows a user to edit the image, so long as it is not a preset image
      * @param a
      */
     @FXML
@@ -241,10 +233,11 @@ public class CreateUserController {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
 
+    
     @FXML
     private void cancelAction() {
     	Stage createWindowUser = (Stage) cancelButton.getScene().getWindow();
