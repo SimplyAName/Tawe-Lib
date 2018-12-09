@@ -8,9 +8,7 @@ package main;
  */
 public class Laptop extends Resource {
 
-	private String manufacturer;
-	private String model;
-	private String OS;
+	private String manufacturer,model,OS;
 
 	/**
 	 *
@@ -22,7 +20,7 @@ public class Laptop extends Resource {
 	 * @param model The model of the Laptop
 	 * @param OS What Operating System the Laptop uses
 	 */
-	public Laptop(int rID,String title, int year, String rImg, String manufacturer, String model, String OS) {
+	public Laptop(String rID,String title, String year, String rImg, String manufacturer, String model, String OS) {
 		super(rID,title,year,rImg);
 		this.manufacturer = manufacturer;
 		this.model = model;

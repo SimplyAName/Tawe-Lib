@@ -6,8 +6,8 @@ package main;
  * @version 1
  */
 public class Resource {
-	private int rID;
-	private int year;
+	private String rID;
+	private String year;
 	private String title;
 	private String rImg;
 	
@@ -18,7 +18,7 @@ public class Resource {
 	 * @param year The year of the resource
 	 * @param rImg The image for the resource
 	 */
-	public Resource(int rID,String title, int year, String rImg){
+	public Resource(String rID,String title, String year, String rImg){
 		this.rID = rID;
 		this.title = title;
 		this.year = year;
@@ -29,7 +29,7 @@ public class Resource {
 	 * returns the resource ID
 	 * @return rID
 	 */
-	public int getID() {
+	public String getID() {
 		return rID;
 	}
 	
@@ -45,7 +45,7 @@ public class Resource {
 	 * returns the year
 	 * @return year
 	 */
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 	

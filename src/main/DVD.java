@@ -7,8 +7,7 @@ package main;
  */
 public class DVD extends Resource {
 
-	private String director;
-	private String language;
+	private String director,language;
 	private double runtime;
 	private String[] subLanguage;
 
@@ -23,7 +22,7 @@ public class DVD extends Resource {
 	 * @param language
 	 * @param subLanguage
 	 */
-	public DVD (int rID,String title, int year, String rImg, String director, double runtime, String language, String[] subLanguage){
+	public DVD (String rID,String title, String year, String rImg, String director, double runtime, String language, String[] subLanguage){
 		super(rID,title,year,rImg);
 		this.director = director;
 		this.language = language;

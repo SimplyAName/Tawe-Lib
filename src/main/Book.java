@@ -8,11 +8,7 @@ package main;
  */
 public class Book extends Resource {
 
-	private String author;
-	private String publisher;
-	private String genre;
-	private String ISBN;
-	private String language;
+	private String author,publisher,genre,ISBN,language;
 
 	/**
 	 *
@@ -26,7 +22,7 @@ public class Book extends Resource {
 	 * @param ISBN The unique ISBN of the book
 	 * @param language The language of the nook
 	 */
-	public Book(int rID,String title, int year, String rImg, String author, String publisher, String genre, String ISBN,String language){
+	public Book(String rID,String title, String year, String rImg, String author, String publisher, String genre, String ISBN,String language){
 		super(rID,title,year,rImg);
 		this.author = author;
 		this.genre = genre;
