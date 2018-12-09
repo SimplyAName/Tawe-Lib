@@ -1,6 +1,5 @@
 package main;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
@@ -37,14 +36,14 @@ public class ResourceEdit {
 		
 		subquery = ("SELECT subid FROM dvd_tbl WHERE resourceID = " + rID);
 		sID = Database.query(subquery);
-		query = ("UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
+		query =  "UPDATE resource_tbl SET title = '" + title +       "' WHERE resourceID = " + rID + "; " +
 				 "UPDATE resource_tbl SET year = " + year +       " WHERE resourceID = " + rID + "; " +
 				 "UPDATE resource_tbl SET imagelocation = '" + rImg +       "' WHERE resourceID = " + rID + "; " +
 				 "UPDATE dvd_tbl SET director = '" + director +       "' WHERE resourceID = " + rID + "; " +
 				 "UPDATE dvd_tbl SET runtime = " + runtime +       " WHERE resourceID = " + rID + "; " +
 				 "UPDATE dvd_tbl SET language = '" + language +       "' where resourceID = " + rID + "; " +
-				 "UPDATE sublanguage_tbl SET subid = '" + subLanguages +       "' WHERE subid = " + sID + "; "
-				);
+				 "UPDATE sublanguage_tbl SET subid = '" + subLanguages +       "' WHERE subid = " + sID + "; ";
+				 
 		Database.edit(query);
 		
 	}
@@ -72,7 +71,7 @@ public class ResourceEdit {
 				 "UPDATE book_tbl SET publisher = '" + publisher +       "' WHERE resourceID = " + rID + "; " +
 				 "UPDATE book_tbl SET genre = '" + genre +       "' WHERE resourceID = " + rID + "; " +
 				 "UPDATE book_tbl SET isbn = " + ISBN +       " WHERE resourceID = " + rID + "; " +
-				 "UPDATE book_tbl SET language = '" + language +       "' WHERE resourceID = " + rID + "; " 
+				 "UPDATE book_tbl SET language = '" + language +       "' WHERE resourceID = " + rID + "; "
 				 );
 		Database.edit(query);
 		
@@ -116,4 +115,3 @@ public class ResourceEdit {
 		
 	}
 }
-
