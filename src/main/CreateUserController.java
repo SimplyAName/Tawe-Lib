@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -78,11 +79,8 @@ public class CreateUserController {
     private Button[] defaultImages = new Button[6];
     private User user;
 
-    
-
     /**
      * Saves the changes to the database and then updates the user profile
-     * @param a
      */
     @FXML
     private void createUserAction(){
@@ -90,8 +88,13 @@ public class CreateUserController {
         try {
             ResultSet set = Database.query("SELECT username FROM user_tbl WHERE username = '" + usernameField.getText() + "';");
             if (set.next()) {
-               
-                    System.out.println("Username already exists!!!");
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Could not creat user");
+                alert.setHeaderText("Could not add user as user with the same username already exists");
+                alert.setContentText("Change the username and try again.");
+
+                alert.showAndWait();
                 
             } else{
                 //if the username has not been taken
@@ -100,8 +103,15 @@ public class CreateUserController {
                     Database.edit("INSERT INTO user_tbl (username, firstnames, lastname, addrline1, postcode, phone, imagelocation, balance) VALUES ('" + usernameField.getText() + "', '" +
                     firstnamesField.getText() + "', '" + lastnameField.getText() + "', '" + addressField.getText() + "', '" + postcodeField.getText() + "', '" + phoneField.getText() + "', '" + 
                     selectedPicLocation + "', " + 0 + " );");
-                    
-                    System.out.println("User added!");
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("User successfully created");
+                    alert.setHeaderText(usernameField.getText() + " has been created successfully");
+                    alert.setContentText("They can now login and take out books from the library.");
+
+                    alert.showAndWait();
+
+                    cancelAction();
 
                 } catch (Exception e) {
                 	e.printStackTrace();
@@ -130,8 +140,6 @@ public class CreateUserController {
                 updateImageBorders(defaultImages[i]);
             }
         }
-
-
     }
 
     /**

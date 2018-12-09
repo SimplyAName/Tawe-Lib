@@ -116,4 +116,3 @@ public class ResourceEdit {
 		
 	}
 }
->>>>>>> branch 'master' of https://github.com/SimplyAName/Tawe-Lib.git

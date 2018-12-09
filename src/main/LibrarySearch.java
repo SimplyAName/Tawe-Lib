@@ -1,4 +1,4 @@
-package src;
+package main;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class LibrarySearch {
 				return dvd;
 			}
 		}catch(Exception e){
-
+            e.printStackTrace();
 		}
 		return null;
 	}

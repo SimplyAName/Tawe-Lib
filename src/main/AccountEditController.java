@@ -23,7 +23,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 
 /**
- * Controller for the account edit window
+ * Controller for the account edit window.
  * @author Chris
  *
  */
@@ -32,6 +32,7 @@ public class AccountEditController implements Initializable {
     private String customImage1Location;
     private String customImage2Location;
 
+    //This is a list of the default images avalible to the user
     private String default1Location = "main/users/default1.png";
     private String default2Location = "main/users/default2.png";
     private String default3Location = "main/users/default3.png";
@@ -85,17 +86,17 @@ public class AccountEditController implements Initializable {
      * Takes a users profile to edit
      * @param userToEdit This users account that will be edited
      */
-    public AccountEditController(User userToEdit){
+    public AccountEditController(User userToEdit) {
         this.user = userToEdit;
     }
 
     /**
-     * Saves the changes to the database and then updates the user profile
-     * @param a
+     * Saves the changes to the database and then updates the user profile.
      */
     @FXML
-    private void handlesavechangesButtonAction(ActionEvent a){
+    private void handlesavechangesButtonAction() {
         String newUsername = usernameField.getText();
+
         try {
             ResultSet set = Database.query("SELECT username FROM user_tbl WHERE username = '" + newUsername + "';");
             if (set.next()) {
@@ -146,11 +147,11 @@ public class AccountEditController implements Initializable {
     }
 
     /**
-     * Updates the selected image
+     * Updates the selected image.
      * @param a
      */
     @FXML
-    private void updateSelectedImage(ActionEvent a){
+    private void updateSelectedImage(ActionEvent a) {
 
         for (int i = 0; i < defaultImages.length; i++) {
             if (a.getSource().equals((Object) defaultImages[i])) {
@@ -173,7 +174,7 @@ public class AccountEditController implements Initializable {
      * updates the selected Button(images) border
      * @param selectedButton the button that has been selected
      */
-    private void updateImageBorders(Button selectedButton){
+    private void updateImageBorders(Button selectedButton) {
         for (Button elem : defaultImages) {
             if (!elem.equals(selectedButton)) {
                 elem.setBorder(null);
@@ -190,7 +191,7 @@ public class AccountEditController implements Initializable {
     }
 
     /**
-     * Initializes the window
+     * Initializes the window.
      */
     /*@FXML
     private void initialize() {
@@ -298,11 +299,13 @@ public class AccountEditController implements Initializable {
         } catch (Exception e) {
             custom1Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
+
         try {
             custom2Button.setBackground(new Background(new BackgroundImage(new Image(customImage2Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
         } catch (Exception e) {
             custom2Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         }
+
         for (int i = 0; i < defaultImageLocations.length; i++) {
             if (defaultImageLocations[i].equals(selectedPicLocation)) {
                 updateImageBorders(defaultImages[i]);
