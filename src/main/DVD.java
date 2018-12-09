@@ -7,7 +7,8 @@ package main;
  */
 public class DVD extends Resource {
 
-	private String director,language;
+	private String director;
+	private String language;
 	private double runtime;
 	private String[] subLanguage;
 
