@@ -29,6 +29,7 @@ import javafx.stage.Window;
  *
  */
 public class CreateUserController {
+	private final int BALANCE = 0;
     private static String selectedPicLocation;
     private static String customImage1Location;
     private static String customImage2Location;
@@ -78,7 +79,6 @@ public class CreateUserController {
     private Button[] defaultImages = new Button[6];
     private User user;
 
-    
 
     /**
      * Saves the changes to the database and then updates the user profile
@@ -90,24 +90,26 @@ public class CreateUserController {
         try {
             ResultSet set = Database.query("SELECT username FROM user_tbl WHERE username = '" + usernameField.getText() + "';");
             if (set.next()) {
-               
-                    System.out.println("Username already exists!!!");
-                
+            	System.out.println("Username already exists!!!");   
             } else{
                 //if the username has not been taken
                 try {
                 	
-                    Database.edit("INSERT INTO user_tbl (username, firstnames, lastname, addrline1, postcode, phone, imagelocation, balance) VALUES ('" + usernameField.getText() + "', '" +
-                    firstnamesField.getText() + "', '" + lastnameField.getText() + "', '" + addressField.getText() + "', '" + postcodeField.getText() + "', '" + phoneField.getText() + "', '" + 
-                    selectedPicLocation + "', " + 0 + " );");
+                    Database.edit("INSERT INTO user_tbl (username, firstnames,"
+                    + " lastname, addrline1, postcode, phone, imagelocation,"
+                    + " balance) VALUES ('" + usernameField.getText() + "', '" 
+                    +firstnamesField.getText() + "', '" + lastnameField.getText()
+                    + "', '" + addressField.getText() + "', '" 
+                    + postcodeField.getText() + "', '" + phoneField.getText() 
+                    + "', '" + 
+                    selectedPicLocation + "', " + BALANCE + " );");
                     
                     System.out.println("User added!");
 
                 } catch (Exception e) {
                 	e.printStackTrace();
                 }
-            }
-        
+            }    
         } catch (IllegalArgumentException e) {
             infoLabel.setText("ERROR - Please Check your changes are in the correct format");
             infoLabel.setTextFill(Color.RED);
