@@ -1,7 +1,5 @@
-package main;
-
-
-
+package src;
+	
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -20,6 +18,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -157,6 +156,8 @@ public class CustomDrawing extends Application {
 			if (this.penType.equals("Circle Tool")){
 				this.drawStartX = e.getX();
 				this.drawStartY = e.getY();
+			}else if(this.penType.equals("Particle Trace")){
+				drawable.strokeOval(e.getX(), e.getY(), 1, 1);
 			}
 		});
 		
@@ -164,6 +165,8 @@ public class CustomDrawing extends Application {
 			if(this.penType.equals("Free Form")){
 				drawable.lineTo(e.getX(), e.getY());
 				drawable.stroke();
+			}else if(this.penType.equals("Particle Trace")){
+				drawable.strokeOval(e.getX(), e.getY(), 1, 1);
 			}
 		});
 		canvas.setOnMouseReleased(e -> {
@@ -184,10 +187,9 @@ public class CustomDrawing extends Application {
 					drawable.strokeOval(this.drawStartX, this.drawStartY, Math.abs(width), Math.abs(height));
 				}
 				
-			}else if(penType.equals("Straight Line")){
+			}else if((penType.equals("Straight Line")) || (penType.equals("Free Form"))){
+				
 				//drawable.strokeLine(drawStartX, drawStartY, e.getX(), e.getY());
-				drawable.stroke();
-			}else{
 				drawable.stroke();
 			}
 			drawable.closePath();
@@ -221,15 +223,21 @@ public class CustomDrawing extends Application {
 		//Works by snapshoting, and the buffering image to update file, or create if it does not currently exist
 		saveCanvasButton.setOnAction(a -> {
 			try{
-				File file = new File("main/" + saveImageLocation);
-				if(!file.exists()){
-					file.createNewFile();
+				File fileBin = new File("bin/"+saveImageLocation);				
+				if(!fileBin.exists()){
+					fileBin.createNewFile();
 				}
-				file.setWritable(true);
+				File fileSrc = new File("src/"+saveImageLocation);				
+				if(!fileSrc.exists()){
+					fileSrc.createNewFile();
+				}
+				fileBin.setWritable(true);
+				fileSrc.setWritable(true);
+				
 				savedImage = this.canvas.snapshot(imageParameters, savedImage);			
 				BufferedImage image = SwingFXUtils.fromFXImage(savedImage, null);
-				ImageIO.write(image, "png", file);
-				
+				ImageIO.write(image, "png", fileBin);
+				ImageIO.write(image, "png", fileSrc);
 				loadSavedPopup();
 				
 			}catch (Exception e){
@@ -334,7 +342,7 @@ public class CustomDrawing extends Application {
 		RadioButton penLine = new RadioButton("Straight Line");
 		penLine.setToggleGroup(penTypeGroup);
 		penLine.setOnAction(a ->{
-			this.penType = "StraightLine";
+			this.penType = "Straight Line";
 			
 		});
 		
@@ -344,8 +352,13 @@ public class CustomDrawing extends Application {
 			this.penType = "Circle Tool";
 			
 		});
+		RadioButton penParticle = new RadioButton("Particle Trace");
+		penParticle.setToggleGroup(penTypeGroup);
+		penParticle.setOnAction(a ->{
+			this.penType = "Particle Trace";
+		});
 		HBox penTypeBox = new HBox();
-		penTypeBox.getChildren().addAll(penFreeForm, penLine, penCircle);
+		penTypeBox.getChildren().addAll(penFreeForm, penLine, penCircle, penParticle);
 		penTypeBox.setAlignment(Pos.CENTER);
 		penTypeBox.setPadding(AROUND_BUTTON_PADDING);
 		vbox.getChildren().addAll(penTypeBox, chooseColor, topButtonPane);
