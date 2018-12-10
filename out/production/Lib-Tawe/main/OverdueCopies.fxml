@@ -5,43 +5,45 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.OverdueCopiesController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.OverdueCopiesController">
     <children>
-        <TableView fx:id="overdueCopiesTable" prefHeight="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <TableView fx:id="overdueCopiesTable" prefHeight="400.0" AnchorPane.bottomAnchor="10.0"
+                   AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <columns>
                 <TableColumn prefWidth="70.0" text="Copy id">
                     <cellValueFactory>
-                        <PropertyValueFactory property="copyid" />
+                        <PropertyValueFactory property="copyid"/>
                     </cellValueFactory>
                 </TableColumn>
 
                 <TableColumn prefWidth="90.0" text="Date taken out">
                     <cellValueFactory>
-                        <PropertyValueFactory property="dateTakenOut" />
+                        <PropertyValueFactory property="dateTakenOut"/>
                     </cellValueFactory>
                 </TableColumn>
 
                 <TableColumn prefWidth="90.0" text="Due date">
                     <cellValueFactory>
-                        <PropertyValueFactory property="DateDue" />
+                        <PropertyValueFactory property="DateDue"/>
                     </cellValueFactory>
                 </TableColumn>
 
                 <TableColumn prefWidth="100.0" text="Username">
                     <cellValueFactory>
-                        <PropertyValueFactory property="username" />
+                        <PropertyValueFactory property="username"/>
                     </cellValueFactory>
                 </TableColumn>
 
                 <TableColumn prefWidth="100.0" text="Resource name">
                     <cellValueFactory>
-                        <PropertyValueFactory property="resourceName" />
+                        <PropertyValueFactory property="resourceName"/>
                     </cellValueFactory>
                 </TableColumn>
 
                 <TableColumn prefWidth="100.0" text="Resource type">
                     <cellValueFactory>
-                        <PropertyValueFactory property="resourceType" />
+                        <PropertyValueFactory property="resourceType"/>
                     </cellValueFactory>
                 </TableColumn>
             </columns>

@@ -248,12 +248,12 @@ public class CustomDrawing extends Application {
 		//Works by snapshoting, and the buffering image to update file, or create if it does not currently exist
 		saveCanvasButton.setOnAction(a -> {
 			try{
-				File fileBin = new File("bin/"+saveImageLocation);				
+				File fileBin = new File("src/main/users/" + saveImageLocation);
 				if(!fileBin.exists()){
 					fileBin.createNewFile();
 				}
 
-				File fileSrc = new File("src/"+saveImageLocation);				
+				File fileSrc = new File("src/main/users/" + saveImageLocation);
 				if(!fileSrc.exists()){
 					fileSrc.createNewFile();
 				}
