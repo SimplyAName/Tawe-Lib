@@ -93,12 +93,37 @@ public class LibrarianInterfaceController implements Initializable {
     @FXML
     private void showLibraryAction() {
         try {
+            Stage libraryStage = new Stage();
+
             FXMLLoader libraryLoader = new FXMLLoader(getClass().getResource("Library.fxml"));
-            libraryLoader.setController(new LibraryController());
+            LibraryController libraryController = new LibraryController();
+            libraryLoader.setController(libraryController);
             Parent libraryPane = libraryLoader.load();
-            mainPane.setCenter(libraryPane);
-            mainPane.getScene().getWindow().setWidth(libraryPane.getScene().getWidth());
-            mainPane.getScene().getWindow().setHeight(libraryPane.getScene().getHeight());
+
+            libraryStage.setScene(new Scene(libraryPane));
+            libraryStage.setTitle("Library");
+
+            libraryController.setup(librarian);
+
+            libraryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void payFineAction() {
+        try {
+            Stage payFineStage = new Stage();
+
+            FXMLLoader payFineLoader = new FXMLLoader(getClass().getResource("PayFine.fxml"));
+            Parent payFinePane = payFineLoader.load();
+
+            payFineStage.setScene(new Scene(payFinePane));
+            payFineStage.setTitle("Pay fine");
+
+            payFineStage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

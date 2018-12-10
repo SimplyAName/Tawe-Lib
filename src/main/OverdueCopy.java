@@ -24,7 +24,8 @@ public class OverdueCopy {
     }
 
     /**
-     * @param Sets the name of the resource
+     * Sets the name of the resource
+     * @param resourceName
      */
     public void setResourceName(String resourceName) {
         this.resourceName = resourceName;
@@ -39,7 +40,8 @@ public class OverdueCopy {
 
 
     /**
-     * @param Sets the resource type
+     * Sets the resource type
+     * @param resourceType
      */
     public void setResourceType(String resourceType) {
         this.resourceType = resourceType;
