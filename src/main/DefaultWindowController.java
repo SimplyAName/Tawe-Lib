@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/*
+ * Implements many of the features on the default window of the project 
+ */
 public class DefaultWindowController implements Initializable {
 
     private User user;
@@ -19,6 +23,10 @@ public class DefaultWindowController implements Initializable {
     @FXML
     private BorderPane mainPane;
 
+    /**
+     * Sets default window controller as user
+     * @param user
+     */
     public DefaultWindowController(User user) {
         this.user = user;
     }
@@ -27,6 +35,10 @@ public class DefaultWindowController implements Initializable {
         this.librarian = librarian;
     }
 
+    /*
+     * Checks the login details, if they are a user, load the user interface
+     * If they are not a user, load the librarian interface
+     */
     @FXML
     private void homeButtonAction() {
 
@@ -38,6 +50,10 @@ public class DefaultWindowController implements Initializable {
         }
     }
 
+    /*
+     * Firstly checks again if user or librarian
+     * Interacts with edit account controller and allows editing
+     */
     @FXML
     private void editAccountAction() {
 
@@ -57,6 +73,7 @@ public class DefaultWindowController implements Initializable {
             editAccountStage.setScene(new Scene(editAccountPane));
             editAccountStage.setTitle("Edit Account");
 
+            //Shows edited newly edited account
             editAccountStage.show();
 
         } catch (Exception e) {
@@ -65,6 +82,9 @@ public class DefaultWindowController implements Initializable {
 
     }
 
+    /*
+     * Implements the logout action,
+     */
     @FXML
     private void logoutAction() {
 
@@ -86,6 +106,10 @@ public class DefaultWindowController implements Initializable {
 
     }
 
+    /*
+     * The User interface that will be loaded if the homeACtionButton method
+     * confirms they are a user
+     */
     private void loadUserInterface() {
 
         try {
@@ -98,6 +122,10 @@ public class DefaultWindowController implements Initializable {
         }
     }
 
+    /*
+     * The Librarian interface that will be loaded if the homeACtionButton
+     * method confirms they are a Librarian 
+     */
     private void loadLibrarianInterface() {
 
         try {
