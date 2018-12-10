@@ -33,20 +33,34 @@ public class ResourceEdit {
 	 * @throws IllegalArgumentException
 	 * @throws SQLException if a connect cannot be established
 	 */
-	public static void editDVD(int rID, String title, int year, String rImg, String director, int runtime, String language, String dVDSubtitles) throws IllegalArgumentException, SQLException {
+	public static void editDVD(int rID, String title, int year, String rImg,
+			String director, int runtime, String language, String dVDSubtitles)
+					throws IllegalArgumentException, SQLException {
 		
-		Database.edit("UPDATE resource_tbl SET title = '" + title + "', year =" + year + ", imagelocation = '" + rImg + "' WHERE resourceid = " + rID + ";");
-		Database.edit("UPDATE dvd_tbl SET director = '" + director + "', runtime = " + runtime + ", language = '"+ language + "' WHERE resourceid = " + rID + ";");		
+		Database.edit("UPDATE resource_tbl SET title = '" + title + "', year ="
+		+ year + ", imagelocation = '" + rImg + "' WHERE resourceid = " + rID + ";");
+		Database.edit("UPDATE dvd_tbl SET director = '" + director + "',"
+				+ " runtime = " + runtime + ", language = '"+ language + "' "
+						+ "WHERE resourceid = " + rID + ";");		
 		
-		sID = Database.query("select subid from dvd_tbl where resourceID = " + rID + "; ");
+		sID = Database.query("select subid from dvd_tbl where resourceID"
+				+ " = " + rID + "; ");
 		sID.next();
 		int subid = sID.getInt("subid");
-		Database.edit("UPDATE sublanguage_tbl SET sublanguage = '" + dVDSubtitles + "' WHERE subid = " + subid + ";");
+		Database.edit("UPDATE sublanguage_tbl SET sublanguage = '" + dVDSubtitles
+				+ "' WHERE subid = " + subid + ";");
 
 		resourceEditedSuccessfully(title);
 
 	}
-
+	
+	/**
+	 * Edits the subtitle languages for the DVD
+	 * @param dvdSubId
+	 * @param subLanguageList
+	 * @return Returns true with subtitles languages added to database
+	 * False otherwise
+	 */
 	public static boolean editSubLanguages(int dvdSubId, String subLanguageList) {
 
 		String[] subLanguageArray = subLanguageList.split(",");
@@ -54,7 +68,8 @@ public class ResourceEdit {
 		try {
 			Database.edit("DELETE FROM sublanguage_tbl WHERE subid = " + dvdSubId +";");
 			for (String language : subLanguageArray) {
-				Database.edit("INSERT INTO sublanguage_tbl VALUES (" + dvdSubId + ",'" + language + "');");
+				Database.edit("INSERT INTO sublanguage_tbl VALUES (" + dvdSubId 
+						+ ",'" + language + "');");
 			}
 			return true;
 		} catch (Exception e1) {
@@ -122,6 +137,10 @@ public class ResourceEdit {
 		
 	}
 
+	/**
+	 *  Edits the title of the resource
+	 * @param title The resource title being edited
+	 */
 	private static void resourceEditedSuccessfully(String title) {
 
 		String alertTitle = "Resource successfully edit!";
@@ -137,6 +156,12 @@ public class ResourceEdit {
 
 	}
 
+	/**
+	 * Returns an error alert message if anything goes wrong with editing
+	 * @param alertTitle The title for the error alert message
+	 * @param alertHeader The header for the error alert message
+	 * @param alertMessage The error alert message
+	 */
 	private static void resourceEditedError(String alertTitle, String alertHeader, String alertMessage) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
