@@ -13,8 +13,26 @@ import java.util.Random;
 public class AddBookResourceController extends AddResourceBase {
 
     @FXML
-    private TextField resourceTitle, resourceYear, bookAuthor, bookPublisher, bookGenre, bookISBN, bookLanguage;
-
+    private TextField resourceTitle;
+    
+    @FXML
+    private TextField resourceYear; 
+    
+    @FXML
+    private TextField bookAuthor;
+    
+    @FXML
+    private TextField bookPublisher;
+    
+    @FXML
+    private TextField bookGenre;
+    
+    @FXML
+    private TextField bookISBN;
+    
+    @FXML
+    private TextField bookLanguage;
+    
     @FXML
     private ImageView bookImageView;
 
