@@ -1,6 +1,7 @@
 package main;
 
 import javax.swing.JOptionPane;
+
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.Period;
@@ -17,17 +18,10 @@ public class ResourceManagement {
      */
 
 
-
     /**
      * Totals the fine of a book and removes it from the book table
-     * @param id The ID of the user
-     * @param bookFine The calculated fine for a book
-     * @return return true with calculated fine, false otherwise
-     */
-
-    /**
-     * Totals the fine of a book and removes it from the book table
-     * @param username The ID of the user
+     *
+     * @param username The username of the user
      * @return return true with calculated fine, false otherwise
      */
 
@@ -36,18 +30,18 @@ public class ResourceManagement {
             int BOOK_FINE = 200;
             ResultSet createBookFine = Database.query("SELECT FROM out_tbl WHERE username = '" + username + "' ;");
             if (!createBookFine.next()) {
-                Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + BOOK_FINE  + "' + username, '" + username + "');");
+                Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + BOOK_FINE + "' + username, '" + username + "');");
             }
 
         } catch (Exception e) {
-
         }
         return false;
     }
 
     /**
      * Totals the fine of a laptop and removes it from the laptop table
-     * @param username The ID of the user
+     *
+     * @param username The username of the user
      * @return return true with calculated fine, false otherwise
      */
 
@@ -55,7 +49,8 @@ public class ResourceManagement {
         try {
             int LAPTOP_FINE = 1000;
             ResultSet createLaptopFine = Database.query("SELECT FROM out_tbl WHERE username = '" + username + "' ;");
-            if (!createLaptopFine.next()) {Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + LAPTOP_FINE + "' + username, '"+ username +"');");
+            if (!createLaptopFine.next()) {
+                Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + LAPTOP_FINE + "' + username, '" + username + "');");
 
             }
         } catch (Exception e) {
@@ -69,8 +64,7 @@ public class ResourceManagement {
 
 
     /**
-     *
-     * @param username The ID of the useR
+     * @param username The username of the user
      * @return returns true with calculated fine, false otherwise
      */
 
@@ -78,8 +72,8 @@ public class ResourceManagement {
         try {
             int DVD_FINE = 200;
             ResultSet createDVDFine = Database.query("");
-            if(!createDVDFine.next()) {
-                Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + DVD_FINE+ "' + username, '" + username + "');");
+            if (!createDVDFine.next()) {
+                Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + DVD_FINE + "' + username, '" + username + "');");
             }
         } catch (Exception e) {
 
@@ -88,8 +82,14 @@ public class ResourceManagement {
 
     }
 
-    //Allows a librarian to loan out a resource. If there are any outstanding fines however, the system will disallow borrowing until
-    // fine is 0 (no outstanding fines)
+    /**
+     * Allows a librarian to loan out a resource to a user
+     *
+     * @param username The username of the user
+     * @param copyid   The ID number of the copy of a resource
+     * @return Displays a message to tell whether lending has either been successful or unsuccesful. If unsuccessful, it will say that the user
+     * has outstanding fines
+     */
     public boolean lendCopy(String username, int copyid) {
         try {
             ResultSet rejectLending = Database.query("SELECT * FROM user_tbl WHERE username = '" + username + "' " +
@@ -110,7 +110,12 @@ public class ResourceManagement {
 
     }
 
-    //Checks to see if a resource is available or unavailable and gives a message
+    /**
+     * Checks to see if a resource is available or unavailable and gives a message
+     *
+     * @param copyid The ID number of the copy of a resource
+     * @return Displays a message to tell whether a resource is either available or unavailable
+     */
     public boolean resourceAvailable(int copyid) {
         try {
             ResultSet checkAvailable = Database.query("SELECT copyid FROM copy_tbl WHERE copyid = " + copyid + " " +
@@ -128,7 +133,17 @@ public class ResourceManagement {
         return false;
     }
 
-    //Allows returning of a resource. If the resource is overdue it will notify the librarian that a fine will be issued
+    /**
+     * Allows returning of a resource. If the resource is overdue it will notify the librarian that a fine will be issued
+     *
+     * @param username The username of the user
+     * @param copyid   The ID number of the copy of a resource
+     * @return Will display a message based on certain conditions. First, the method will check that the copyid exists in
+     * the out table and will display a message if it does not exist. Second, the method will check if the resource is overdue and if it is
+     * it will display a message saying the resource is overdue and a fine will be generated. Third, it will check if the resource
+     * is reserved by another user and will put the resource into the reservation table if there is a request. Third, it will register
+     * the user and their borrowing history into the history table.
+     */
     public boolean returnCopy(String username, int copyid) {
         try {
             ResultSet identicalResource = Database.query("SELECT * FROM out_tbl WHERE copyid = " + copyid + " ;");
@@ -138,7 +153,7 @@ public class ResourceManagement {
                 ResultSet overdueType = Database.query("SELECT resource_tbl.resourceid, resource_tbl.type FROM copy_tbl, resource_tbl " +
                         "WHERE copy_tbl.resourceid = resource_tbl.resourceid AND copy_tbl.copyid = " + copyid + " ;");
 
-                if(identicalResource.getString("duedate") != null) {
+                if (identicalResource.getString("duedate") != null) {
 
 
                     LocalDate now = LocalDate.now();
@@ -152,9 +167,9 @@ public class ResourceManagement {
 
                         JOptionPane.showMessageDialog(null, "Resource is overdue, fine will be issued");
 
-                        if(overdueType.getString("type").equals("book")) {
+                        if (overdueType.getString("type").equals("book")) {
                             generateBookFine(username);
-                        } else if(overdueType.getString("type").equals("DVD")) {
+                        } else if (overdueType.getString("type").equals("DVD")) {
                             generateDVDFine(username);
                         } else {
                             generateLaptopFine(username);
@@ -173,7 +188,7 @@ public class ResourceManagement {
 
                 }
 
-                ResultSet returnResource = Database.query("SELECT * FROM out_tbl WHERE username = '" + username  + "' " +
+                ResultSet returnResource = Database.query("SELECT * FROM out_tbl WHERE username = '" + username + "' " +
                         "AND copyid = " + copyid + " ;");
 
                 Database.edit("DELETE FROM out_tbl WHERE username = '" + username + "' AND copyid = " + copyid + " ;");
@@ -185,13 +200,17 @@ public class ResourceManagement {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return false;
     }
 
-
-    //Allows requesting of a copy of a resource if a copy is not available
+    /**
+     * Allows requesting of a copy of a resource if a copy is not available
+     *
+     * @param username   The username of a user
+     * @param resourceid The ID number of a resource
+     * @return Displays a message when a user makes a request and adds the request to the request table
+     */
     public boolean requestCopy(String username, int resourceid) {
         try {
             Database.edit("INSERT INTO request_tbl VALUES (reqid, " + resourceid + ", NOW(),'" + username + "');");
@@ -212,7 +231,7 @@ public class ResourceManagement {
                 cal.add(Calendar.DAY_OF_MONTH, minloanperiod);
 
                 if ((new Date()).before(cal.getTime())) {
-                    Database.edit("UPDATE out_tbl SET duedate = DATE_ADD('"+datefrom+"', INTERVAL " + (minloanperiod + 1) +" DAY) " +
+                    Database.edit("UPDATE out_tbl SET duedate = DATE_ADD('" + datefrom + "', INTERVAL " + (minloanperiod + 1) + " DAY) " +
                             "WHERE copyid = " + copyid + ";");
 
                 } else {
@@ -223,14 +242,21 @@ public class ResourceManagement {
                     JOptionPane.showMessageDialog(null, "Request successful");
                 }
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-        } return false;
+        } catch (Exception e) {
+        }
+        return false;
     }
 
 
-    //The user will be able to pick up his/her reserved copy of a resource once the requested resource has been returned
-    public boolean pickupCopy (String username, int copyid) {
+    /**
+     * Allows user to pick up his/her reserved copy of a resource once the requested resource has been returned
+     *
+     * @param username The username of a user
+     * @param copyid   The ID number of the copy of a resource
+     * @return Displays a message if the requested resource has successfully been borrowed, then adds the user to the out table.
+     * Will also display a message if the resource is currently unavailable
+     */
+    public boolean pickupCopy(String username, int copyid) {
         try {
             ResultSet pickupResource = Database.query("SELECT * FROM reservation_tbl, copy_tbl WHERE " +
                     "reservation_tbl.copyid = copy_tbl.copyid AND reservation_tbl.copyid = " + copyid + ";");
@@ -241,16 +267,15 @@ public class ResourceManagement {
 
 
             if (pickupResource.next()) {
-                JOptionPane.showMessageDialog(null,"Resource has been borrowed successfully");
+                JOptionPane.showMessageDialog(null, "Resource has been borrowed successfully");
             } else {
-                JOptionPane.showMessageDialog(null,"This resource has either not been requested or is currently unavailable");
+                JOptionPane.showMessageDialog(null, "This resource has either not been requested or is currently unavailable");
 
             }
         } catch (Exception e) {
-        } return false;
+        }
+        return false;
     }
-
-
 
 }
 
