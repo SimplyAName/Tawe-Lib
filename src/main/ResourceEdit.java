@@ -1,6 +1,8 @@
 package main;
 
 
+import javafx.scene.control.Alert;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
@@ -17,6 +19,7 @@ public class ResourceEdit {
 	public ResourceEdit() {
 		
 	}
+
 	/**
 	 * edits tuples in DVD
 	 * @param rID Resource ID
@@ -27,9 +30,6 @@ public class ResourceEdit {
 	 * @param runtime DVD runtime
 	 * @param language DVD language
 	 * @param dVDSubtitles array of DVD subtitle languages
-	 * @param query The query that will edit the tuples
-	 * @param subquery The query used for the sub languages
-	 * @param sID Used for the subquery
 	 * @throws IllegalArgumentException
 	 * @throws SQLException if a connect cannot be established
 	 */
@@ -42,7 +42,26 @@ public class ResourceEdit {
 		sID.next();
 		int subid = sID.getInt("subid");
 		Database.edit("UPDATE sublanguage_tbl SET sublanguage = '" + dVDSubtitles + "' WHERE subid = " + subid + ";");
-	    
+
+		resourceEditedSuccessfully(title);
+
+	}
+
+	public static boolean editSubLanguages(int dvdSubId, String subLanguageList) {
+
+		String[] subLanguageArray = subLanguageList.split(",");
+
+		try {
+			Database.edit("DELETE FROM sublanguage_tbl WHERE subid = " + dvdSubId +";");
+			for (String language : subLanguageArray) {
+				Database.edit("INSERT INTO sublanguage_tbl VALUES (" + dvdSubId + ",'" + language + "');");
+			}
+			return true;
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+		return false;
 	}
 	
 	/**
@@ -65,6 +84,8 @@ public class ResourceEdit {
 		Database.edit("UPDATE book_tbl SET author = '" + author + "', publisher = '" + publisher + "', genre = '" + genre +
 				"', isbn =" + ISBN + ", language = '" + language + "' WHERE resourceid = " + rID + ";");
 
+		resourceEditedSuccessfully(title);
+
 	}
 	
 	/**
@@ -84,7 +105,8 @@ public class ResourceEdit {
 		Database.edit("UPDATE resource_tbl SET title = '" + title + "', year =" + year + ", imagelocation = '" + rImg + "' WHERE resourceid = " + rID + ";");
 		
 		Database.edit("UPDATE laptop_tbl SET manufacturer = '" + manufacturer + "', model = '" + model + "', opsystem = '" + OS + "' WHERE resourceid = " + rID + ";");
-		
+
+		resourceEditedSuccessfully(title);
 	}
 	
 	/**
@@ -93,13 +115,37 @@ public class ResourceEdit {
 	 * @throws IllegalArgumentException
 	 * @throws SQLException If there is no connection
 	 */
-	
-	
 	public void deleteResource(int rID) throws IllegalArgumentException, SQLException{
 		
 		query = ("delete from resource_tbl where resourceID = " + rID + ";" );
 		Database.edit(query);
 		
+	}
+
+	private static void resourceEditedSuccessfully(String title) {
+
+		String alertTitle = "Resource successfully edit!";
+		String alertHeader = title + " has been update";
+		String alertMessage = title + "has been update successfully and now is now using the updated information";
+
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle(alertTitle);
+		alert.setHeaderText(alertHeader);
+		alert.setContentText(alertMessage);
+
+		alert.showAndWait();
+
+	}
+
+	private static void resourceEditedError(String alertTitle, String alertHeader, String alertMessage) {
+
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle(alertTitle);
+		alert.setHeaderText(alertHeader);
+		alert.setContentText(alertMessage);
+
+		alert.showAndWait();
+
 	}
 }
 

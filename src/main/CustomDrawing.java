@@ -248,21 +248,15 @@ public class CustomDrawing extends Application {
 		//Works by snapshoting, and the buffering image to update file, or create if it does not currently exist
 		saveCanvasButton.setOnAction(a -> {
 			try{
-				File fileBin = new File("src/main/users/" + saveImageLocation);
-				if(!fileBin.exists()){
-					fileBin.createNewFile();
-				}
 
-				File fileSrc = new File("src/main/users/" + saveImageLocation);
+				File fileSrc = new File(saveImageLocation);
 				if(!fileSrc.exists()){
 					fileSrc.createNewFile();
 				}
-				fileBin.setWritable(true);
 				fileSrc.setWritable(true);
 				
 				savedImage = this.canvas.snapshot(imageParameters, savedImage);			
 				BufferedImage image = SwingFXUtils.fromFXImage(savedImage, null);
-				ImageIO.write(image, "png", fileBin);
 				ImageIO.write(image, "png", fileSrc);
 				loadSavedPopup();
 				

@@ -288,11 +288,12 @@ public class AccountEditController {
                 }
             }
             if (!isDefault) {
+
                 Stage customDrawingStage = new Stage();
 
                 CustomDrawing customDrawing = new CustomDrawing();
 
-                customDrawing.start(customDrawingStage);
+                customDrawing.start(customDrawingStage, selectedPicLocation, "src/" + selectedPicLocation);
             }
 
         } catch (Exception e) {

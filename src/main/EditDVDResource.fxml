@@ -7,28 +7,23 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ResourceEditController">
+<AnchorPane prefHeight="542.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="235.0" layoutX="114.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+      <ImageView fitHeight="235.0" layoutX="114.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0" onMouseClicked="#uploadImageAction" fx:id="uploadImageView">
          <image>
-            <Image url="@../../../../Downloads/BookCoverExample.jpg" />
+            <Image url="@resourceImages/defaultImage.png" />
          </image>
          <viewport>
             <Rectangle2D minX="200.0" minY="200.0" />
          </viewport>
       </ImageView>
-      <TextField fx:id="dvdID" layoutX="10.0" layoutY="193.0" promptText="DVD ID" AnchorPane.bottomAnchor="285.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="dvdTitle" layoutX="10.0" layoutY="246.0" prefHeight="25.0" prefWidth="280.0" promptText="DVD title" AnchorPane.bottomAnchor="256.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="dvdDirector" layoutX="10.0" layoutY="170.0" promptText="DVD director" AnchorPane.bottomAnchor="222.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="dvdYear" layoutX="10.0" layoutY="204.0" promptText="DVD year" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="dvdRuntime" layoutX="10.0" layoutY="240.0" prefWidth="149.0" promptText="DVD runtime" AnchorPane.bottomAnchor="152.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="dvdLanguage" layoutX="10.0" layoutY="275.0" prefWidth="149.0" promptText="DVD Language" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="dvdSubtitles" layoutX="10.0" layoutY="310.0" prefHeight="22.0" prefWidth="386.0" promptText="DVD Subtitles" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="dvdID" layoutX="14.0" layoutY="426.0" promptText="Acmount of copies" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editDVDAction" text="Edit DVD" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
-      <TextField fx:id="dvdTitle" layoutX="10.0" layoutY="225.0" prefHeight="25.0" prefWidth="280.0" promptText="DVD title" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="99.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Downloads/pirates.jpg" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

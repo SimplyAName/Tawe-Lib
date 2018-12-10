@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="350.0"
-            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.ResourceEditController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="235.0" layoutX="114.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+      <ImageView fitHeight="235.0" layoutX="58.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="14.0" onMouseClicked="#uploadImageAction" fx:id="uploadImageView" >
          <image>
-            <Image url="@../../../../Downloads/BookCoverExample.jpg" />
+            <Image url="@resourceImages/defaultImage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="bookID" layoutX="10.0" layoutY="222.0" promptText="Book ID" AnchorPane.bottomAnchor="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-       <TextField fx:id="bookTitle" layoutX="10.0" layoutY="257.0" promptText="Book title" AnchorPane.bottomAnchor="255.0"
-                  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-       <TextField fx:id="bookAuthor" layoutX="10.0" layoutY="291.0" promptText="Book author" AnchorPane.bottomAnchor="221.0"
-                  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-      <TextField fx:id="bookPublisher" layoutX="10.0" layoutY="240.0" prefWidth="149.0" promptText="Book publisher" AnchorPane.bottomAnchor="152.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <TextField fx:id="bookGenre" layoutX="10.0" layoutY="275.0" prefWidth="149.0" promptText="Book genre " AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <TextField fx:id="bookISBN" layoutX="10.0" layoutY="310.0" prefWidth="149.0" promptText="Book ISBN" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <TextField fx:id="bookLanguage" layoutX="10.0" layoutY="347.0" prefWidth="149.0" promptText="Book language" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editBookAction" text="Edit Book" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
-       <TextField fx:id="bookYear" layoutX="97.0" layoutY="326.0" promptText="Book year" AnchorPane.bottomAnchor="186.0"
-                  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+       <TextField fx:id="bookTitle" layoutX="10.0" layoutY="258.0" promptText="Book title" AnchorPane.bottomAnchor="289.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="bookAuthor" layoutX="10.0" layoutY="292.0" promptText="Book author" AnchorPane.bottomAnchor="255.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="bookYear" layoutX="10.0" layoutY="327.0" promptText="Book year" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="bookPublisher" layoutX="10.0" layoutY="361.0" prefWidth="149.0" promptText="Book publisher" AnchorPane.bottomAnchor="186.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="bookGenre" layoutX="10.0" layoutY="396.0" prefWidth="149.0" promptText="Book genre " AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="bookISBN" layoutX="10.0" layoutY="431.0" prefWidth="149.0" promptText="Book ISBN" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="bookLanguage" layoutX="10.0" layoutY="468.0" prefWidth="149.0" promptText="Book language" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="resourceCopies" layoutX="10.0" layoutY="504.0" prefWidth="149.0" promptText="Amount of copies" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Button layoutX="64.0" layoutY="539.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editBookAction" text="Edit Book" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
    </children>
 </AnchorPane>
-

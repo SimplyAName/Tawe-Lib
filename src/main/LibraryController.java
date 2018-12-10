@@ -673,8 +673,33 @@ public class LibraryController {
 	 * @param e
 	 */
 	private void handleEditResourceAction(ActionEvent e) {
-		//*#*********finish functionality.
-		
+		Stage editResourceStage = new Stage();
+		FXMLLoader editResourceLoader;
+
+		try {
+			List<String> selected = tblResources.getSelectionModel().getSelectedItem();
+
+			if (selected.get(1).equals("Book")) {
+				editResourceLoader = new FXMLLoader(getClass().getResource("EditBookResource.fxml"));
+			} else if (selected.get(1).equals("DVD")) {
+				editResourceLoader = new FXMLLoader(getClass().getResource("EditDVDResource.fxml"));
+			} else if (selected.get(1).equals("Laptop")) {
+				editResourceLoader = new FXMLLoader(getClass().getResource("EditLaptopResource.fxml"));
+			} else {
+				editResourceLoader = new FXMLLoader();
+			}
+
+			editResourceLoader.setController(new ResourceEditController(Integer.parseInt(selected.get(0))));
+
+			Parent editResourcePane = editResourceLoader.load();
+			editResourceStage.setScene(new Scene(editResourcePane));
+			editResourceStage.setTitle("Edit resource");
+
+			editResourceStage.show();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
 	}
 	
 	/**

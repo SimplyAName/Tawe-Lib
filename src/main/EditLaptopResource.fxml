@@ -6,19 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ResourceEditController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-       <ImageView fx:id="uploadImageView" fitHeight="200.0" fitWidth="350.0" layoutX="75.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="14.0">
+       <ImageView fx:id="uploadImageView" fitHeight="200.0" fitWidth="350.0" layoutX="75.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="14.0" onMouseClicked="#uploadImageAction">
          <image>
-             <Image url="@resourceImages/defaultImage.png"/>
+             <Image url="@resourceImages/defaultImage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="LaptopID" layoutX="10.0" layoutY="256.0" promptText="Laptop ID" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-       <TextField fx:id="LaptopTitle" layoutX="10.0" layoutY="286.0" promptText="Laptop title" AnchorPane.bottomAnchor="189.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-       <TextField fx:id="LaptopYear" layoutX="10.0" layoutY="320.0" promptText="Laptop year" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-       <TextField fx:id="LaptopManufacturer" layoutX="10.0" layoutY="356.0" prefWidth="149.0" promptText="Laptop manufacturer" AnchorPane.bottomAnchor="119.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-       <TextField fx:id="LaptopModel" layoutX="10.0" layoutY="391.0" prefWidth="149.0" promptText="Laptop model" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-       <TextField fx:id="LaptopOS" layoutX="10.0" layoutY="426.0" prefWidth="149.0" promptText="Laptop OS" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-       <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editLaptopAction" text="Add New Laptop" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
+      <TextField fx:id="resourceCopies" layoutX="10.0" layoutY="383.0" promptText="Amount of copies" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="LaptopTitle" layoutX="10.0" layoutY="208.0" promptText="Laptop title" AnchorPane.bottomAnchor="217.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="LaptopYear" layoutX="10.0" layoutY="242.0" promptText="Laptop year" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="LaptopManufacturer" layoutX="10.0" layoutY="278.0" prefWidth="149.0" promptText="Laptop manufacturer" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="LaptopModel" layoutX="10.0" layoutY="313.0" prefWidth="149.0" promptText="Laptop model" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <TextField fx:id="LaptopOS" layoutX="10.0" layoutY="348.0" prefWidth="149.0" promptText="Laptop OS" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+       <Button layoutX="63.0" layoutY="244.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editLaptopAction" text="Edit Laptop" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" />
    </children>
 </AnchorPane>

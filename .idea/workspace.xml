@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Updated library search">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_13.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Fixed some stuff on CustomDrawing">
+      <change afterPath="$PROJECT_DIR$/src/main/users/johndoe123-2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lib-Tawe/main/AccountEdit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lib-Tawe/main/AccountEdit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lib-Tawe/main/LibrarySearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lib-Tawe/main/LibrarySearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lib-Tawe/main/OverdueCopies.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lib-Tawe/main/OverdueCopies.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lib-Tawe/main/AccountEditController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lib-Tawe/main/AccountEditController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lib-Tawe/main/CustomDrawing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lib-Tawe/main/CustomDrawing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AccountEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AccountEditController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/CustomDrawing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CustomDrawing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EditBookResource.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EditBookResource.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EditDVDResource.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EditDVDResource.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EditLaptopResource.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EditLaptopResource.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/LibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LibraryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ResourceEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ResourceEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ResourceEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ResourceEditController.java" afterDir="false" />
     </list>
     <list id="36fac92e-d020-41ea-84f5-3ae7ea1c974d" name="Revert &quot;Just before CustomDrawing updates&quot;" comment="Revert &quot;Just before CustomDrawing updates&quot;&#10;&#10;This reverts commit ada54edc" />
     <ignored path="JavaFxApplication.iws" />
@@ -35,12 +41,15 @@
     <SUITE FILE_PATH="coverage/Lib_Tawe$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1544280192904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Tawe_Lib$Login.ic" NAME="Login Coverage Results" MODIFIED="1544465684396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Lib_Tawe$Login.ic" NAME="Login Coverage Results" MODIFIED="1544437258284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>main.*</FILTER>
     </SUITE>
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="311" />
+    <option name="myElementSize" value="324" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -107,39 +116,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/CreateUserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/AccountEditController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="250" selection-start-line="250" selection-end-line="250" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/CustomDrawing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="250" column="60" selection-start-line="250" selection-start-column="60" selection-end-line="250" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/LibrarySearch.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="850">
@@ -154,13 +130,81 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/LibraryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9809">
-              <caret line="614" column="8" selection-start-line="614" selection-start-column="8" selection-end-line="614" selection-end-column="8" />
+            <state relative-caret-position="161">
+              <caret line="679" column="48" selection-start-line="679" selection-start-column="48" selection-end-line="679" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/Library.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="179" selection-start-line="179" selection-end-line="179" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/ResourceEdit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/AddDVDResourceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="45" column="92" lean-forward="true" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/ResourceEditController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="169" column="23" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1128#1129#0" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/EditLaptopResource.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="171" selection-start-line="8" selection-start-column="171" selection-end-line="8" selection-end-column="171" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/EditDVDResource.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="128" selection-start-line="9" selection-start-column="128" selection-end-line="9" selection-end-column="128" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/EditBookResource.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="253" lean-forward="true" selection-start-line="10" selection-start-column="253" selection-end-line="10" selection-end-column="253" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -186,8 +230,9 @@
       <find>fillCopiesList</find>
       <find>selected</find>
       <find>initiali</find>
-      <find>search</find>
       <find>fillResourceList</find>
+      <find>search</find>
+      <find>handleSearchAction</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -216,10 +261,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/src/FineSystem.java" />
-        <option value="$PROJECT_DIR$/src/src/Login.java" />
-        <option value="$PROJECT_DIR$/src/src/Login.fxml" />
-        <option value="$PROJECT_DIR$/src/src/DefaultWindow.fxml" />
         <option value="$PROJECT_DIR$/src/src/LoginController.java" />
         <option value="$PROJECT_DIR$/src/src/DefaultWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/Login.fxml" />
@@ -228,7 +269,6 @@
         <option value="$PROJECT_DIR$/src/src/ResourceManagement.java" />
         <option value="$PROJECT_DIR$/src/main/IssueResource.java" />
         <option value="$PROJECT_DIR$/src/main/FineManagement.java" />
-        <option value="$PROJECT_DIR$/src/main/ResourceEdit.java" />
         <option value="$PROJECT_DIR$/src/main/LoanResource.fxml" />
         <option value="$PROJECT_DIR$/src/main/LoanResourseController.java" />
         <option value="$PROJECT_DIR$/src/main/Book.java" />
@@ -250,7 +290,6 @@
         <option value="$PROJECT_DIR$/src/main/LibrarianInterface.fxml" />
         <option value="$PROJECT_DIR$/src/main/PayFine.fxml" />
         <option value="$PROJECT_DIR$/src/main/PayFineController.java" />
-        <option value="$PROJECT_DIR$/src/main/AddResourceBase.java" />
         <option value="$PROJECT_DIR$/src/main/AddBookResourceController.java" />
         <option value="$PROJECT_DIR$/src/main/AddDVDResourceController.java" />
         <option value="$PROJECT_DIR$/src/main/AddLaptopResourceController.java" />
@@ -260,13 +299,19 @@
         <option value="$PROJECT_DIR$/src/main/CopyHistoryController.java" />
         <option value="$PROJECT_DIR$/src/main/UserInterface.fxml" />
         <option value="$PROJECT_DIR$/src/main/AccountEdit.fxml" />
-        <option value="$PROJECT_DIR$/src/main/AccountEditController.java" />
         <option value="$PROJECT_DIR$/src/main/OverdueCopy.java" />
         <option value="$PROJECT_DIR$/src/main/OverdueCopies.fxml" />
         <option value="$PROJECT_DIR$/src/main/CreateUserController.java" />
-        <option value="$PROJECT_DIR$/src/main/LibraryController.java" />
         <option value="$PROJECT_DIR$/src/main/LibrarySearch.java" />
+        <option value="$PROJECT_DIR$/src/main/AccountEditController.java" />
         <option value="$PROJECT_DIR$/src/main/CustomDrawing.java" />
+        <option value="$PROJECT_DIR$/src/main/AddResourceBase.java" />
+        <option value="$PROJECT_DIR$/src/main/EditLaptopResource.fxml" />
+        <option value="$PROJECT_DIR$/src/main/EditDVDResource.fxml" />
+        <option value="$PROJECT_DIR$/src/main/LibraryController.java" />
+        <option value="$PROJECT_DIR$/src/main/EditBookResource.fxml" />
+        <option value="$PROJECT_DIR$/src/main/ResourceEdit.java" />
+        <option value="$PROJECT_DIR$/src/main/ResourceEditController.java" />
       </list>
     </option>
   </component>
@@ -278,10 +323,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="474" />
-    <option name="y" value="-15" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -310,13 +355,6 @@
             </path>
             <path>
               <item name="Tawe-Lib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tawe-Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="users" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tawe-Lib" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -337,7 +375,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544464128557" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544470543547" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="E:/My Downloads/mysql-connector-java-8.0.13/mysql-connector-java-8.0.13.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -499,7 +537,7 @@
       <workItem from="1544391432696" duration="35992000" />
       <workItem from="1544441199925" duration="733000" />
       <workItem from="1544454950556" duration="7368000" />
-      <workItem from="1544464011480" duration="108000" />
+      <workItem from="1544464011480" duration="6524000" />
     </task>
     <task id="LOCAL-00001" summary="Added User and Librarian Java objects. Added Default window that should be used as the base of most windows">
       <created>1543591892803</created>
@@ -690,11 +728,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544462175793</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Fixed some stuff on CustomDrawing">
+      <created>1544464212354</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1544464212354</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135625000" />
+    <option name="totallyTimeSpent" value="142041000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -706,7 +751,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1705757" />
@@ -809,7 +854,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="Added User and Librarian Java objects. Added Default window that should be used as the base of most windows" />
     <MESSAGE value="Added new add resource fxml files and controller" />
     <MESSAGE value="Fixed loading of add resource display" />
     <MESSAGE value="Deleting some old files" />
@@ -834,20 +878,9 @@
     <MESSAGE value="Fixing stuff 2.0 + rebase of github" />
     <MESSAGE value="Updated Librarian interface, added copy history, added pay fines" />
     <MESSAGE value="Updated library search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated library search" />
+    <MESSAGE value="Fixed some stuff on CustomDrawing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some stuff on CustomDrawing" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/AddDVDResourceController.java</url>
-          <line>82</line>
-          <properties />
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -868,44 +901,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/users/Test-2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/EditBookResource.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3" />
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/IssueResource.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/AddResourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="66" column="23" lean-forward="true" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ResourceEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="117" selection-start-line="117" selection-end-line="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/LoanResourseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -1071,14 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibrarianInterface.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/PayFine.fxml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1100,16 +1087,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/AddResource.fxml">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AddResourceBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/CopyHistory.fxml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1139,20 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AddBookResourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AddDVDResourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/LibrarianInterfaceController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -1162,14 +1125,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Library.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/CopyHistory.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1235,16 +1190,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/CreateUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/LibrarySearch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -1255,29 +1200,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/LibraryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/CreateUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9809">
-          <caret line="614" column="8" selection-start-line="614" selection-start-column="8" selection-end-line="614" selection-end-column="8" />
+        <state relative-caret-position="400">
+          <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AccountEditController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/CustomDrawing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="250" selection-start-line="250" selection-end-line="250" />
+        <state relative-caret-position="360">
+          <caret line="260" column="17" selection-start-line="260" selection-start-column="17" selection-end-line="260" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/CustomDrawing.java">
+    <entry file="file://$PROJECT_DIR$/src/main/LibrarianInterface.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="72" selection-start-line="51" selection-start-column="72" selection-end-line="51" selection-end-column="72" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AccountEditController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="250" column="60" selection-start-line="250" selection-start-column="60" selection-end-line="250" selection-end-column="60" />
+        <state relative-caret-position="300">
+          <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AddResourceBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Login.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Library.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="179" selection-start-line="179" selection-end-line="179" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/LibraryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="679" column="48" selection-start-line="679" selection-start-column="48" selection-end-line="679" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/EditBookResource.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="253" lean-forward="true" selection-start-line="10" selection-start-column="253" selection-end-line="10" selection-end-column="253" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/EditDVDResource.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="128" selection-start-line="9" selection-start-column="128" selection-end-line="9" selection-end-column="128" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/EditLaptopResource.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="171" selection-start-line="8" selection-start-column="171" selection-end-line="8" selection-end-column="171" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AddBookResourceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ResourceEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AddDVDResourceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="45" column="92" lean-forward="true" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ResourceEditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="169" column="23" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
+          <folding>
+            <element signature="e#1128#1129#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
           </folding>
         </state>
       </provider>
