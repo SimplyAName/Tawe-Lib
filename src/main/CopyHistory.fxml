@@ -2,33 +2,30 @@
 
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.CopyHistoryController">
+<AnchorPane prefHeight="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TableView fx:id="copyHistoryTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0"
-                   AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <TableView fx:id="copyHistoryTable" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <columns>
-                <TableColumn text="Resource Name">
+                <TableColumn prefWidth="100" text="Resource Name">
                     <cellValueFactory>
                         <PropertyValueFactory property="copyTitle"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Day borrowed">
+                <TableColumn prefWidth="100" text="Day borrowed">
                     <cellValueFactory>
                         <PropertyValueFactory property="copyBorrowed"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Day returned">
+                <TableColumn prefWidth="100" text="Day returned">
                     <cellValueFactory>
                         <PropertyValueFactory property="copyReturned"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Borrowed by">
+                <TableColumn prefWidth="100" text="Borrowed by">
                     <cellValueFactory>
                         <PropertyValueFactory property="borrowedBy"/>
                     </cellValueFactory>

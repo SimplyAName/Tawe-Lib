@@ -44,12 +44,16 @@ public class AddLaptopResourceController extends AddResourceBase {
 
         if (!checkResource(this.resourceTitle.getText(), resourceType)) {
 
-            String imageLocation = "/main/resourceImages/" + resourceTitle.getText() + "_" + resourceId + ".png";
+            String imageName = resourceTitle.getText() + "_" + resourceId + ".png";
 
-            if (uploadImage(uploadedImage, imageLocation)) {
+            String imageLocation = "src/main/resourceImages/" + imageName;
+
+            if (uploadImage(imageLocation)) {
+
+                imageLocation = "main/resourceImages/" + imageName;
 
                 try {
-                    Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + "testImageLocation" + "');");
+                    Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
                     Database.edit("INSERT INTO laptop_tbl VALUES (" + resourceId + ",'" + laptopManufacturer.getText() + "','" + laptopModal.getText() + "','" + laptopOS.getText() + "');");
 
                     String alertTitle = resourceTitle.getText() + " added successfully!";

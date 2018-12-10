@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView;
 
 import java.util.Random;
 /**
- * adds a book to the database
- * @author Micahel
+ * Adds a book to the database
+ * @author Michael
  *
  */
 public class AddBookResourceController extends AddResourceBase {
@@ -36,14 +36,20 @@ public class AddBookResourceController extends AddResourceBase {
 
         if (!checkResource(this.resourceTitle.getText(), resourceType)) {
 
-            String imageLocation = "/main/resourceImages/" + resourceTitle.getText() + "_" + resourceId + ".png";
+            String imageName = resourceTitle.getText() + "_" + resourceId + ".png";
 
-            if (uploadImage(uploadedImage, imageLocation)) {
+            String imageLocation = "src/main/resourceImages/" + imageName;
+
+            if (uploadImage(imageLocation)) {
+
+                imageLocation = "main/resourceImages/" + imageName;
 
                 try {
 
-                    Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
-                    Database.edit("INSERT INTO book_tbl VALUES (" + resourceId + ",'" + bookAuthor.getText() + "','" + bookPublisher.getText() + "','" + bookGenre.getText() + "'," + Integer.parseInt(bookISBN.getText()) + ",'" + bookLanguage.getText() + "');");
+                    Database.edit("INSERT INTO resource_tbl VALUES" +
+                            "(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
+                    Database.edit("INSERT INTO book_tbl VALUES" +
+                            "(" + resourceId + ",'" + bookAuthor.getText() + "','" + bookPublisher.getText() + "','" + bookGenre.getText() + "'," + Integer.parseInt(bookISBN.getText()) + ",'" + bookLanguage.getText() + "');");
 
                     String alertTitle = resourceTitle.getText() + " added successfully!";
                     String alertHeader = resourceTitle.getText() + " was added successfully"

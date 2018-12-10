@@ -23,11 +23,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import com.sun.xml.internal.fastinfoset.util.PrefixArray;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;	//for list item selection action
 import javafx.collections.FXCollections;	//unused####
 import javafx.collections.ObservableList;	//unused
 
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;		//for listview mouse event
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -153,7 +155,6 @@ public class LibraryController {
 		btnEditResource.setOnAction(this::handleEditResourceAction);
 		btnDeleteResource.setOnAction(this::handleDeleteResourceAction);
 		btnRequestCopy.setOnAction(this::handleRequestCopyAction);
-		btnTransactionHistory.setOnAction(this::handleTransactionHistoryAction);
 		btnSearch.setOnAction(this::handleSearchAction);
 		
 	}
@@ -693,10 +694,25 @@ public class LibraryController {
 	
 	/**
 	 * This action handler brings up the transaction history of the selected copy.
-	 * @param e
 	 */
-	private void handleTransactionHistoryAction(ActionEvent e) {
-		//*#*********finish functionality.
+	@FXML
+	private void showCopyHistoryAction() {
+		try {
+			Stage copyHistoryStage = new Stage();
+
+			List<String> selected = tblCopies.getSelectionModel().getSelectedItem();
+
+			FXMLLoader copyHistoryLoader = new FXMLLoader(getClass().getResource("CopyHistory.fxml"));
+			copyHistoryLoader.setController(new CopyHistoryController(Integer.parseInt(selected.get(0))));
+			Parent copyHistoryPane = copyHistoryLoader.load();
+
+			copyHistoryStage.setScene(new Scene(copyHistoryPane));
+			copyHistoryStage.setTitle("Copy History");
+
+			copyHistoryStage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

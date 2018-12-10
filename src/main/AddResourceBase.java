@@ -40,10 +40,10 @@ public class AddResourceBase implements Initializable {
         return true;
     }
 
-    protected boolean uploadImage(BufferedImage resourceImage, String imageLocation) {
+    protected boolean uploadImage(String imageLocation) {
 
         try {
-            ImageIO.write(resourceImage, "png", new File(imageLocation));
+            ImageIO.write(uploadedImage, "png", new File(imageLocation));
             return true;
         } catch (IOException e) {
             System.out.println("Write error for uploading image: " + e.getMessage());
@@ -76,8 +76,6 @@ public class AddResourceBase implements Initializable {
 
     @FXML
     private void uploadImageAction() {
-
-        String path = null;
 
         Stage addResourceStage = new Stage();
 

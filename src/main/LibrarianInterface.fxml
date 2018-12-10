@@ -51,6 +51,7 @@
                    <Button mnemonicParsing="false" onAction="#addUserAction" text="Add User"/>
                    <Button mnemonicParsing="false" onAction="#showLibraryAction" text="Library"/>
                    <Button mnemonicParsing="false" text="Users"/>
+                   <Button mnemonicParsing="false" onAction="#payFineAction" text="Pay fine"/>
                </children>
              </HBox>
          </center>

@@ -27,7 +27,7 @@ public class CopyHistoryController implements Initializable {
         try {
             ResultSet copyHistory = Database.query("SELECT resource_tbl.title, resource_tbl.type, historic_tbl.datefrom, historic_tbl.datetil, historic_tbl.username " +
                     "FROM historic_tbl, resource_tbl, copy_tbl " +
-                    "WHERE historic_tbl.copyid = copy_tbl.copyid AND copy_tbl.resourceid = resource_tbl.resourceid AND historic_tbl.copyid = '" + copyid + "' ORDER BY historic_tbl.datetil DESC");
+                    "WHERE historic_tbl.copyid = copy_tbl.copyid AND copy_tbl.resourceid = resource_tbl.resourceid AND historic_tbl.copyid = " + copyid + " ORDER BY historic_tbl.datetil DESC");
 
             while (copyHistory.next()) {
                 copyHistories.add(new CopyHistory(copyHistory.getString("resource_tbl.title"), copyHistory.getString("historic_tbl.datefrom"),
