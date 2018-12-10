@@ -18,6 +18,11 @@ public class AddResourceController {
      * Changes the resource type when the choice box is changed and sets the pane the the correct one that suits the resource selected.
      */
 
+    /**
+     * Selected between the different resource and gets the appropriate
+     * fxml file
+     */
+    
     @FXML
     protected void resourceSelectedAction() {
 
