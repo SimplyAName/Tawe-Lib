@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
+
 public class ResourceManagement {
 
     /**
@@ -167,13 +168,10 @@ public class ResourceManagement {
 
                         JOptionPane.showMessageDialog(null, "Resource is overdue, fine will be issued");
 
-                        if (overdueType.getString("type").equals("book")) {
-                            generateBookFine(username);
-                        } else if (overdueType.getString("type").equals("DVD")) {
-                            generateDVDFine(username);
-                        } else {
-                            generateLaptopFine(username);
-                        }
+                        FineManagement finemanager = new FineManagement();
+
+                        finemanager.generateFine(username, copyid, Math.abs(period.getDays()));
+
 
                     }
                 }
