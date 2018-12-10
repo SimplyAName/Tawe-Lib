@@ -7,9 +7,6 @@ import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
-import main.Database;
-
-//import main.Database;
 
 public class ResourceManagement {
 
@@ -17,11 +14,6 @@ public class ResourceManagement {
      * .
      * @author James Kim
      * @author Karl Odukwe
-     */
-
-
-    /*
-     * NOT COMPLETE YET
      */
 
 
@@ -141,11 +133,12 @@ public class ResourceManagement {
         try {
             ResultSet identicalResource = Database.query("SELECT * FROM out_tbl WHERE copyid = " + copyid + " ;");
             if (identicalResource.next()) {
+                Database.edit("INSERT INTO historic_tbl VALUES (NULL, " + copyid + ", datefrom, NOW(), '" + username + "');");
 
                 ResultSet overdueType = Database.query("SELECT resource_tbl.resourceid, resource_tbl.type FROM copy_tbl, resource_tbl " +
                         "WHERE copy_tbl.resourceid = resource_tbl.resourceid AND copy_tbl.copyid = " + copyid + " ;");
 
-                if(identicalResource.getString("duedate") != null){
+                if(identicalResource.getString("duedate") != null) {
 
 
                     LocalDate now = LocalDate.now();
@@ -155,7 +148,7 @@ public class ResourceManagement {
                     overdueType.next();
 
                     Period period = Period.between(now, localDate);
-                    if (period.getDays() > 0) {
+                    if (period.getDays() < 0) {
 
                         JOptionPane.showMessageDialog(null, "Resource is overdue, fine will be issued");
 
@@ -184,8 +177,6 @@ public class ResourceManagement {
                         "AND copyid = " + copyid + " ;");
 
                 Database.edit("DELETE FROM out_tbl WHERE username = '" + username + "' AND copyid = " + copyid + " ;");
-
-                Database.edit("INSERT INTO historic_tbl VALUES (NULL, " + copyid + ", datefrom, NOW(), '" + username + "');");
 
                 JOptionPane.showMessageDialog(null, "Resource successfully returned");
 
@@ -246,7 +237,7 @@ public class ResourceManagement {
 
             Database.edit("DELETE FROM reservation_tbl WHERE username = '" + username + "' AND copyid = " + copyid + " ;");
 
-            Database.edit("INSERT INTO out_tbl VALUES(outid, " + copyid + ", NOW(), NULL, '" + username + "');");
+            Database.edit("INSERT INTO out_tbl VALUES(outid, " + copyid + ", NOW(), NULL, '" + username + "', 0);");
 
 
             if (pickupResource.next()) {
