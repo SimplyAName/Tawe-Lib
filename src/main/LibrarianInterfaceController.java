@@ -33,6 +33,7 @@ import java.util.ResourceBundle;
  * @version 1.1.2
  *
  */
+
 public class LibrarianInterfaceController implements Initializable {
 
 	@FXML
@@ -46,11 +47,19 @@ public class LibrarianInterfaceController implements Initializable {
 
 	private Librarian librarian;
 
+	/**
+	 * 
+	 * @param librarian Uses librarian
+	 * @param mainPane Main pain for librian interface
+	 */
     public LibrarianInterfaceController(Librarian librarian, BorderPane mainPane) {
 		this.librarian = librarian;
         this.mainPane = mainPane;
 	}
 
+    /*
+     * Creates the window for checking overdue copies
+     */
     @FXML
     private void overdueCopiesAction() {
         try {
@@ -64,6 +73,9 @@ public class LibrarianInterfaceController implements Initializable {
         }
     }
 
+    /*
+     * Creates the window for adding a resource
+     */
 	@FXML
 	private void addResourceAction() {
 		try {
@@ -77,6 +89,9 @@ public class LibrarianInterfaceController implements Initializable {
 		}
 	}
 
+	/*
+	 * Creates the window for adding a user
+	 */
     @FXML
     private void addUserAction() {
         try {
@@ -90,6 +105,9 @@ public class LibrarianInterfaceController implements Initializable {
         }
     }
 
+    /*
+     * Creates window to show the library
+     */
     @FXML
     private void showLibraryAction() {
         try {
@@ -111,6 +129,9 @@ public class LibrarianInterfaceController implements Initializable {
         }
     }
 
+    /*
+     * Creates window where Librarian can pay off fines
+     */
     @FXML
     private void payFineAction() {
         try {
