@@ -23,7 +23,8 @@ public class AddResourceBase implements Initializable {
 
     protected BufferedImage uploadedImage;
 
-    /**
+    /** 
+     * Checked the available resource in the database
      * @param resourceName The name of the resource to be checked
      * @param resourceType The type of resource to be checked
      * @return Returns true if a duplicate resource is found, false if not.
@@ -31,7 +32,9 @@ public class AddResourceBase implements Initializable {
     protected boolean checkResource(String resourceName, String resourceType) {
 
         try {
-            ResultSet checkedResource = Database.query("SELECT type, title FROM resource_tbl WHERE type = '" + resourceType + "' AND title = '" + resourceName + "';");
+            ResultSet checkedResource = Database.query("SELECT type, title FROM"
+            		+ " resource_tbl WHERE type = '" + resourceType 
+            		+ "' AND title = '" + resourceName + "';");
             return checkedResource.next();
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -40,6 +43,11 @@ public class AddResourceBase implements Initializable {
         return true;
     }
 
+    /**
+     * Uploads an image
+     * @param imageLocation The area where image is on the disk
+     * @return True if image is uploaded, false otherwise
+     */
     protected boolean uploadImage(String imageLocation) {
 
         try {
@@ -52,7 +60,14 @@ public class AddResourceBase implements Initializable {
 
     }
 
-    protected void resourceAddedSuccessfully(String alertTitle, String alertHeader, String alertMessage) {
+    /**
+     * Creates a message when a resource is added successfully
+     * @param alertTitle Returns the title for the message
+     * @param alertHeader Returns the header for the message
+     * @param alertMessage Returns a message that the resource has been added
+     */
+    protected void resourceAddedSuccessfully(String alertTitle, String alertHeader,
+    		String alertMessage) {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(alertTitle);
@@ -63,7 +78,14 @@ public class AddResourceBase implements Initializable {
 
     }
 
-    protected void resourceAddedError(String alertTitle, String alertHeader, String alertMessage) {
+    /**
+     * Created an error message when a resource is added unsuccessfully
+     * @param alertTitle Returns the title for the message
+     * @param alertHeader Returns the header for the message
+     * @param alertMessage Returns a message that the resource has been added
+     */
+    protected void resourceAddedError(String alertTitle, String alertHeader, 
+    		String alertMessage) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(alertTitle);
@@ -74,6 +96,9 @@ public class AddResourceBase implements Initializable {
 
     }
 
+    /**
+     * Method that gives the action to upload the image
+     */
     @FXML
     private void uploadImageAction() {
 
@@ -82,7 +107,8 @@ public class AddResourceBase implements Initializable {
         try {
             FileChooser uploadResourceImage = new FileChooser();
             uploadResourceImage.setTitle("Upload image");
-            uploadResourceImage.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpeg", "*.jpg"));
+            uploadResourceImage.getExtensionFilters().addAll(new FileChooser.ExtensionFilter
+            		("Image Files", "*.png", "*.jpeg", "*.jpg"));
             File selectedFile = uploadResourceImage.showOpenDialog(addResourceStage);
             if (selectedFile != null) {
                 uploadedImage = ImageIO.read(selectedFile);
@@ -93,6 +119,11 @@ public class AddResourceBase implements Initializable {
         }
     }
 
+    /**
+     * Method to upload and set image
+     * @param location The location on the disk where images are stored
+     * @param resources The image resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
