@@ -33,9 +33,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Window;
-import main.CustomDrawing;
-import main.Database;
-import main.User;
 
 /**
  * Controller for the account edit window

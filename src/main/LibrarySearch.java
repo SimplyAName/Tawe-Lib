@@ -49,8 +49,8 @@ public class LibrarySearch {
 		}
 		return list;
 	}
-			
-	private Book createBook(int id){		
+
+	public Book createBook(int id) {
 		ResultSet set;
 		try{
 			set = Database.query("SELECT * FROM book_tbl, resource_tbl WHERE book_tbl.resourceid = resource_tbl.resourceid AND book_tbl.resourceid = "+ id +";");
@@ -63,7 +63,8 @@ public class LibrarySearch {
 		}
 		return null;
 	}
-	private DVD createDVD(int id){	
+
+	public DVD createDVD(int id) {
 		ResultSet set2 = null;
 		try{
 			set2 = Database.query("SELECT * FROM dvd_tbl, resource_tbl WHERE dvd_tbl.resourceid = resource_tbl.resourceid AND dvd_tbl.resourceid = "+ id +";");
@@ -92,7 +93,8 @@ public class LibrarySearch {
 		}
 		return null;
 	}
-	private Laptop createLaptop(int id){		
+
+	public Laptop createLaptop(int id) {
 		ResultSet set;
 		try{
 			set = Database.query("SELECT * FROM laptop_tbl, resource_tbl WHERE laptop_tbl.resourceid = resource_tbl.resourceid AND laptop_tbl.resourceid = "+ id +";");		

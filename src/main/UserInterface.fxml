@@ -50,7 +50,8 @@
             <VBox alignment="CENTER_LEFT" prefHeight="375.0" prefWidth="600.0" spacing="10.0"
                   BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Library"/>
+                  <Button mnemonicParsing="false" onAction="#showLibraryAction" prefHeight="25.0" prefWidth="125.0"
+                          text="Library"/>
                   <Button mnemonicParsing="false" onAction="#showTransactionAction" prefWidth="125.0"
                           text="Transaction History"/>
                </children>

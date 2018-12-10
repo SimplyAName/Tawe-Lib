@@ -44,7 +44,7 @@ public class AddLaptopResourceController extends AddResourceBase {
 
         if (!checkResource(this.resourceTitle.getText(), resourceType)) {
 
-            String imageLocation = "resourceImages/" + resourceTitle.getText() + "_" + resourceId + ".png";
+            String imageLocation = "/main/resourceImages/" + resourceTitle.getText() + "_" + resourceId + ".png";
 
             if (uploadImage(uploadedImage, imageLocation)) {
 

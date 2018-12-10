@@ -237,7 +237,7 @@ public class CreateUserController {
                 }
             }
             if (isDefault != true) {
-                new CustomDrawing(selectedPicLocation, selectedPicLocation);
+                new CustomDrawing().launchInNewWindow(selectedPicLocation, selectedPicLocation);
             }
 
         } catch (Exception e) {

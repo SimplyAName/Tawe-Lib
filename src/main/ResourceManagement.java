@@ -91,7 +91,7 @@ public class ResourceManagement {
      * @return Displays a message to tell whether lending has either been successful or unsuccesful. If unsuccessful, it will say that the user
      * has outstanding fines
      */
-    public boolean lendCopy(String username, int copyid, int minLoanDuration) {
+    public boolean lendCopy(String username, int copyid, String minLoanDuration) {
         try {
             ResultSet rejectLending = Database.query("SELECT * FROM user_tbl WHERE username = '" + username + "' " +
                     "AND balance > 0;");

@@ -1,4 +1,4 @@
-package src;
+package main;
 	
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -227,6 +227,7 @@ public class CustomDrawing extends Application {
 				if(!fileBin.exists()){
 					fileBin.createNewFile();
 				}
+
 				File fileSrc = new File("src/"+saveImageLocation);				
 				if(!fileSrc.exists()){
 					fileSrc.createNewFile();

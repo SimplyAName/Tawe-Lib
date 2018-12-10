@@ -313,8 +313,6 @@ public class AccountEditController {
                 CustomDrawing customDrawing = new CustomDrawing();
 
                 customDrawing.start(customDrawingStage);
-
-                customDrawingStage.showAndWait();
             }
 
         } catch (Exception e) {

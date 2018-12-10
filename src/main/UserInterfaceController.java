@@ -47,6 +47,25 @@ public class UserInterfaceController implements Initializable {
 		this.user = user;
 	}
 
+	@FXML
+	private void showLibraryAction() {
+		try {
+			Stage libraryStage = new Stage();
+			FXMLLoader libraryLoader = new FXMLLoader(getClass().getResource("Library.fxml"));
+			LibraryController libraryController = new LibraryController();
+			libraryLoader.setController(libraryController);
+			Parent libraryPane = libraryLoader.load();
+			libraryStage.setScene(new Scene(libraryPane));
+			libraryStage.setTitle("Library");
+
+			libraryController.setup(user);
+
+			libraryStage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private void showBorrowedResources() {
 
 		ArrayList<UserDashResource> borrowedResources = new ArrayList<>();

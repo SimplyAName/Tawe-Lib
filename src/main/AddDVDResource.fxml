@@ -15,7 +15,7 @@
                   onMouseClicked="#uploadImageAction" pickOnBounds="true" preserveRatio="true"
                   AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="14.0">
            <image>
-               <Image url="@../../resourceImages/defaultImage.png"/>
+               <Image url="@resourceImages/defaultImage.png"/>
            </image>
        </ImageView>
 

@@ -10,7 +10,7 @@
    <children>
        <ImageView fx:id="uploadImageView" fitHeight="200.0" fitWidth="350.0" layoutX="75.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="14.0">
          <image>
-             <Image url="@../../resourceImages/defaultImage.png" />
+             <Image url="@resourceImages/defaultImage.png"/>
          </image>
       </ImageView>
       <TextField fx:id="LaptopID" layoutX="10.0" layoutY="256.0" promptText="Laptop ID" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />

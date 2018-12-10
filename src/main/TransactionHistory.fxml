@@ -17,7 +17,7 @@
                 </TableColumn>
                 <TableColumn prefWidth="100" text="Resource Type">
                     <cellValueFactory>
-                        <PropertyValueFactory property="type"/>
+                        <PropertyValueFactory property="resourceType"/>
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="100" text="Date borrowed">

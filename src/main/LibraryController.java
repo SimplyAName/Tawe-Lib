@@ -1,5 +1,4 @@
-
-
+package main;
 
 /* README
  * 
@@ -347,7 +346,7 @@ public class LibraryController {
 	            return null;
 
 	        } catch (Exception e) {
-	        	alertDatabaseException();
+			 //alertDatabaseException();
 	            e.printStackTrace();
 	            return null;
 	        }
@@ -424,7 +423,7 @@ public class LibraryController {
 		    tblResources.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);		//############ move to initialise
 
         } catch (Exception e) {
-        	alertDatabaseException();
+			//alertDatabaseException();
 	        e.printStackTrace();
         }
     }
@@ -450,7 +449,7 @@ public class LibraryController {
 		
 	    tblCopies.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);		//############ move to initialise
 		} catch (Exception e) {
-			alertDatabaseException();
+			//alertDatabaseException();
 	        e.printStackTrace();
         }
 	}
@@ -483,7 +482,7 @@ public class LibraryController {
 			
 		}catch(Exception e){
 			System.out.println("Get copies broke!!!");				//#######test delete
-			alertDatabaseException();
+			//alertDatabaseException();
 			e.printStackTrace();
 			//return null;
 		}
@@ -493,9 +492,9 @@ public class LibraryController {
 	/**
 	 * Creates and alert to inform there is a problem with the database connection/query.
 	 */
-	private void alertDatabaseException() {
+	/*private void alertDatabaseException() {
 		alertDatabaseException();
-	}
+	}*/
 	/* ==== FORM ACTIONS ==== */
 	
 	/**

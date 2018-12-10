@@ -99,7 +99,7 @@ public class AddResourceBase implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            File defaultImage = new File("resourceImages/defaultImage.png");
+            File defaultImage = new File("src/main/resourceImages/defaultImage.png");
             uploadedImage = ImageIO.read(defaultImage);
             uploadImageView.setImage(new Image(defaultImage.toURI().toString()));
         } catch (Exception e) {
