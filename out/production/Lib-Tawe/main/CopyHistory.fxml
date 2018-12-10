@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TableView fx:id="copyHistoryTable" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <columns>
+                <TableColumn prefWidth="100" text="Resource Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="copyTitle"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Day borrowed">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="copyBorrowed"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Day returned">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="copyReturned"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Borrowed by">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="borrowedBy"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

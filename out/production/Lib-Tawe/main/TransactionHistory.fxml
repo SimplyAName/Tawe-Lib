@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TableView fx:id="transactionsTable" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <columns>
+                <TableColumn prefWidth="100" text="Resource Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="resourceTitle"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Resource Type">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="resourceType"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Date borrowed">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="dateBorrowed"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Date returned">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="dateReturned"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="100" text="Days overdue">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="daysOverdue"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150" text="Amount fined/paid back">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="paymentAmount"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150" text="Date payed back">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="datePaidBack"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

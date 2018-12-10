@@ -55,40 +55,65 @@ public class CustomDrawing extends Application {
 	private double drawStartY;
 	private double drawWidth;
 	private double drawHeight;
-	
+
 	/**
 	 * updates the stage to be the custom drawing window
 	 */
-	
+
+	public void start(Stage primaryStage, String imageToLoad, String imageToSaveTo) {
+		try {
+			BorderPane root = new BorderPane();
+			root = setRootPane(root);
+			Scene scene = new Scene(root, WINDOW_HEIGHT, WINDOW_WIDTH);
+
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+			try {
+				Image image = new Image(imageToLoad);
+				this.canvas = loadImageIntoCanvas(image);
+				root.setCenter(this.canvas);
+				loadedImageLocation = imageToLoad;
+			} catch (Exception e) {
+				this.canvas = createNewCanvas();
+				root.setCenter(this.canvas);
+			}
+			saveImageLocation = imageToSaveTo;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
 			root = setRootPane(root);
 			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
-			
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public void launchInNewWindow() {
-		try { 
+		try {
 			this.stage = new Stage();
 			BorderPane root = new BorderPane();
 			root = setRootPane(root);
 			Scene scene = new Scene(root,WINDOW_HEIGHT,WINDOW_WIDTH);
-			
+
 			this.stage.setScene(scene);
 			this.stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * For launching the application in a new window
 	 * @param imageToLoad image location to load from, can be null 
@@ -242,8 +267,8 @@ public class CustomDrawing extends Application {
 				loadSavedPopup();
 				
 			}catch (Exception e){
-				System.out.println("could not save file");
-				System.out.println(e);
+				System.out.println("Error: Could not save file");
+				e.printStackTrace();
 			}
 		});
 		//Create close button
@@ -253,9 +278,7 @@ public class CustomDrawing extends Application {
 		closeCanvasButton.setPrefSize(PREF_X_SIZE, PREF_Y_SIZE);
 		//works by replacing the current canvas with an empty one
 		closeCanvasButton.setOnAction(a -> {
-			if(stage != null){
-				this.stage.close();				
-			}
+			stage.close();
 		});
 		sideButtonPane.setPadding(AROUND_BUTTON_PADDING);
 		sideButtonPane.setAlignment(Pos.CENTER);
@@ -368,7 +391,7 @@ public class CustomDrawing extends Application {
 		root.setTop(vbox);
 		return root;
 	}
-	
+
 
 	public static void main(String[] args) {
 		launch(args);

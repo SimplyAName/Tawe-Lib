@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * Controller for the account edit window.
@@ -138,7 +139,6 @@ public class AccountEditController {
         } catch (IllegalArgumentException e) {
             infoLabel.setText("ERROR - Please Check your changes are in the correct format");
             infoLabel.setTextFill(Color.RED);
-            e.printStackTrace();
         } catch (Exception e) {
 
             infoLabel.setText("ERROR - Could not connect to database");
@@ -191,53 +191,14 @@ public class AccountEditController {
     }
 
     /**
-     * Initializes the window.
-     */
-    /*@FXML
-    private void initialize() {
-    }*/
-
-    /**
      * Allows a user to edit the image, so long as it is not a preset image.
      */
     @FXML
-    private void handleeditButtonAction(ActionEvent a){
-        boolean isDefault = false;
-        try {
-            for (String elem : defaultImageLocations) {
-                if (elem.equals(selectedPicLocation)) {
-                    isDefault = true;
-                }
-            }
-            if (isDefault != true) {
-                new CustomDrawing(selectedPicLocation, selectedPicLocation);
-
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Formats the edit Button
-     */
-    private void formatEditButton(){
-        if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
-            editButton.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
-        } else {
-            editButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
-        }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    private void initialize() {
 
         selectedPicLocation = default1Location;
         customImage1Location = "main/users/" + this.user.getUsername() + "-1.png";
         customImage2Location = "main/users/" + this.user.getUsername() + "-2.png";
-
         try {
             usernameField.setText(this.user.getUsername());
             firstnamesField.setText(this.user.getFirstName());
@@ -289,9 +250,6 @@ public class AccountEditController {
         defaultImages[5] = default6Button;
 
         try {
-
-            Image testImage = new Image(customImage1Location);
-
             custom1Button.setBackground(new Background(new BackgroundImage(new Image(customImage1Location), null, null, null, new BackgroundSize(75, 75, false, false, false, false))));
         } catch (Exception e) {
             custom1Button.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
@@ -309,6 +267,28 @@ public class AccountEditController {
             }
         }
         formatEditButton();
+    }
+
+    @FXML
+    private void cancelChangesAction() {
+        Stage createWindowUser = (Stage) cancelButton.getScene().getWindow();
+        createWindowUser.close();
+    }
+
+    /**
+     * Allows a user to edit the image, so long as it is not a preset image.
+     */
+    @FXML
+    private void handleeditButtonAction() {
+        boolean isDefault = false;
+        try {
+            for (String elem : defaultImageLocations) {
+                if (elem.equals(selectedPicLocation)) {
+                    isDefault = true;
+                }
+            }
+            if (!isDefault) {
+                Stage customDrawingStage = new Stage();
 
                 CustomDrawing customDrawing = new CustomDrawing();
 
