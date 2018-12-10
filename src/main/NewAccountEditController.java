@@ -1,4 +1,4 @@
-package src;
+package main;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +33,10 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Window;
+import main.CustomDrawing;
+import main.Database;
+import main.User;
+
 /**
  * Controller for the account edit window
  * @author Chris
@@ -163,7 +167,7 @@ public class NewAccountEditController {
 
     /**
      * Updates the selected image
-     * @param a
+//     * @param a
      */
     
     private void updateSelectedImage(ImageView selectedImage){    	
