@@ -14,7 +14,6 @@ package main;
 			controller.setup();
  * */
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -42,10 +42,13 @@ public class LibrarianInterfaceController implements Initializable {
 	@FXML
 	private Label lblBalance;
 
+    private BorderPane mainPane;
+
 	private Librarian librarian;
 
-	public LibrarianInterfaceController(Librarian librarian) {
+    public LibrarianInterfaceController(Librarian librarian, BorderPane mainPane) {
 		this.librarian = librarian;
+        this.mainPane = mainPane;
 	}
 
     @FXML
@@ -73,6 +76,31 @@ public class LibrarianInterfaceController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+    @FXML
+    private void addUserAction() {
+        try {
+            Stage addResourceStage = new Stage();
+            addResourceStage.setTitle("Create New User");
+            Parent addResourceScene = FXMLLoader.load(getClass().getResource("CreateUser.fxml"));
+            addResourceStage.setScene(new Scene(addResourceScene));
+            addResourceStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showLibraryAction() {
+        try {
+            FXMLLoader libraryLoader = new FXMLLoader(getClass().getResource("Library.fxml"));
+            libraryLoader.setController(new LibraryController());
+            Parent libraryPane = libraryLoader.load();
+            mainPane.setCenter(libraryPane);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
