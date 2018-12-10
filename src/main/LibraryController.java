@@ -749,20 +749,6 @@ public class LibraryController {
 	private void handleSearchAction(ActionEvent e) {
 		//*#*********finish functionality.
 	}
-	
-	/*			//############ DELETE unused
-	//* POPUP WINDOWS 
-	
-	private void handleLendAction(ActionEvent e) {
-		//*#*********finish functionality.
-		
-	}
-	
-	private void handleReturnAction(ActionEvent e) {
-		//*#*********finish functionality.
-	}
-	
-	*/
 }
 
 
