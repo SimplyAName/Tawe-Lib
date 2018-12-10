@@ -21,9 +21,7 @@ public class FineManagement extends FineSystem {
 			username.clear();
 			fineToPay.clear();
 
-		} catch
-
-		(Exception e) {
+		} catch (Exception e) {
 			String failedFine = "An error occured";
 		}
 	}
@@ -33,11 +31,9 @@ public class FineManagement extends FineSystem {
 			ResultSet balance = Database.query(
 					"SELECT FROM user_tb1 WHERE username = '" + username + "' AND amount = '" + fineBalance + "' ';");
 			return balance.next();
-		} catch 
-		(Exception e) {
+		} catch (Exception e){
 			e.printStackTrace();
-			return false;
-		}
+		} return false;
 
 	}
 }
