@@ -5,8 +5,6 @@ import javafx.scene.image.Image;
 
 /**
  * Creates a user.
- * Holds all information that is contained about a user including username, first name, last name, address, postcode, phone number, profile image and their fine balance.
- *
  * @author Michael Loney
  */
 public class User {
@@ -21,7 +19,7 @@ public class User {
     private int fineBalance;
 
     /**
-     * Empty constructor for creating an empty user.
+     * For creating an empty user.
      */
     public User() {
     }
