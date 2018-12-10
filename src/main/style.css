@@ -32,3 +32,7 @@ Button {
 #paneMain {
 	-fx-background-color: #292F36;
 }
+
+CheckBox {
+	-fx-text-fill: white;
+}
