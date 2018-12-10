@@ -1,7 +1,12 @@
-package src;
+package main;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+
+import main.DVD;
+import main.Database;
+import main.Laptop;
+import main.Resource;
 
 public class LibrarySearch {
 	
@@ -9,11 +14,11 @@ public class LibrarySearch {
 		
 	}
 	
-	public ArrayList<Resource> search(String type, String orderBy){
+	public ArrayList<Resource> search(String searchString, String type, String orderBy){
 		
 		ArrayList<Resource> list = new ArrayList<Resource>();
 		ResultSet rs;
-		String tmpType = "WHERE type = '";
+		String tmpType = "AND type = '";
 		String tmpOrder = "ORDER BY ";
 		if (type != null){
 			tmpType += type += "' ";
@@ -27,8 +32,8 @@ public class LibrarySearch {
 		}
 		
 		try{
-			rs = Database.query("SELECT * FROM resource_tbl "+ tmpType +tmpOrder+";");
-			System.out.println("SELECT * FROM resource_tbl "+ tmpType +tmpOrder+";");
+			rs = Database.query("SELECT * FROM resource_tbl WHERE title LIKE '%"+searchString+"%' "+ tmpType +tmpOrder+";");
+			System.out.println("SELECT * FROM resource_tbl WHERE title LIKE '%"+searchString+"%' "+ tmpType +tmpOrder+";");
 			while(rs.next()){
 				int id = rs.getInt("resourceid");
 				String specificType = rs.getString("type");		
@@ -87,7 +92,7 @@ public class LibrarySearch {
 				return dvd;
 			}
 		}catch(Exception e){
-
+            e.printStackTrace();
 		}
 		return null;
 	}
