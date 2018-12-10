@@ -9,8 +9,8 @@ public class LibrarySearch {
 	public LibrarySearch(){
 		
 	}
-	
-	public ArrayList<Resource> search(String searchString, String type, String orderBy){
+
+	public ArrayList<Resource> search(String searchString, String[] type, String orderBy) {
 		
 		ArrayList<Resource> list = new ArrayList<Resource>();
 		ResultSet rs;
