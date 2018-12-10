@@ -13,7 +13,19 @@ import java.util.Random;
 public class AddBookResourceController extends AddResourceBase {
 
     @FXML
-    private TextField resourceTitle, resourceYear, bookAuthor, bookPublisher, bookGenre, bookISBN, bookLanguage;
+    private TextField resourceTitle, 
+    @FXML
+    private TextField resourceYear, 
+    @FXML
+    private TextField bookAuthor, 
+    @FXML
+    private TextField bookPublisher, 
+    @FXML
+    private TextField bookGenre, 
+    @FXML
+    private TextFieldbookISBN, 
+    @FXML
+    private TextField bookLanguage;
 
     @FXML
     private ImageView bookImageView;
@@ -25,6 +37,7 @@ public class AddBookResourceController extends AddResourceBase {
     *    then to the book table with the same id linking them.
     *    If successful it clears the text boxes and shows a alert.
     */
+    
     @FXML
     private void addBookAction() {
 
