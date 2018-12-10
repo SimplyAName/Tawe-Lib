@@ -82,14 +82,21 @@ public class AddDVDResourceController extends AddResourceBase {
 
                     try {
 
-                        Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId + ",'" + resourceType + "','" + resourceTitle.getText() + "'," + Integer.parseInt(resourceYear.getText()) + ",'" + imageLocation + "');");
-                        Database.edit("INSERT INTO dvd_tbl VALUES (" + resourceId + ",'" + dvdDirector.getText() + "','" + Integer.parseInt(dvdRuntime.getText()) + "','" + dvdSubId + "','" + dvdLanguage.getText() + "');");
+                        Database.edit("INSERT INTO resource_tbl VALUES(" + resourceId 
+                        		+ ",'" + resourceType + "','" + resourceTitle.getText() 
+                        		+ "'," + Integer.parseInt(resourceYear.getText()) 
+                        		+ ",'" + imageLocation + "');");
+                        Database.edit("INSERT INTO dvd_tbl VALUES (" + resourceId 
+                        		+ ",'" + dvdDirector.getText() + "','" + 
+                        		Integer.parseInt(dvdRuntime.getText()) + "','" 
+                        		+ dvdSubId + "','" + dvdLanguage.getText() + "');");
 
                         String alertTitle = resourceTitle.getText() + " added successfully!";
                         String alertHeader = resourceTitle.getText() + " was added successfully"
                         		+ " to the system and is now avalible to everyone.";
                         String alertMessage = resourceTitle.getText() + " is now available in the system."
-                        		+ " You can edit this DVD and add more copies by going back to home and clicking edit resource.";
+                        		+ " You can edit this DVD and add more copies "
+                        		+ "by going back to home and clicking edit resource.";
                         resourceAddedSuccessfully(alertTitle, alertHeader, alertMessage);
 
                         resourceTitle.clear();
@@ -117,8 +124,10 @@ public class AddDVDResourceController extends AddResourceBase {
             String alertTitle = "Error adding resource";
             String alertHeader = "Could not add resource to the system";
             String alertMessage = "A DVD with this name already exists. "
-            		+ "Please consider increasing the ammount of copies instead or is this is a"
-            		+ " newer edition of the same item add year or version of that item to the end of it's name.";
+            		+ "Please consider increasing the ammount of copies "
+            		+ "instead or is this is a"
+            		+ " newer edition of the same item add year or version of "
+            		+ "that item to the end of it's name.";
 
             resourceAddedError(alertTitle, alertHeader, alertMessage);
         }
@@ -126,3 +135,4 @@ public class AddDVDResourceController extends AddResourceBase {
     }
 
 }
+
