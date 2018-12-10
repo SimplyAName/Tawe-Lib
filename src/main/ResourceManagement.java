@@ -26,14 +26,19 @@ public class ResourceManagement {
 	 * @return return true with calculated fine, false otherwise 
 	 */
 	
-	public boolean generateBookFine(int id, int bookFine) {
+	/**
+	 * Totals the fine of a book and removes it from the book table 
+	 * @param id The ID of the user	
+	 * @return return true with calculated fine, false otherwise 
+	 */
+	
+	public boolean generateBookFine(int id) {
 		try {
+			int BOOK_FINE = 200;
 			ResultSet createBookFine = Database.query("SELECT FROM out_tbl WHERE username = '" + id);
 			if (!createBookFine.next()) {
-				Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + bookFine  + "' + username, '"+ id +"');");
+				Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + BOOK_FINE  + "' + username, '"+ id +"');");
 			}
-			
-			
 			
 		} catch (Exception e) {
 
@@ -44,14 +49,14 @@ public class ResourceManagement {
 	/**
 	 * Totals the fine of a laptop and removes it from the laptop table
 	 * @param id The ID of the user
-	 * @param laptopFine The calculated fine for a laptop
 	 * @return return true with calculated fine, false otherwise
 	 */
 	
-	public boolean generateLaptopFine(int id, int laptopFine) {
+	public boolean generateLaptopFine(int id) {
 		try {
+			int LAPTOP_FINE = 1000;
 			ResultSet createLaptopFine = Database.query("SELECT FROM out_tbl WHERE username = '" + id);
-			if (!createLaptopFine.next()) {Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + laptopFine + "' + username, '"+ id +"');");
+			if (!createLaptopFine.next()) {Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + LAPTOP_FINE + "' + username, '"+ id +"');");
 				
 			}
 		} catch (Exception e) {
@@ -66,37 +71,22 @@ public class ResourceManagement {
 	
 	/**
 	 * 
-	 * @param id The ID of the user
-	 * @param dvdFine The calculated fine of a dvd
+	 * @param id The ID of the useR
 	 * @return returns true with calculated fine, false otherwise
 	 */
 	
-	public boolean generateDVDFine(int id, int dvdFine) {
+	public boolean generateDVDFine(int id) {
 		try {
+			int DVD_FINE = 200;
 			ResultSet createDVDFine = Database.query("");
 			if(!createDVDFine.next()) {
-				Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + dvdFine  + "' + username, '"+ id +"');");
+				Database.edit("INSERT INTO historic_tbl VALUES(amount, '" + DVD_FINE+ "' + username, '"+ id +"');");
 			}
 		} catch (Exception e) {
 			
 		}
 		return false;
 
-	}
-
-	// Checks if any given resource is requested
-	public boolean isResourceRequested(String username, int resourceID) {
-		try {
-			ResultSet requestedResource = Database.query("SELECT * FROM request_tbl WHERE username = '" + username + "' + ");
-		 if(!requestedResource.next()) {
-			
-			
-		}
-	  } catch (Exception e) {
-		  
-	  }
-		return false;
-		
 	}
 
 	// Allows user to borrow a resource. If there are any outstanding fines
