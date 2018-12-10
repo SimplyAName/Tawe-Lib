@@ -66,7 +66,7 @@ public class FineManagement extends FineSystem {
 				}
 			}
 			
-			System.out.println(fineAmount);
+			
 			try{
 				Database.edit("INSERT INTO fine_tbl VALUES ("+histid+", "+fineAmount+", NOW(), "+daysOverdue+", '"+username+"');");
 			}catch(Exception e){
@@ -77,7 +77,7 @@ public class FineManagement extends FineSystem {
 			}catch(Exception e){
 				throw new Exception("Could not complete update");
 			}
-				 
+			return true;	 
 			
 		}catch(Exception e){
 			e.printStackTrace();
