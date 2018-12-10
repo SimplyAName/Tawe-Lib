@@ -5,10 +5,10 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.OverdueCopiesController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.OverdueCopiesController">
     <children>
-        <TableView fx:id="overdueCopiesTable" prefHeight="380.0" prefWidth="526.0" AnchorPane.bottomAnchor="10.0"
+        <TableView fx:id="overdueCopiesTable" prefHeight="400.0" AnchorPane.bottomAnchor="10.0"
                    AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <columns>
                 <TableColumn prefWidth="70.0" text="Copy id">
@@ -43,7 +43,7 @@
 
                 <TableColumn prefWidth="100.0" text="Resource type">
                     <cellValueFactory>
-                        <PropertyValueFactory property="type"/>
+                        <PropertyValueFactory property="resourceType"/>
                     </cellValueFactory>
                 </TableColumn>
             </columns>

@@ -35,12 +35,12 @@ public class CreateUserController {
     private static String customImage1Location;
     private static String customImage2Location;
 
-    private static String default1Location = "users/default1.png";
-    private static String default2Location = "users/default2.png";
-    private static String default3Location = "users/default3.png";
-    private static String default4Location = "users/default4.png";
-    private static String default5Location = "users/default5.png";
-    private static String default6Location = "users/default6.png";
+    private static String default1Location = "main/users/default1.png";
+    private static String default2Location = "main/users/default2.png";
+    private static String default3Location = "main/users/default3.png";
+    private static String default4Location = "main/users/default4.png";
+    private static String default5Location = "main/users/default5.png";
+    private static String default6Location = "main/users/default6.png";
     private String[] defaultImageLocations = {default1Location, default2Location, default3Location, default4Location, default5Location, default6Location};
 
 

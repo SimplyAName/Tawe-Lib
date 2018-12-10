@@ -134,8 +134,10 @@ public class LibraryController {
 		} else {
             
 		}
-		
-		fillResourceList("", null, null);
+
+		String[] types = {"book", "dvd", "laptop"};
+
+		fillResourceList("", types, null);
 		fillCopiesList("0");
 		//This sets the event handler for selecting the list.
 		//When an item in the list is selected the detailed information panel updates with the data of the selected resource.
@@ -356,7 +358,7 @@ public class LibraryController {
 	/**
 	 * This method will fill the listView on the left with all resources in the database.
 	 */
-	private void fillResourceList(String searchString, String resourceType, String orderBy) {
+	private void fillResourceList(String searchString, String[] resourceType, String orderBy) {
         try {
             LibrarySearch libSearch = new LibrarySearch();
             ArrayList<Resource> resources = libSearch.search(searchString, resourceType, orderBy);

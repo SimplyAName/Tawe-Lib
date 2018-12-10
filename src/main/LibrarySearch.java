@@ -10,11 +10,11 @@ public class LibrarySearch {
 		
 	}
 
-    public ArrayList<Resource> search(String searchString, String type, String orderBy) {
+	public ArrayList<Resource> search(String searchString, String[] type, String orderBy) {
 		
 		ArrayList<Resource> list = new ArrayList<Resource>();
 		ResultSet rs;
-		String tmpType = "AND type = '";
+		/*String tmpType = "AND type = '";
 		String tmpOrder = "ORDER BY ";
 		if (type != null){
 			tmpType += type += "' ";
@@ -25,11 +25,23 @@ public class LibrarySearch {
 			tmpOrder += orderBy;
 		}else{
 			tmpOrder = "";
-		}
-		
+		}*/
+
 		try{
-			rs = Database.query("SELECT * FROM resource_tbl WHERE title LIKE '%"+searchString+"%' "+ tmpType +tmpOrder+";");
-			System.out.println("SELECT * FROM resource_tbl WHERE title LIKE '%"+searchString+"%' "+ tmpType +tmpOrder+";");
+			String inQuery = "";
+
+			for (String item : type) {
+				inQuery += "'" + item + "',";
+			}
+
+			if (!inQuery.equals("")) {
+				inQuery = inQuery.substring(0, inQuery.length() - 1);
+			}
+
+			//The new search query you wanted. Provide it with a String[] with the types and it will do the rest.
+			rs = Database.query("SELECT * FROM resource_tbl WHERE title LIKE '%" + searchString + "%' AND type IN (" + inQuery + ");");
+			//rs = Database.query("SELECT * FROM resource_tbl WHERE title LIKE '%" + searchString + "%' "+ tmpType +tmpOrder+";");
+			//System.out.println("SELECT * FROM resource_tbl WHERE title LIKE '%" + searchString + "%' "+ tmpType +tmpOrder+";");
 			while(rs.next()){
 				int id = rs.getInt("resourceid");
 				String specificType = rs.getString("type");		
@@ -45,6 +57,7 @@ public class LibrarySearch {
 				}				
 			}
 		}catch(Exception e){
+			e.printStackTrace();
 			return null;
 		}
 		return list;
