@@ -1,4 +1,4 @@
-package src;
+package main;
 
 import java.sql.ResultSet;
 import javafx.fxml.FXML;
