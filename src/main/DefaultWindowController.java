@@ -102,7 +102,7 @@ public class DefaultWindowController implements Initializable {
 
         try {
             FXMLLoader librarianInterfaceLoader = new FXMLLoader(getClass().getResource("LibrarianInterface.fxml"));
-            librarianInterfaceLoader.setController(new LibrarianInterfaceController(librarian));
+            librarianInterfaceLoader.setController(new LibrarianInterfaceController(librarian, mainPane));
             Parent librarianPane = librarianInterfaceLoader.load();
             mainPane.setCenter(librarianPane);
         } catch (Exception e) {

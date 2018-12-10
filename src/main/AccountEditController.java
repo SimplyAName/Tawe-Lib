@@ -27,7 +27,7 @@ import javafx.scene.paint.Color;
  * @author Chris
  *
  */
-public class AccountEditController implements Initializable {
+public class AccountEditController {
     private String selectedPicLocation;
     private String customImage1Location;
     private String customImage2Location;
@@ -198,8 +198,7 @@ public class AccountEditController implements Initializable {
     }*/
 
     /**
-     * allows a user to edit the image, so long as it is not a preset image
-     * @param a
+     * Allows a user to edit the image, so long as it is not a preset image.
      */
     @FXML
     private void handleeditButtonAction(ActionEvent a){
@@ -311,5 +310,26 @@ public class AccountEditController implements Initializable {
         }
         formatEditButton();
 
+                CustomDrawing customDrawing = new CustomDrawing();
+
+                customDrawing.start(customDrawingStage);
+
+                customDrawingStage.showAndWait();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Formats the edit Button.
+     */
+    private void formatEditButton() {
+        if ((!selectedPicLocation.equals(customImage1Location)) && (!selectedPicLocation.equals(customImage2Location))) {
+            editButton.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
+        } else {
+            editButton.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, null, null)));
+        }
     }
 }

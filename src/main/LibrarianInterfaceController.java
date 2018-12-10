@@ -97,6 +97,8 @@ public class LibrarianInterfaceController implements Initializable {
             libraryLoader.setController(new LibraryController());
             Parent libraryPane = libraryLoader.load();
             mainPane.setCenter(libraryPane);
+            mainPane.getScene().getWindow().setWidth(libraryPane.getScene().getWidth());
+            mainPane.getScene().getWindow().setHeight(libraryPane.getScene().getHeight());
         } catch (Exception e) {
             e.printStackTrace();
         }

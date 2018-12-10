@@ -43,7 +43,7 @@
 
                 <TableColumn prefWidth="100.0" text="Resource type">
                     <cellValueFactory>
-                        <PropertyValueFactory property="resourceType"/>
+                        <PropertyValueFactory property="type"/>
                     </cellValueFactory>
                 </TableColumn>
             </columns>

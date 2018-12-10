@@ -10,8 +10,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="600.0" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane id="paneMain" prefHeight="375.0" prefWidth="600.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -48,8 +48,8 @@
                <children>
                    <Button mnemonicParsing="false" onAction="#overdueCopiesAction" text="Overdue Copies"/>
                    <Button mnemonicParsing="false" onAction="#addResourceAction" text="Add Resource"/>
-                   <Button mnemonicParsing="false" text="Add User"/>
-                   <Button mnemonicParsing="false" text="Library"/>
+                   <Button mnemonicParsing="false" onAction="#addUserAction" text="Add User"/>
+                   <Button mnemonicParsing="false" onAction="#showLibraryAction" text="Library"/>
                    <Button mnemonicParsing="false" text="Users"/>
                </children>
              </HBox>
