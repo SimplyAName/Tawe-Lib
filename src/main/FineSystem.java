@@ -5,7 +5,24 @@ import java.sql.ResultSet;
 import javafx.scene.control.TextField;
 
 public class FineSystem {
-
+	
+	public int getAccountBalance(String username){
+		try {
+			ResultSet set = Database.query("SELECT balance FROM user_tb1 WHERE username = '" + username + "';");
+			if(set.next()){
+				return set.getInt("balance");
+			}
+			return 0;
+		} catch 
+		(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	
+	
+	/*
     @FXML
     private TextField username;
     private TextField fineToPay;
@@ -32,4 +49,5 @@ public class FineSystem {
             return false;
         }
     }
+    */
 }
