@@ -9,6 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+/*
+ * The controller class for the CopyHistory class
+ */
 public class CopyHistoryController implements Initializable {
 
     @FXML
@@ -16,22 +20,36 @@ public class CopyHistoryController implements Initializable {
 
     private int copyid;
 
+    /**
+     * 
+     * @param copyid The ID of the copied resource
+     */
     public CopyHistoryController(int copyid) {
         this.copyid = copyid;
     }
 
+    /*
+     *  Method that has an arraylist of copy history
+     *  Utilises SQL queries to get copy history and add it
+     */
     private void fillData() {
 
         ArrayList<CopyHistory> copyHistories = new ArrayList<>();
 
         try {
-            ResultSet copyHistory = Database.query("SELECT resource_tbl.title, resource_tbl.type, historic_tbl.datefrom, historic_tbl.datetil, historic_tbl.username " +
-                    "FROM historic_tbl, resource_tbl, copy_tbl " +
-                    "WHERE historic_tbl.copyid = copy_tbl.copyid AND copy_tbl.resourceid = resource_tbl.resourceid AND historic_tbl.copyid = " + copyid + " ORDER BY historic_tbl.datetil DESC");
+            ResultSet copyHistory = Database.query("SELECT resource_tbl.title, "
+            		+ "resource_tbl.type, historic_tbl.datefrom, historic_tbl.datetil, "
+            		+ "historic_tbl.username " + "FROM historic_tbl, resource_tbl, copy_tbl " +
+                    "WHERE historic_tbl.copyid = copy_tbl.copyid AND "
+                    + "copy_tbl.resourceid = resource_tbl.resourceid AND "
+                    + "historic_tbl.copyid = " + copyid + 
+                    " ORDER BY historic_tbl.datetil DESC");
 
             while (copyHistory.next()) {
-                copyHistories.add(new CopyHistory(copyHistory.getString("resource_tbl.title"), copyHistory.getString("historic_tbl.datefrom"),
-                        copyHistory.getString("historic_tbl.datetil"), copyHistory.getString("historic_tbl.username")));
+                copyHistories.add(new CopyHistory(copyHistory.getString("resource_tbl.title"),
+                		copyHistory.getString("historic_tbl.datefrom"),
+                        copyHistory.getString("historic_tbl.datetil"), 
+                        copyHistory.getString("historic_tbl.username")));
             }
 
             copyHistoryTable.getItems().addAll(copyHistories);
