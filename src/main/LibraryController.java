@@ -505,92 +505,91 @@ public class LibraryController {
 	 * @param e
 	 */
 	private void handleLendResourceAction(ActionEvent e) {
-		//Book book = new Book(0, "Of Mice and Men", 1889, "defaultImage.png", "Some Author again", "some publisher", "Genre", "12-123-5-314-23-523-", "English");	//##tests, delete
-		//User user = new User(0, "john", "john doe", "0128712894", "some address", "asda", 0);		//##### tests, delete!
-		//borrowCopy(, "1");		//#######
-		//*#*********finish functionality.
-		
 		
 		ResultSet availableCopies;
 		try {
-			availableCopies = Database.query("SELECT copyid FROM copy_tbl AS temp WHERE resourceid = " + lblID.getText() + " AND active = TRUE AND NOT EXISTS (SELECT * FROM out_tbl WHERE out_tbl.copyid = temp.copyid) AND NOT EXISTS (SELECT * FROM reservation_tbl WHERE reservation_tbl.copyid = temp.copyid);");
+			availableCopies = Database.query("SELECT copyid FROM copy_tbl AS temp " +
+					"WHERE resourceid = " + lblID.getText() + " AND active = 1 " +
+					"AND NOT EXISTS (SELECT * FROM out_tbl WHERE out_tbl.copyid = temp.copyid) " +
+					"AND NOT EXISTS (SELECT * FROM reservation_tbl WHERE reservation_tbl.copyid = temp.copyid);");
 
 		//Checking if there is any available copy of the selected resource.
-		if (availableCopies.next()) {
-			//add feture **#**
-		
-			//Creating a popup window that will ask the librarian to input an username and the loan duration in order to loan a resource.
-			 final Stage popup = new Stage();
-			 popup.initModality(Modality.APPLICATION_MODAL);
-			 popup.initOwner(btnLendResource.getScene().getWindow());
-			 popup.setResizable(false);
-	         
-	         VBox popupVBox = new VBox(20);
-	         popupVBox.setPadding(new Insets(20, 20, 20, 20));
-	         popupVBox.getChildren().add(new Label("Lending a copy of: \"" + lblTitle.getText() + "\""));
-	         popupVBox.getChildren().add(new Label("Select user and lending duration in order to proceed:"));
-	         
-	         HBox userHBox = new HBox(5);
-	         userHBox.getChildren().add(new Label("Username:"));
-	         TextField userField = new TextField();
-	         userHBox.getChildren().add(userField);
-	         popupVBox.getChildren().add(userHBox);
-	
-	         HBox durationHBox = new HBox(5);
-	         durationHBox.getChildren().add(new Label("Loan Duration:"));
-	         ComboBox comboDuration = new ComboBox<String>();
-	         //List<Integer> comboItems = new ArrayList<>();
-	         //comboItems.addAll(LEND_DURATIONS);
-	         comboDuration.getItems().addAll(Arrays.asList(LOAN_DURATIONS));
-	         durationHBox.getChildren().add(comboDuration);
-	         durationHBox.getChildren().add(new Label("(in days)"));
-	         popupVBox.getChildren().add(durationHBox);
-	         
-	         HBox buttonsHBox = new HBox();
-	         
-	         Button btnLend = new Button("Lend");
-	         Button btnReturn = new Button("Return");
-	         buttonsHBox.getChildren().add(btnLend);
-	         buttonsHBox.getChildren().add(btnReturn);
-	         
-	         popupVBox.getChildren().add(buttonsHBox);
-	         
-	         Scene popupScene = new Scene(popupVBox, 400, 250);
-	         popup.setScene(popupScene);
-	         popup.show();
+			if (availableCopies.next()) {
+
+				//Creating a popup window that will ask the librarian to input an username and the loan duration in order to loan a resource.
+				Stage popup = new Stage();
+				popup.initModality(Modality.APPLICATION_MODAL);
+				popup.initOwner(btnLendResource.getScene().getWindow());
+				popup.setResizable(false);
+
+				VBox popupVBox = new VBox(20);
+				popupVBox.setPadding(new Insets(20, 20, 20, 20));
+				popupVBox.getChildren().add(new Label("Lending a copy of: \"" + lblTitle.getText() + "\""));
+				popupVBox.getChildren().add(new Label("Select user and lending duration in order to proceed:"));
+
+				HBox userHBox = new HBox(5);
+				userHBox.getChildren().add(new Label("Username:"));
+				TextField userField = new TextField();
+				userHBox.getChildren().add(userField);
+				popupVBox.getChildren().add(userHBox);
+
+				HBox durationHBox = new HBox(5);
+				durationHBox.getChildren().add(new Label("Loan Duration:"));
+				ComboBox comboDuration = new ComboBox<String>();
+				//List<Integer> comboItems = new ArrayList<>();
+				//comboItems.addAll(LEND_DURATIONS);
+				comboDuration.getItems().addAll(Arrays.asList(LOAN_DURATIONS));
+				durationHBox.getChildren().add(comboDuration);
+				durationHBox.getChildren().add(new Label("(in days)"));
+				popupVBox.getChildren().add(durationHBox);
+
+				HBox buttonsHBox = new HBox();
+
+				Button btnLend = new Button("Lend");
+				Button btnReturn = new Button("Return");
+				buttonsHBox.getChildren().add(btnLend);
+				buttonsHBox.getChildren().add(btnReturn);
+
+				popupVBox.getChildren().add(buttonsHBox);
+
+				Scene popupScene = new Scene(popupVBox, 400, 250);
+				popup.setScene(popupScene);
+				popup.show();
 	         
 	    
 	         /*	pressing on the button will change the user of the copy in the database 
 	      	to the one specified. */
-	         //btnLend.setOnAction(this::handleLendAction);			//### delete
-	         //btnReturn.setOnAction(this::handleReturnAction);		//####
-	         btnLend.setOnAction(new EventHandler<ActionEvent>() {
-	             @Override
-	             public void handle(ActionEvent event) {
-	                 //**#** Call function to loan resource.
-	            	 ResourceManagement resManage = new ResourceManagement();
-	            	 try {
-						resManage.lendCopy(userField.getText(),Integer.parseInt(availableCopies.getString("copyid")), String.valueOf(comboDuration.getValue()));
-						fillCopiesList(lblID.getText());
-					} catch (NumberFormatException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				//btnLend.setOnAction(this::handleLendAction);			//### delete
+				//btnReturn.setOnAction(this::handleReturnAction);		//####
+				btnLend.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						//**#** Call function to loan resource.
+						ResourceManagement resManage = new ResourceManagement();
+						try {
+							resManage.lendCopy(userField.getText(),Integer.parseInt(availableCopies.getString("copyid")), String.valueOf(comboDuration.getValue()));
+							fillCopiesList(lblID.getText());
+						} catch (NumberFormatException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						//System.out.println(userField.getText() + "  " + comboDuration.getValue());
 					}
-	            	 //System.out.println(userField.getText() + "  " + comboDuration.getValue());
-	             }
-	         });
-	         
-	         /* Pressing 'Return' will close the window*/
-	         btnReturn.setOnAction(new EventHandler<ActionEvent>() {
-	             @Override
-	             public void handle(ActionEvent event) {
-	                 popup.close();
-	             }
-	         });
-		}
+				});
+
+				/* Pressing 'Return' will close the window*/
+				btnReturn.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						popup.close();
+					}
+				});
+			} else {
+				System.out.println("No availble copies!");
+			}
 		} catch (IllegalArgumentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -747,22 +746,24 @@ public class LibraryController {
 	 * @param e
 	 */
 	private void handleSearchAction(ActionEvent e) {
-		//*#*********finish functionality.
+		LibrarySearch libSearch = new LibrarySearch();
+
+		//String str = null;
+		ArrayList<String> str = new ArrayList<String>();
+		if (checkLaptop.isSelected()) {
+			str.add("laptop");
+		}
+		if (checkDVD.isSelected()) {
+			str.add("dvd");
+		}
+		if (checkBook.isSelected()) {
+			str.add("book");
+		}
+
+
+		fillResourceList(txtSearch.getText(), str.toArray(new String[0]), null);
 	}
-	
-	/*			//############ DELETE unused
-	//* POPUP WINDOWS 
-	
-	private void handleLendAction(ActionEvent e) {
-		//*#*********finish functionality.
-		
-	}
-	
-	private void handleReturnAction(ActionEvent e) {
-		//*#*********finish functionality.
-	}
-	
-	*/
+
 }
 
 

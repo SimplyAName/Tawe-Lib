@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.Random;
 
 
 public class ResourceManagement {
@@ -94,10 +94,14 @@ public class ResourceManagement {
     public boolean lendCopy(String username, int copyid, String minLoanDuration) {
         try {
             ResultSet rejectLending = Database.query("SELECT * FROM user_tbl WHERE username = '" + username + "' " +
-                    "AND balance > 0;");
+                    "AND balance >= 0;");
             if (!rejectLending.next()) {
 
-                Database.edit("INSERT INTO out_tbl VALUES(NULL, " + copyid + ", NOW(), NULL, '" + username + "', "+minLoanDuration+");");
+                Random randInt = new Random();
+
+                int id = randInt.nextInt(99999);
+
+                Database.edit("INSERT INTO out_tbl VALUES(" + id + ", " + copyid + ", DATE(NOW()), NULL, '" + username + "', " + minLoanDuration + ");");
 
                 JOptionPane.showMessageDialog(null, "Lending successful");
 
@@ -106,6 +110,7 @@ public class ResourceManagement {
                         "User has outstanding fines.");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
 
